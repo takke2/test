@@ -84,7 +84,7 @@ function onCharacteristicValueChanged(e) {
 	    str_arr[i]=this.value.getUint8(i);
 	}
 	var str=String.fromCharCode.apply(null,str_arr);
-	//alert("msg:"+str);
+	alert("msg:"+str);
 	var result = str.split(',');
 	
 	test1 = 1;
@@ -325,7 +325,7 @@ function init() {
 
     conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
     conteText2D.fillStyle = "blue";
-    conteText2D.fillText ( "10/27-3" , 0 , 10 , 100 );
+    conteText2D.fillText ( "10/27-4" , 0 , 10 , 100 );
     conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2 , 10 , 100 );
     
     bgmplay();

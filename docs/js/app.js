@@ -342,7 +342,7 @@ function init() {
         camera.position.set(camerax, cameray, 0);
         
         //camera.position.y += fbSpeed;
-        //camera.rotation.x += lrSpeed;
+        camera.rotation.y += 1;
         
         if(isFire == 1){
             if(counter % 10 == 0){

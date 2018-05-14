@@ -81,7 +81,7 @@ function render(timestamp) {
     meshCube.rotation.z += delta * 0.001
 
     requestAnimationFrame(render);
-    controls.update();
+    //controls.update();
     manager.render(scene, camera, timestamp);
 }
 

@@ -111,7 +111,7 @@ THREE.VREffect = function ( renderer, onError ) {
 
 	this.render = function ( scene, camera ) {
 
-		if ( vrHMD ) {
+		// if ( vrHMD ) {
 
 			var sceneL, sceneR;
 
@@ -133,13 +133,37 @@ THREE.VREffect = function ( renderer, onError ) {
 			renderer.enableScissorTest( true );
 			renderer.clear();
 
-			if ( camera.parent === null ) camera.updateMatrixWorld();
+			if ( camera.parent === undefined ) camera.updateMatrixWorld();
+
+            // HMDがない場合のエミュレート値
+            eyeFOVL || (eyeFOVL = {
+                downDegrees: 53.04646682739258,
+                leftDegrees: 46.63209533691406,
+                rightDegrees: 47.52769470214844,
+                upDegrees: 53.04646682739258
+            });
+            eyeFOVR || (eyeFOVR = {
+                downDegrees: 53.04646682739258,  
+                leftDegrees: 47.52769470214844,
+                rightDegrees: 46.63209533691406,
+                upDegrees: 53.04646682739258
+            });
 
 			cameraL.projectionMatrix = fovToProjection( eyeFOVL, true, camera.near, camera.far );
 			cameraR.projectionMatrix = fovToProjection( eyeFOVR, true, camera.near, camera.far );
 
 			camera.matrixWorld.decompose( cameraL.position, cameraL.quaternion, cameraL.scale );
 			camera.matrixWorld.decompose( cameraR.position, cameraR.quaternion, cameraR.scale );
+
+            // HMDがない場合のエミュレート値
+            eyeTranslationL || (eyeTranslationL = {
+                x: -0.03200000151991844,
+                y: 0
+            });
+            eyeTranslationR || (eyeTranslationR = {
+                x: 0.03200000151991844,
+                y: 0
+            });
 
 			cameraL.translateX( eyeTranslationL.x * this.scale );
 			cameraR.translateX( eyeTranslationR.x * this.scale );
@@ -158,7 +182,7 @@ THREE.VREffect = function ( renderer, onError ) {
 
 			return;
 
-		}
+		// }
 
 		// Regular render mode if not HMD
 
@@ -172,10 +196,10 @@ THREE.VREffect = function ( renderer, onError ) {
 
 	function fovToNDCScaleOffset( fov ) {
 
-		var pxscale = 2.0 / ( fov.leftTan + fov.rightTan );
-		var pxoffset = ( fov.leftTan - fov.rightTan ) * pxscale * 0.5;
-		var pyscale = 2.0 / ( fov.upTan + fov.downTan );
-		var pyoffset = ( fov.upTan - fov.downTan ) * pyscale * 0.5;
+		var pxscale = 2.0 / (fov.leftTan + fov.rightTan);
+		var pxoffset = (fov.leftTan - fov.rightTan) * pxscale * 0.5;
+		var pyscale = 2.0 / (fov.upTan + fov.downTan);
+		var pyoffset = (fov.upTan - fov.downTan) * pyscale * 0.5;
 		return { scale: [ pxscale, pyscale ], offset: [ pxoffset, pyoffset ] };
 
 	}
@@ -186,45 +210,44 @@ THREE.VREffect = function ( renderer, onError ) {
 		zNear = zNear === undefined ? 0.01 : zNear;
 		zFar = zFar === undefined ? 10000.0 : zFar;
 
-		var handednessScale = rightHanded ? - 1.0 : 1.0;
+		var handednessScale = rightHanded ? -1.0 : 1.0;
 
 		// start with an identity matrix
 		var mobj = new THREE.Matrix4();
 		var m = mobj.elements;
 
 		// and with scale/offset info for normalized device coords
-		var scaleAndOffset = fovToNDCScaleOffset( fov );
+		var scaleAndOffset = fovToNDCScaleOffset(fov);
 
 		// X result, map clip edges to [-w,+w]
-		m[ 0 * 4 + 0 ] = scaleAndOffset.scale[ 0 ];
-		m[ 0 * 4 + 1 ] = 0.0;
-		m[ 0 * 4 + 2 ] = scaleAndOffset.offset[ 0 ] * handednessScale;
-		m[ 0 * 4 + 3 ] = 0.0;
+		m[0 * 4 + 0] = scaleAndOffset.scale[0];
+		m[0 * 4 + 1] = 0.0;
+		m[0 * 4 + 2] = scaleAndOffset.offset[0] * handednessScale;
+		m[0 * 4 + 3] = 0.0;
 
 		// Y result, map clip edges to [-w,+w]
 		// Y offset is negated because this proj matrix transforms from world coords with Y=up,
 		// but the NDC scaling has Y=down (thanks D3D?)
-		m[ 1 * 4 + 0 ] = 0.0;
-		m[ 1 * 4 + 1 ] = scaleAndOffset.scale[ 1 ];
-		m[ 1 * 4 + 2 ] = - scaleAndOffset.offset[ 1 ] * handednessScale;
-		m[ 1 * 4 + 3 ] = 0.0;
+		m[1 * 4 + 0] = 0.0;
+		m[1 * 4 + 1] = scaleAndOffset.scale[1];
+		m[1 * 4 + 2] = -scaleAndOffset.offset[1] * handednessScale;
+		m[1 * 4 + 3] = 0.0;
 
 		// Z result (up to the app)
-		m[ 2 * 4 + 0 ] = 0.0;
-		m[ 2 * 4 + 1 ] = 0.0;
-		m[ 2 * 4 + 2 ] = zFar / ( zNear - zFar ) * - handednessScale;
-		m[ 2 * 4 + 3 ] = ( zFar * zNear ) / ( zNear - zFar );
+		m[2 * 4 + 0] = 0.0;
+		m[2 * 4 + 1] = 0.0;
+		m[2 * 4 + 2] = zFar / (zNear - zFar) * -handednessScale;
+		m[2 * 4 + 3] = (zFar * zNear) / (zNear - zFar);
 
 		// W result (= Z in)
-		m[ 3 * 4 + 0 ] = 0.0;
-		m[ 3 * 4 + 1 ] = 0.0;
-		m[ 3 * 4 + 2 ] = handednessScale;
-		m[ 3 * 4 + 3 ] = 0.0;
+		m[3 * 4 + 0] = 0.0;
+		m[3 * 4 + 1] = 0.0;
+		m[3 * 4 + 2] = handednessScale;
+		m[3 * 4 + 3] = 0.0;
 
 		mobj.transpose();
 
 		return mobj;
-
 	}
 
 	function fovToProjection( fov, rightHanded, zNear, zFar ) {

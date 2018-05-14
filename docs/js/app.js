@@ -66,6 +66,7 @@ function init() {
 
 function updateOrientationControls(e) {
   if (!e.alpha) { return; }
+  alert('JavaScript‚ÌƒAƒ‰[ƒg');
   controls = new DeviceOrientationControls(camera, true);
   controls.connect();
   controls.update();

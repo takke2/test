@@ -1,4 +1,19 @@
-import THREE from 'three';
+/* globals THREE */
+/**
+ * DeviceOrientationControls - applies device orientation on object rotation
+ *
+ * @param {Object} object - instance of THREE.Object3D
+ * @constructor
+ *
+ * @author richt / http://richt.me
+ * @author WestLangley / http://github.com/WestLangley
+ * @author jonobr1 / http://jonobr1.com
+ * @author arodic / http://aleksandarrodic.com
+ * @author doug / http://github.com/doug
+ *
+ * W3C Device Orientation control
+ * (http://w3c.github.io/deviceorientation/spec-source-orientation.html)
+ */
 
 (function() {
 
@@ -172,4 +187,3 @@ THREE.DeviceOrientationControls = function(object) {
 
 })();
 
-module.exports = THREE.DeviceOrientationControls;

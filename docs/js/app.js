@@ -1,13 +1,7 @@
-var scene = new THREE.Scene();
-    
 function init() {
     var width  = window.innerWidth;
     var height = window.innerHeight;
 
-
-    
-    alert("aa");
-    
     // カメラ
     var camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100000);
     camera.position.set(0, -20, 50);
@@ -19,6 +13,9 @@ function init() {
     renderer.setViewport(0, 0, width, height);
 
     document.body.appendChild(renderer.domElement);
+
+    // シーン
+    var scene = new THREE.Scene();
 
     // キューブ
     var material = new THREE.MeshLambertMaterial({
@@ -34,12 +31,37 @@ function init() {
     scene.add(light);
     scene.add(mesh);
 
-
     // Skybox
     var cubeMap = new THREE.CubeTexture([]);
     cubeMap.format = THREE.RGBFormat;
     cubeMap.flipY = false;
-    
+
+    var loader = new THREE.ImageLoader();
+    loader.load('texture/skyboxsun25degtest.png', function (image) {
+        var getSide = function (x, y) {
+            var size = 1024;
+            var canvas = document.createElement('canvas');
+            canvas.width  = size;
+            canvas.height = size;
+
+            var context = canvas.getContext('2d');
+            context.drawImage(image, -x * size, -y * size);
+
+            return canvas;
+        }
+
+        cubeMap.images[0] = getSide(2, 1);
+        cubeMap.images[1] = getSide(0, 1);
+        cubeMap.images[2] = getSide(1, 0);
+        cubeMap.images[3] = getSide(1, 2);
+        cubeMap.images[4] = getSide(1, 1);
+        cubeMap.images[5] = getSide(3, 1);
+        cubeMap.needsUpdate = true;
+    });
+
+    var cubeShader = THREE.ShaderLib['cube'];
+    cubeShader.uniforms['tCube'].value = cubeMap;
+
     var skyboxMaterial = new THREE.ShaderMaterial({
         fragmentShader: cubeShader.fragmentShader,
         vertexShader: cubeShader.vertexShader,

@@ -4,8 +4,8 @@ function init() {
        filters: [{
        services: ['battery_service']
     }]})
-    .catch(error => alert( error ))
-    ;
+    .then(device => alert("ok"))
+    .catch(error => alert( error ));
     var width  = window.innerWidth;
     var height = window.innerHeight;
 

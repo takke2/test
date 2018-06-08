@@ -1,8 +1,4 @@
 function init() {
-    navigator.bluetooth.requestDevice({
-       filters: [{
-       services: ['battery_service']
-    }]})
   
     var width  = window.innerWidth;
     var height = window.innerHeight;

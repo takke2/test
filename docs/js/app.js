@@ -8,13 +8,13 @@ function connect() {
         services: ['battery_service']
     }]})
     .then(device => device.gatt.connect())
-    .then(server => server.getPrimaryService('battery_service'))
-    .then(service => service.getCharacteristic('battery_level'))
-    .then(characteristic => characteristic.readValue())
-    .then(value => {
-      let batteryLevel = value.getUint8(0);
-      alert( batteryLevel )
-    })
+    //.then(server => server.getPrimaryService('battery_service'))
+    //.then(service => service.getCharacteristic('battery_level'))
+    //.then(characteristic => characteristic.readValue())
+    //.then(value => {
+    //  let batteryLevel = value.getUint8(0);
+    //  alert( batteryLevel )
+    //})
     .catch(error => alert( error ));
 }
 

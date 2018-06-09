@@ -14,7 +14,7 @@ function connect() {
     .then(value => {
       let batteryLevel = value.getUint8(0);
       alert( batteryLevel )
-    });
+    }
     .catch(error => alert( error ));
 }
 

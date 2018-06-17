@@ -8,7 +8,9 @@ function connect() {
         services: ['battery_service']
     }]})
     .then(function(device){
-          var result = device.gatt.connect();
+          var result = 999;
+          alert(result);
+          result  = device.gatt.connect();
           alert(result);
           return result;
           })

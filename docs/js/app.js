@@ -9,7 +9,7 @@ function connect() {
     }]})
     .then(device => 
           var result = device.gatt.connect();
-          alert(result)
+          alert(result);
           return result;
           )
     .then(server => server.getPrimaryService('battery_service'))

@@ -8,25 +8,20 @@ function connect() {
         services: ['battery_service']
     }]})
     .then(device => {
-        alert("device");
         return device.gatt.connect();
     })
     .then(server => {
-        alert("server");
         return server.getPrimaryService('battery_service');
     })
     .then(service => {
-        alert("service");
-        service.getCharacteristic('battery_level')
+        return service.getCharacteristic('battery_level');
     })
     .then(characteristic => {
-        alert("characteristic");
-        characteristic.readValue()
+        return characteristic.readValue();
     })
     .then(value => {
-        alert("value");
         let batteryLevel = value.getUint8(0);
-        alert( batteryLevel )
+        alert( batteryLevel );
     })
     .catch(error => alert( error ));
 }

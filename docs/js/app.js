@@ -10,7 +10,7 @@ function connect() {
     .then((device) => {
           var result = 999;
           alert(result);
-          //result  = device.gatt.connect();
+          result  = device.gatt.connect();
           alert(result);
           return result;
           })

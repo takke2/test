@@ -12,6 +12,7 @@ function connect() {
         return device.gatt.connect();
     })
     .then(server => {
+        alert("server");
         return server.getPrimaryService('battery_service');
     })
     .then(service => {

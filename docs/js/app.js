@@ -44,7 +44,7 @@ function connect() {
 	  return characteristic.startNotifications();
 	})
 	.catch(error => { console.log(error); });
-	while(1){
+	while(true){
 	}
 }
 

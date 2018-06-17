@@ -7,7 +7,11 @@ function connect() {
         filters: [{
         services: ['battery_service']
     }]})
-    .then(device => device.gatt.connect())
+    .then(device => 
+          var result = device.gatt.connect();
+          alert(result)
+          return result;
+          )
     .then(server => server.getPrimaryService('battery_service'))
     .then(service => service.getCharacteristic('battery_level'))
     .then(characteristic => characteristic.readValue())

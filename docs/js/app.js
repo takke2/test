@@ -11,20 +11,6 @@ function connect() {
         alert("connect");
         return device.gatt.connect();
     })
-    .then(server => {
-        alert("server");
-        return server.getPrimaryService('battery_service');
-    })
-    .then(service => {
-        return service.getCharacteristic('battery_level');
-    })
-    .then(characteristic => {
-        return characteristic.readValue();
-    })
-    .then(value => {
-        let batteryLevel = value.getUint8(0);
-        alert( batteryLevel );
-    })
     .catch(error => {
         alert("error");
         alert( error );

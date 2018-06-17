@@ -24,33 +24,6 @@ function connect() {
 	.catch(error => { console.log(error); });
 }
 
-/*
-function connect() {
-	alert(navigator.bluetooth)
-	navigator.bluetooth.requestDevice({ filters: [{ services: ['battery_service'] }] })
-	.then(device => device.gatt.connect())
-	.then(server => {
-	  // Getting Battery Service...
-	  return server.getPrimaryService('battery_service');
-	})
-	.then(service => {
-	  // Getting Battery Level Characteristic...
-	  return service.getCharacteristic('battery_level');
-	})
-	.then(characteristic => {
-	  // Reading Battery Level...
-	  characteristic.addEventListener('characteristicvaluechanged', onHeartRateChanged);
-	})
-	.catch(error => { console.log(error); });
-}
-*/
-
-function onHeartRateChanged(event) {
-  let characteristic = event.target;
-  alert("aa")
-  alert(characteristic.value.getUint8(0))
-}
-
 function init() {
     
     

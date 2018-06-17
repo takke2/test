@@ -7,7 +7,7 @@ function connect() {
         filters: [{
         services: ['battery_service']
     }]})
-    .then(function(device){
+    .then((device) => {
           var result = 999;
           alert(result);
           //result  = device.gatt.connect();

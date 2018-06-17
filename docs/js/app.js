@@ -2,19 +2,25 @@ var button = document.getElementById('button'); //id‚ªubuttonv‚Ì—v‘f‚ðŽæ“¾
 button.addEventListener("click",connect);
 
 function connect() {
-    alert(navigator.bluetooth)
-    navigator.bluetooth.requestDevice({
-        filters: [{
-        services: ['battery_service']
-    }]})
-    .then(device => {
-        alert("connect");
-        return device.gatt.connect();
-    })
-    .catch(error => {
-        alert("error");
-        alert( error );
-    });
+	alert(navigator.bluetooth)
+	navigator.bluetooth.requestDevice({ filters: [{ services: ['battery_service'] }] })
+	.then(device => device.gatt.connect())
+	.then(server => {
+	  // Getting Battery Service...
+	  return server.getPrimaryService('battery_service');
+	})
+	.then(service => {
+	  // Getting Battery Level Characteristic...
+	  return service.getCharacteristic('battery_level');
+	})
+	.then(characteristic => {
+	  // Reading Battery Level...
+	  return characteristic.readValue();
+	})
+	.then(value => {
+	  console.log('Battery percentage is ' + value.getUint8(0));
+	})
+	.catch(error => { console.log(error); });
 }
 
 

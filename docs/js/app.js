@@ -10,11 +10,14 @@ function connect() {
     .then((device) => {
           var result = 999;
           alert(device.name);
-          device.gatt.connect();
+          resulet = device.gatt.connect();
           alert(result);
           return result;
           })
-    .then(server => server.getPrimaryService('battery_service'))
+    .then((server) => {
+          alert("service");
+          return server.getPrimaryService('battery_service');
+          })
     .then(service => service.getCharacteristic('battery_level'))
     .then(characteristic => characteristic.readValue())
     .then(value => {

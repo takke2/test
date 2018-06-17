@@ -8,11 +8,12 @@ function connect() {
         services: ['battery_service']
     }]})
     .then(device => {
-        device.gatt.connect()
+        alert("device");
+        return device.gatt.connect();
     })
     .then(server => {
         alert("server");
-        server.getPrimaryService('battery_service')
+        return server.getPrimaryService('battery_service');
     })
     .then(service => {
         alert("service");

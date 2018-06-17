@@ -1,7 +1,7 @@
 var button = document.getElementById('button'); //id‚ªubuttonv‚Ì—v‘f‚ðŽæ“¾
 button.addEventListener("click",connect);
 
-/*
+
 function connect() {
 	alert(navigator.bluetooth)
 	navigator.bluetooth.requestDevice({ filters: [{ services: ['battery_service'] }] })
@@ -23,7 +23,8 @@ function connect() {
 	})
 	.catch(error => { console.log(error); });
 }
-*/
+
+/*
 function connect() {
 	alert(navigator.bluetooth)
 	navigator.bluetooth.requestDevice({ filters: [{ services: ['battery_service'] }] })
@@ -42,10 +43,12 @@ function connect() {
 	})
 	.catch(error => { console.log(error); });
 }
+*/
 
 function onHeartRateChanged(event) {
   let characteristic = event.target;
-  alert(characteristic.value)
+  alert("aa")
+  alert(characteristic.value.getUint8(0))
 }
 
 function init() {

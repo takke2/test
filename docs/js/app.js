@@ -53,6 +53,7 @@ function onHeartRateChanged(event) {
   alert(characteristic.value.getUint8(0))
 }
 
+/*
 function init() {
     
     
@@ -179,3 +180,4 @@ function init() {
 }
 
 init();
+*/

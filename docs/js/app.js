@@ -18,7 +18,7 @@ function connect() {
 	  return characteristic.readValue();
 	})
 	.then(value => {
-	  console.log('Battery percentage is ' + value.getUint8(0));
+	  alert(value.getUint8(0));
 	})
 	.catch(error => { console.log(error); });
 }

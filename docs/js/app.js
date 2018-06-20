@@ -11,6 +11,7 @@ function connect() {
 	  alert("aaa");
 	  return device.gatt.connect();
 	})
+	/*
 	.then(server => {
 	  // Getting Battery Service...
 	  return server.getPrimaryService('battery_service');
@@ -19,7 +20,7 @@ function connect() {
 	  // Getting Battery Level Characteristic...
 	  return service.getCharacteristic('battery_level');
 	})
-	/*
+	
 	.then(characteristic => {
 	  // Reading Battery Level...
 	  return characteristic.readValue();

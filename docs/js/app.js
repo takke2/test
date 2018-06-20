@@ -1,3 +1,4 @@
+alert("0");
 /*
 function init() {
   var button = document.getElementById('button'); //id‚ªubuttonv‚Ì—v‘f‚ğæ“¾

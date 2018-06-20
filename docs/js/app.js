@@ -273,5 +273,6 @@ ble.onStopNotify = function(uuid){
 //ボタンが押された時のイベント登録
 //--------------------------------------------------
 document.getElementById('button').addEventListener('click', function() {
+      alert("aaa")
       ble.read('BatteryLevel');
 });

@@ -1,5 +1,7 @@
-var button = document.getElementById('button'); //idが「button」の要素を取得
-button.addEventListener("click",connect);
+function init() {
+  var button = document.getElementById('button'); //idが「button」の要素を取得
+  button.addEventListener("click",connect);
+}
 
 /*
 function connect() {
@@ -43,17 +45,21 @@ function connect() {
 	  characteristic.addEventListener('characteristicvaluechanged', onHeartRateChanged);
 	  return characteristic.startNotifications();
 	})
-	.catch(error => { console.log(error); });
+	.catch(error => {
+	  alert(error);
+	  console.log(error);
+	});
 }
 
 
 function onHeartRateChanged(event) {
   let characteristic = event.target;
-  alert("aa")
   alert(characteristic.value.getUint8(0))
 }
 
 
+
+/*
 function init() {
     
     
@@ -178,5 +184,6 @@ function init() {
     }, false);
     
 }
+*/
 
-init();
+window.addEventListener("load", init);

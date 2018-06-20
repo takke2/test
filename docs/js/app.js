@@ -1,5 +1,3 @@
-
-
 function init() {
   var button = document.getElementById('button'); //id‚ªubuttonv‚Ì—v‘f‚ğæ“¾
   button.addEventListener("click",connect);

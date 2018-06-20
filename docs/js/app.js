@@ -1,7 +1,9 @@
+/*
 function init() {
   var button = document.getElementById('button'); //idが「button」の要素を取得
   button.addEventListener("click",connect);
 }
+*/
 
 /*
 function connect() {
@@ -27,7 +29,7 @@ function connect() {
 }
 */
 
-
+/*
 function connect() {
 	alert(navigator.bluetooth)
 	navigator.bluetooth.requestDevice({ filters: [{ services: ['battery_service'] }] })
@@ -56,7 +58,7 @@ function onHeartRateChanged(event) {
   let characteristic = event.target;
   alert(characteristic.value.getUint8(0))
 }
-
+*/
 
 
 /*
@@ -186,4 +188,90 @@ function init() {
 }
 */
 
-window.addEventListener("load", init);
+//window.addEventListener("load", init);
+
+//--------------------------------------------------
+//Global変数
+//--------------------------------------------------
+//BlueJellyのインスタンス生成
+var ble = new BlueJelly();
+
+
+//--------------------------------------------------
+//ロード時の処理
+//--------------------------------------------------
+window.onload = function () {
+  //UUIDの設定
+  //ble.setUUID("UUID1", "713d0000-503e-4c75-ba94-3148f18d941e", "713d0002-503e-4c75-ba94-3148f18d941e");  //BLEnano SimpleControl rx_uuid
+  ble.setUUID("BatteryLevel", "0000180f-0000-1000-8000-00805f9b34fb", "00002a19-0000-1000-8000-00805f9b34fb");
+
+}
+
+
+//--------------------------------------------------
+//Scan後の処理
+//--------------------------------------------------
+ble.onScan = function (deviceName) {
+  alert(deviceName);
+  //document.getElementById('device_name').innerHTML = deviceName;
+  //document.getElementById('status').innerHTML = "found device!";
+}
+
+
+//--------------------------------------------------
+//ConnectGATT後の処理
+//--------------------------------------------------
+ble.onConnectGATT = function (uuid) {
+  console.log('> connected GATT!');
+  alert(uuid);
+  //document.getElementById('uuid_name').innerHTML = uuid;
+  //document.getElementById('status').innerHTML = "connected GATT!";
+}
+
+
+//--------------------------------------------------
+//Read後の処理：得られたデータの表示など行う
+//--------------------------------------------------
+ble.onRead = function (data, uuid){
+  //フォーマットに従って値を取得
+  value = data.getInt8(0);//1Byteの場合のフォーマット
+  alert(value);
+  //コンソールに値を表示
+  console.log(value);
+
+  //HTMLに値を表示
+  //document.getElementById('data_text').innerHTML = value;
+
+  //document.getElementById('uuid_name').innerHTML = uuid;
+  //document.getElementById('status').innerHTML = "read data"
+}
+
+
+//--------------------------------------------------
+//Start Notify後の処理
+//--------------------------------------------------
+ble.onStartNotify = function(uuid){
+  console.log('> Start Notify!');
+
+  //document.getElementById('uuid_name').innerHTML = uuid;
+  //document.getElementById('status').innerHTML = "started Notify";
+}
+
+
+//--------------------------------------------------
+//Stop Notify後の処理
+//--------------------------------------------------
+ble.onStopNotify = function(uuid){
+  console.log('> Stop Notify!');
+
+  //document.getElementById('uuid_name').innerHTML = uuid;
+  //document.getElementById('status').innerHTML = "stopped Notify";
+}
+
+
+//-------------------------------------------------
+//ボタンが押された時のイベント登録
+//--------------------------------------------------
+document.getElementById('button').addEventListener('click', function() {
+      ble.read('BatteryLevel');
+});

@@ -19,6 +19,7 @@ function connect() {
 	  // Getting Battery Level Characteristic...
 	  return service.getCharacteristic('battery_level');
 	})
+	/*
 	.then(characteristic => {
 	  // Reading Battery Level...
 	  return characteristic.readValue();
@@ -26,6 +27,7 @@ function connect() {
 	.then(value => {
 	  alert(value.getUint8(0));
 	})
+	*/
 	.catch(error => { 
 	  alert(error);
 	  console.log(error); 

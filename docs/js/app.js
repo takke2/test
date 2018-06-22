@@ -44,9 +44,9 @@ var ENEMY_COLOR = 'rgba(255, 0, 0, 0.75)';
 var ENEMY_MAX_COUNT = 10;
 
 function init() {
-    //var i, j;
-    //var p = new Point();
-    //var forward = new THREE.Vector4(0, 0, 1, 0);
+    var i, j;
+    var p = new Point();
+    var forward = new THREE.Vector4(0, 0, 1, 0);
     
     var width  = window.innerWidth;
     var height = window.innerHeight;
@@ -138,7 +138,7 @@ function init() {
     var effect   = new THREE.VREffect(renderer);
     effect.setSize(width, height);
     
-    /*
+    
     var charaShot = new Array(CHARA_SHOT_MAX_COUNT);
     var charaShotMesh = new Array(CHARA_SHOT_MAX_COUNT);
     const charaShotSize = 20;
@@ -161,11 +161,11 @@ function init() {
         enemyMesh[i].position.set(enemy[i].position.x, enemy[i].position.y, enemy[i].position.z);
         scene.add(enemyMesh[i]);
     }
-    */
+    
     
     // アニメーションループ
     (function loop() {
-        /*
+        
         counter++;
         
         if(counter % 1000 == 0){
@@ -220,7 +220,7 @@ function init() {
                 }
             }
         }
-        */
+        
         vrControls.update();
         orbitControls.update();
         if (isSmartphone) {

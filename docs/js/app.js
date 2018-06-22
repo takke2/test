@@ -54,7 +54,7 @@ function init() {
     // ƒJƒƒ‰
     var camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100000);
     camera.position.set(0, 0, 0);
-    camera.lookAt(new THREE.Vector3(0, 0, 0))
+    camera.lookAt(new THREE.Vector3(0, 0, 1))
 
     // ƒŒƒ“ƒ_ƒ‰
     var renderer = new THREE.WebGLRenderer({antialias: true});
@@ -152,7 +152,7 @@ function init() {
     var enemyMesh = new Array(ENEMY_MAX_COUNT);
     const enemySize = 20;
     for(i=0; i < ENEMY_MAX_COUNT; i++){
-        p.x = i*10;
+        p.x = i*40;
         p.y = 0;
         p.z = 1000;
         enemy[i] = new Enemy();

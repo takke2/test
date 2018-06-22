@@ -154,7 +154,7 @@ function init() {
     for(i=0; i < ENEMY_MAX_COUNT; i++){
         p.x = i*10;
         p.y = 0;
-        p.z = 100;
+        p.z = 1000;
         enemy[i] = new Enemy();
         enemy[i].set(p, enemySize, 1);
         enemyMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(enemySize), new THREE.MeshNormalMaterial());
@@ -169,7 +169,7 @@ function init() {
         counter++;
         
         if(counter % 1000 == 0){
-            fire = true;
+            //fire = true;
         }
         
         for(i=0; i < CHARA_SHOT_MAX_COUNT; i++){

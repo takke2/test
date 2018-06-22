@@ -169,7 +169,7 @@ function init() {
         counter++;
         
         if(counter % 1000 == 0){
-            //fire = true;
+            fire = true;
         }
         
         for(i=0; i < CHARA_SHOT_MAX_COUNT; i++){

@@ -49,6 +49,8 @@ function init() {
     var p = new Point();
     var forward = new THREE.Vector4(0, 0, 1, 0);
     
+    alert("b");
+    
     var width  = window.innerWidth;
     var height = window.innerHeight;
 
@@ -138,8 +140,9 @@ function init() {
     // VREffect
     var effect   = new THREE.VREffect(renderer);
     effect.setSize(width, height);
-
-
+    
+    alert("c");
+    
     var charaShot = new Array(CHARA_SHOT_MAX_COUNT);
     var charaShotMesh = new Array(CHARA_SHOT_MAX_COUNT);
     const charaShotSize = 20;

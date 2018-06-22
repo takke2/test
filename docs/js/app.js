@@ -44,6 +44,7 @@ var ENEMY_COLOR = 'rgba(255, 0, 0, 0.75)';
 var ENEMY_MAX_COUNT = 10;
 
 function init() {
+    alert("a");
     var i, j;
     var p = new Point();
     var forward = new THREE.Vector4(0, 0, 1, 0);

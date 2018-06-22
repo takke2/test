@@ -1,4 +1,4 @@
-fcunction CharacterShot(){
+function CharacterShot(){
 	this.position = new Point();
 	this.size = 0;
 	this.speed = 0;
@@ -19,7 +19,7 @@ CharacterShot.prototype.set = function(p, vector, size, speed){
 	this.alive = true;
 };
 
-CaracterShot.prototype.move = function(){
+CharacterShot.prototype.move = function(){
 	this.position.x += this.vector.x * this.speed;
 	this.position.y += this.vector.y * this.speed;
 	this.position.z += this.vector.z * this.speed;
@@ -30,7 +30,7 @@ CaracterShot.prototype.move = function(){
 };
 
 function Enemy(){
-	this.position. = new Point();
+	this.position = new Point();
 	this.size = 0;
 	this.type = 0;
 	this.param = 0;

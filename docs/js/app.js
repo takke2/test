@@ -44,14 +44,10 @@ var ENEMY_COLOR = 'rgba(255, 0, 0, 0.75)';
 var ENEMY_MAX_COUNT = 10;
 
 function init() {
-    alert("a");
     var i, j;
-    alert("aa");
     var p = new Point();
-    alert("aaa");
     var forward = new THREE.Vector4(0, 0, 1, 0);
     
-    alert("b");
     
     var width  = window.innerWidth;
     var height = window.innerHeight;
@@ -67,7 +63,7 @@ function init() {
     renderer.setSize(width, height);
     renderer.setViewport(0, 0, width, height);
 
-    document.body.appendChild(renderer.domElement);
+    //document.body.appendChild(renderer.domElement);
 
     // ÉVÅ[Éì
     var scene = new THREE.Scene();
@@ -143,7 +139,6 @@ function init() {
     var effect   = new THREE.VREffect(renderer);
     effect.setSize(width, height);
     
-    alert("c");
     
     var charaShot = new Array(CHARA_SHOT_MAX_COUNT);
     var charaShotMesh = new Array(CHARA_SHOT_MAX_COUNT);
@@ -182,7 +177,7 @@ function init() {
                     var forwardVec4 = forward.applyMatrix4(camera.matrix);
                     forwardVec4.normalize();
                     
-                    charaShot[j].set(camera.position, forwardVec4, 1000, 5);
+                    charaShot[i].set(camera.position, forwardVec4, 1000, 5);
                     charaShotMesh[i].position.set(charaShot[i].position.x, charaShot[i].position.y,charaShot[i].position.z);
                     
                     scene.add(charaShotMesh[i]);
@@ -205,7 +200,7 @@ function init() {
                 p = enemy[i].position.distance(camera.position);
                 p.normalize();
                 enemy[i].move(p);
-                enemyMesh[i].position.set(enemy[i].postion.x,enemy[i].postion.y,enemy[i].postion.z);
+                enemyMesh[i].position.set(enemy[i].position.x,enemy[i].position.y,enemy[i].position.z);
             }
         }
         
@@ -247,4 +242,5 @@ function init() {
     
 }
 
-window.addEventListener("load", init);
+//window.addEventListener("load", init);
+init();

@@ -168,7 +168,7 @@ function init() {
         
         counter++;
         
-        if(counter % 1000 == 0){
+        if(counter % 100 == 0){
             fire = true;
         }
         

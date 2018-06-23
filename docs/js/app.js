@@ -41,7 +41,7 @@ var counter = 0;
 var CHARA_SHOT_COLOR = 'rgba(0, 0, 255, 0.75)';
 var CHARA_SHOT_MAX_COUNT = 10;
 var ENEMY_COLOR = 'rgba(255, 0, 0, 0.75)';
-var ENEMY_MAX_COUNT = 1;
+var ENEMY_MAX_COUNT = 10;
 
 function init() {
     var i, j;
@@ -153,11 +153,11 @@ function init() {
     var enemyMesh = new Array(ENEMY_MAX_COUNT);
     const enemySize = 20;
     for(i=0; i < ENEMY_MAX_COUNT; i++){
-        p.x = 50;
+        p.x = 300;
         p.y = 0;
         p.z = i*40;
         enemy[i] = new Enemy();
-        enemy[i].set(p, enemySize, 0.1);
+        enemy[i].set(p, enemySize, 0.5);
         enemyMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(enemySize), new THREE.MeshNormalMaterial());
         enemyMesh[i].position.set(enemy[i].position.x, enemy[i].position.y, enemy[i].position.z);
         scene.add(enemyMesh[i]);

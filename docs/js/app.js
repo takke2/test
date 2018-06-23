@@ -54,7 +54,7 @@ function init() {
     // ÉJÉÅÉâ
     var camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100000);
     camera.position.set(0, 0, 0);
-    camera.lookAt(new THREE.Vector3(0, 0, 1))
+    camera.lookAt(new THREE.Vector3(0, 0, 0))
 
     // ÉåÉìÉ_Éâ
     var renderer = new THREE.WebGLRenderer({antialias: true});
@@ -178,7 +178,7 @@ function init() {
                     var forwardVec4 = forward.applyMatrix4(camera.matrix);
                     forwardVec4.normalize();
                     
-                    charaShot[i].set(camera.position, forwardVec4, 1000, 5);
+                    charaShot[i].set(camera.position, forwardVec4, 100, 5);
                     charaShotMesh[i].position.set(charaShot[i].position.x, charaShot[i].position.y,charaShot[i].position.z);
                     
                     scene.add(charaShotMesh[i]);

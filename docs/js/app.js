@@ -41,7 +41,7 @@ var counter = 0;
 var CHARA_SHOT_COLOR = 'rgba(0, 0, 255, 0.75)';
 var CHARA_SHOT_MAX_COUNT = 10;
 var ENEMY_COLOR = 'rgba(255, 0, 0, 0.75)';
-var ENEMY_MAX_COUNT = 10;
+var ENEMY_MAX_COUNT = 1;
 
 function init() {
     var i, j;
@@ -54,7 +54,7 @@ function init() {
     // ÉJÉÅÉâ
     var camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100000);
     camera.position.set(0, 0, 0);
-    camera.lookAt(new THREE.Vector3(0, 0, 1))
+    camera.lookAt(new THREE.Vector3(0, 0, 0))
 
     // ÉåÉìÉ_Éâ
     var renderer = new THREE.WebGLRenderer({antialias: true});
@@ -129,7 +129,7 @@ function init() {
     var orbitControls = new THREE.OrbitControls(camera);
 
     // DeviceOrientationControls
-    //var orientationControls = new THREE.DeviceOrientationControls(camera);
+    var orientationControls = new THREE.DeviceOrientationControls(camera);
 
     // VRControls
     var vrControls = new THREE.VRControls(camera);
@@ -224,7 +224,7 @@ function init() {
         vrControls.update();
         orbitControls.update();
         if (isSmartphone) {
-            //orientationControls.update();
+            orientationControls.update();
         }
         effect.render(scene, camera);
         requestAnimationFrame(loop);

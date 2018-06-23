@@ -53,6 +53,7 @@ function init() {
 
     // ÉJÉÅÉâ
     var camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100000);
+    camera.up.set(0,1,0);
     camera.position.set(0, 0, 0);
     camera.lookAt(new THREE.Vector3(0, 0, 0))
 

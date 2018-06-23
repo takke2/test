@@ -3,7 +3,7 @@ function CharacterShot(){
 	this.size = 0;
 	this.speed = 0;
 	this.alive = false;
-	this.vector = 0;
+	this.vector = new THREE.Vector3(0, 0, 0);
 }
 
 CharacterShot.prototype.set = function(p, vector, size, speed){

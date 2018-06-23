@@ -153,9 +153,9 @@ function init() {
     var enemyMesh = new Array(ENEMY_MAX_COUNT);
     const enemySize = 20;
     for(i=0; i < ENEMY_MAX_COUNT; i++){
-        p.x = 0;
-        p.y = 50;
-        p.z = 50;
+        p.x = 50;
+        p.y = 0;
+        p.z = 0;
         enemy[i] = new Enemy();
         enemy[i].set(p, enemySize, 0.1);
         enemyMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(enemySize), new THREE.MeshNormalMaterial());

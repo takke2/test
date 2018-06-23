@@ -153,7 +153,7 @@ function init() {
     const enemySize = 20;
     for(i=0; i < ENEMY_MAX_COUNT; i++){
         p.x = 0;
-        p.y = 10;
+        p.y = 50;
         p.z = 0;
         enemy[i] = new Enemy();
         enemy[i].set(p, enemySize, 0.1);

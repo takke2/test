@@ -152,11 +152,11 @@ function init() {
     var enemyMesh = new Array(ENEMY_MAX_COUNT);
     const enemySize = 20;
     for(i=0; i < ENEMY_MAX_COUNT; i++){
-        p.x = 500;
+        p.x = 100;
         p.y = 0;
         p.z = 0;
         enemy[i] = new Enemy();
-        enemy[i].set(p, enemySize, 0.5);
+        enemy[i].set(p, enemySize, 0.01);
         enemyMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(enemySize), new THREE.MeshNormalMaterial());
         enemyMesh[i].position.set(enemy[i].position.x, enemy[i].position.y, enemy[i].position.z);
         scene.add(enemyMesh[i]);

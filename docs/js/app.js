@@ -54,7 +54,7 @@ function init() {
     // ƒJƒƒ‰
     var camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100000);
     camera.position.set(0, 0, 0);
-    camera.lookAt(new THREE.Vector3(0, 0, 0))
+    camera.lookAt(new THREE.Vector3(0, 0, 1))
 
     // ƒŒƒ“ƒ_ƒ‰
     var renderer = new THREE.WebGLRenderer({antialias: true});

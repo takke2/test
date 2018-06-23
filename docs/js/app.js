@@ -41,7 +41,7 @@ var counter = 0;
 var CHARA_SHOT_COLOR = 'rgba(0, 0, 255, 0.75)';
 var CHARA_SHOT_MAX_COUNT = 1;
 var ENEMY_COLOR = 'rgba(255, 0, 0, 0.75)';
-var ENEMY_MAX_COUNT = 2;
+var ENEMY_MAX_COUNT = 1;
 
 function init() {
     var i, j;
@@ -53,7 +53,6 @@ function init() {
 
     // ÉJÉÅÉâ
     var camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100000);
-    camera.up.set(0,1,0);
     camera.position.set(0, 0, 0);
     camera.lookAt(new THREE.Vector3(0, 0, 0))
 
@@ -153,7 +152,7 @@ function init() {
     var enemyMesh = new Array(ENEMY_MAX_COUNT);
     const enemySize = 20;
     for(i=0; i < ENEMY_MAX_COUNT; i++){
-        p.x = 300;
+        p.x = 500;
         p.y = 0;
         p.z = 0;
         enemy[i] = new Enemy();

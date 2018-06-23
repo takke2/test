@@ -155,7 +155,7 @@ function init() {
     for(i=0; i < ENEMY_MAX_COUNT; i++){
         p.x = 50;
         p.y = 0;
-        p.z = 0;
+        p.z = i*40;
         enemy[i] = new Enemy();
         enemy[i].set(p, enemySize, 0.1);
         enemyMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(enemySize), new THREE.MeshNormalMaterial());

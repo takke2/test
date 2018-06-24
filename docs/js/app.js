@@ -175,7 +175,7 @@ function init() {
         for(i=0; i < CHARA_SHOT_MAX_COUNT; i++){
             if(fire){
                 if(!charaShot[i].alive){
-                    var forwardVec4 = forward.applyMatrix4(camera.matrix);
+                    var forwardVec4 = forward.applyMatrix4(camera.worldmatrix);
                     forwardVec4.normalize();
                     
                     charaShot[i].set(camera.position, forwardVec4, 100, 5);

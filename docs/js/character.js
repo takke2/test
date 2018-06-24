@@ -25,7 +25,8 @@ CharacterShot.prototype.move = function(){
 	this.position.y += this.vector.y * this.speed;
 	this.position.z -= this.vector.z * this.speed;
 	
-	if(this.position.x > this.size || this.position.y > this.size || this.position.z > this.size){
+	if(this.position.x > this.size || this.position.y > this.size || this.position.z > this.size ||
+	   this.position.x < -this.size || this.position.y < -this.size || this.position.z < -this.size){
 		this.alive = false;
 	}
 };

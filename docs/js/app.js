@@ -47,7 +47,7 @@ function init() {
     var i, j;
     var p = new Point();
     var forward = new THREE.Vector4(0, 0, -1, 0);
-    var cameraVector = new THREE.Vector3(0, 0, 0);
+    var cameraVector = new THREE.Vector3(0, 0, -1);
     
     var width  = window.innerWidth;
     var height = window.innerHeight;
@@ -179,7 +179,10 @@ function init() {
                     //var forwardVec4 = forward.applyMatrix4(camera.worldmatrix);
                     //forwardVec4.normalize();
                     
-                    camera.getWorldDirection(cameraVector);
+                    //camera.getWorldDirection(cameraVector);
+                    //cameraVector.normalize();
+                    
+                    cameraVector.applyQuaternion( camera.quaternion );
                     cameraVector.normalize();
                     
                     //charaShot[i].set(camera.position, forwardVec4, 100, 5);

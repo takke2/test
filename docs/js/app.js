@@ -47,6 +47,7 @@ function init() {
     var i, j;
     var p = new Point();
     var forward = new THREE.Vector4(0, 0, -1, 0);
+    var cameraVector = new THREE.Vector3(0, 0, 0);
     
     var width  = window.innerWidth;
     var height = window.innerHeight;
@@ -175,10 +176,14 @@ function init() {
         for(i=0; i < CHARA_SHOT_MAX_COUNT; i++){
             if(fire){
                 if(!charaShot[i].alive){
-                    var forwardVec4 = forward.applyMatrix4(camera.worldmatrix);
-                    forwardVec4.normalize();
+                    //var forwardVec4 = forward.applyMatrix4(camera.worldmatrix);
+                    //forwardVec4.normalize();
                     
-                    charaShot[i].set(camera.position, forwardVec4, 100, 5);
+                    camera.getWorldDirection(cameraVector);
+                    cameraVector.normalize();
+                    
+                    //charaShot[i].set(camera.position, forwardVec4, 100, 5);
+                    charaShot[i].set(camera.position, cameraVector, 100, 5);
                     charaShotMesh[i].position.set(charaShot[i].position.x, charaShot[i].position.y,charaShot[i].position.z);
                     
                     scene.add(charaShotMesh[i]);

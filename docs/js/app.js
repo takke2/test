@@ -46,7 +46,7 @@ var ENEMY_MAX_COUNT = 1;
 function init() {
     var i, j;
     var p = new Point();
-    var forward = new THREE.Vector4(1, 0, 0, 0);
+    var forward = new THREE.Vector4(0, 0, -1, 0);
     
     var width  = window.innerWidth;
     var height = window.innerHeight;

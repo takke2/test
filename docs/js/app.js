@@ -172,7 +172,7 @@ function init() {
     var cameraMesh = new THREE.Mesh(cameraGeometory, cameraMaterial);
     cameraMesh.position.set(camera.position.x, camera.position.y, camera.position.z);
     
-    var arrowdir = new THREE.Vector3( 1, 0, 0 );
+    var arrowdir = new THREE.Vector3( 0, 0, -1 );
     var arroworigin = new THREE.Vector3( 0, 0, 0 );
     var arrowlength = 1;
     var arrowhex = 0xffff00;
@@ -192,9 +192,9 @@ function init() {
         for(i=0; i < CHARA_SHOT_MAX_COUNT; i++){
             if(fire){
                 if(!charaShot[i].alive){
-                    var vector = new THREE.Vector3();
-                    camera.getWorldDirection( vector );
-                    arrowHelper.setDirection(vector);
+                    //var vector = new THREE.Vector3();
+                    //camera.getWorldDirection( vector );
+                    //arrowHelper.setDirection(vector);
                     var forwardVec4 = forward.applyMatrix4(camera.matrix);
                     forwardVec4.normalize();
                     

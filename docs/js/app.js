@@ -187,7 +187,7 @@ function init() {
                     
                     cameraVector.x = width/2;
                     cameraVector.y = height/2;
-                    cameraVector.z = -1;
+                    cameraVector.z = 1;
                     cameraVector.unproject(camera);
                     
                     //charaShot[i].set(camera.position, forwardVec4, 100, 5);

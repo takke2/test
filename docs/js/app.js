@@ -186,13 +186,15 @@ function init() {
                     //cameraVector.normalize();
                     
 
-                    cameraVector.x = (width/window.innerWidth)  * 2 - 1;
-                    cameraVector.y = -(height/window.innerHeight) * 2 + 1;
-                    cameraVector.z = 1;
-                    cameraVector.unproject(camera);
+                    const project = cameraVector.position.project(camera);
+                    const sx = width / 2 * (+project.x + 1.0);
+                    const sy = height / 2 * (-project.y + 1.0);
                     
+                    var pos = new THREE.Vector3(mouseX, mouseY, 1);
+                    pos.unproject(camera);
+
                     //charaShot[i].set(camera.position, forwardVec4, 100, 5);
-                    charaShot[i].set(camera.position, cameraVector.sub(camera.position).normalize(), 100, 5);
+                    charaShot[i].set(camera.position, pos.sub(camera.position).normalize(), 100, 5);
                     charaShotMesh[i].position.set(charaShot[i].position.x, charaShot[i].position.y,charaShot[i].position.z);
                     
                     scene.add(charaShotMesh[i]);

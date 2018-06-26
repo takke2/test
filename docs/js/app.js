@@ -39,9 +39,9 @@ var counter = 0;
 
 
 var CHARA_SHOT_COLOR = 'rgba(0, 0, 255, 0.75)';
-var CHARA_SHOT_MAX_COUNT = 1;
+var CHARA_SHOT_MAX_COUNT = 2;
 var ENEMY_COLOR = 'rgba(255, 0, 0, 0.75)';
-var ENEMY_MAX_COUNT = 1;
+var ENEMY_MAX_COUNT = 10;
 
 function init() {
     var i, j;
@@ -153,32 +153,16 @@ function init() {
     var enemyMesh = new Array(ENEMY_MAX_COUNT);
     const enemySize = 20;
     for(i=0; i < ENEMY_MAX_COUNT; i++){
-        p.x = 0;
+        p.x = i*40;
         p.y = 0;
-        p.z = -100;
+        p.z = -500;
         enemy[i] = new Enemy();
-        enemy[i].set(p, enemySize, 0.00001);
+        enemy[i].set(p, enemySize, 0.1);
         enemyMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(enemySize), new THREE.MeshNormalMaterial());
         enemyMesh[i].position.set(enemy[i].position.x, enemy[i].position.y, enemy[i].position.z);
         scene.add(enemyMesh[i]);
     }
     
-    
-    // カメラキューブ
-    var cameraMaterial = new THREE.MeshLambertMaterial({
-        color: 0xff0000
-    });
-    var cameraGeometory = new THREE.BoxGeometry(10, 10, 10);
-    var cameraMesh = new THREE.Mesh(cameraGeometory, cameraMaterial);
-    cameraMesh.position.set(camera.position.x, camera.position.y, camera.position.z);
-    
-    var arrowdir = new THREE.Vector3( 0, 1, 0 );
-    var arroworigin = new THREE.Vector3( 0, 0, 0 );
-    var arrowlength = 10;
-    var arrowhex = 0xffff00;
-
-    var arrowHelper = new THREE.ArrowHelper( arrowdir, arroworigin, arrowlength, arrowhex );
-    scene.add( arrowHelper );
 
     // アニメーションループ
     (function loop() {
@@ -192,30 +176,9 @@ function init() {
         for(i=0; i < CHARA_SHOT_MAX_COUNT; i++){
             if(fire){
                 if(!charaShot[i].alive){
-                    //var vector = new THREE.Vector3();
-                    //camera.getWorldDirection( vector );
-                    //arrowHelper.setDirection(vector);
-                    var forwardVec4 = forward.applyMatrix4(camera.matrix);
-                    forwardVec4.normalize();
-                    
-                    //camera.getWorldDirection(cameraVector);
-                    //cameraVector.normalize();
-                    
-                    //cameraVector.applyQuaternion( camera.quaternion );
-                    //cameraVector.normalize();
-                    
-
-                    //const project = cameraVector.position.project(camera);
-                    //const sx = width / 2 * (+project.x + 1.0);
-                    //const sy = height / 2 * (-project.y + 1.0);
-                    
-                    //var pos = new THREE.Vector3(sx, sy, 1);
-                    //pos.unproject(camera);
 
                     charaShot[i].set(camera.position, new THREE.Vector3(0, 0, -1).normalize(), 100, 5);
-                    //charaShot[i].set(camera.position, pos.sub(camera.position).normalize(), 100, 5);
                     charaShotMesh[i].position.set(charaShot[i].position.x, charaShot[i].position.y,charaShot[i].position.z);
-                    //charaShotMesh[i].position.set(0, 0,charaShot[i].position.z);
                     
                     scene.add(charaShotMesh[i]);
                 }
@@ -224,7 +187,6 @@ function init() {
             
             if(charaShot[i].alive){
                 charaShot[i].move();
-                //charaShotMesh[i].position.set(charaShot[i].position.x,charaShot[i].position.y,charaShot[i].position.z);
                 charaShotMesh[i].position.set(charaShot[i].position.x,charaShot[i].position.y,charaShot[i].position.z);
             }
             

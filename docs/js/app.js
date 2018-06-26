@@ -190,7 +190,7 @@ function init() {
                     const sx = width / 2 * (+project.x + 1.0);
                     const sy = height / 2 * (-project.y + 1.0);
                     
-                    var pos = new THREE.Vector3(mouseX, mouseY, 1);
+                    var pos = new THREE.Vector3(sx, sy, 1);
                     pos.unproject(camera);
 
                     //charaShot[i].set(camera.position, forwardVec4, 100, 5);

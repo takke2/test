@@ -172,7 +172,7 @@ function init() {
     var cameraMesh = new THREE.Mesh(cameraGeometory, cameraMaterial);
     cameraMesh.position.set(camera.position.x, camera.position.y, camera.position.z);
     
-    var arrowdir = new THREE.Vector3( 0, 0, 1 );
+    var arrowdir = new THREE.Vector3( 0, 1, 0 );
     var arroworigin = new THREE.Vector3( 0, 0, 0 );
     var arrowlength = 10;
     var arrowhex = 0xffff00;

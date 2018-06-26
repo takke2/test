@@ -185,8 +185,9 @@ function init() {
                     //cameraVector.applyQuaternion( camera.quaternion );
                     //cameraVector.normalize();
                     
-                    cameraVector.x = width/2;
-                    cameraVector.y = height/2;
+
+                    cameraVector.x = (width/window.innerWidth)  * 2 - 1;
+                    cameraVector.y = -(height/window.innerHeight) * 2 + 1;
                     cameraVector.z = 1;
                     cameraVector.unproject(camera);
                     

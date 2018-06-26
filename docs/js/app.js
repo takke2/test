@@ -157,7 +157,7 @@ function init() {
         p.y = 0;
         p.z = -500;
         enemy[i] = new Enemy();
-        enemy[i].set(p, enemySize, 0.1);
+        enemy[i].set(p, enemySize, 1);
         enemyMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(enemySize), new THREE.MeshNormalMaterial());
         enemyMesh[i].position.set(enemy[i].position.x, enemy[i].position.y, enemy[i].position.z);
         scene.add(enemyMesh[i]);

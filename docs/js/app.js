@@ -174,7 +174,7 @@ function init() {
     
     var arrowdir = new THREE.Vector3( 0, 0, -1 );
     var arroworigin = new THREE.Vector3( 0, 0, 0 );
-    var arrowlength = 1;
+    var arrowlength = 10;
     var arrowhex = 0xffff00;
 
     var arrowHelper = new THREE.ArrowHelper( arrowdir, arroworigin, arrowlength, arrowhex );

@@ -164,6 +164,14 @@ function init() {
     }
     
     
+    // カメラキューブ
+    var cameraMaterial = new THREE.MeshLambertMaterial({
+        color: 0xff0000
+    });
+    var cameraGeometory = new THREE.BoxGeometry(10, 10, 10);
+    var cameraMesh = new THREE.Mesh(cameraGeometory, cameraMaterial);
+    cameraMesh.position.set(camera.position.x, camera.position.y, camera.position.z);
+    
     // アニメーションループ
     (function loop() {
         
@@ -176,8 +184,8 @@ function init() {
         for(i=0; i < CHARA_SHOT_MAX_COUNT; i++){
             if(fire){
                 if(!charaShot[i].alive){
-                    //var forwardVec4 = forward.applyMatrix4(camera.worldmatrix);
-                    //forwardVec4.normalize();
+                    var forwardVec4 = forward.applyMatrix4(cameraMesh.matrix);
+                    forwardVec4.normalize();
                     
                     //camera.getWorldDirection(cameraVector);
                     //cameraVector.normalize();
@@ -186,15 +194,15 @@ function init() {
                     //cameraVector.normalize();
                     
 
-                    const project = cameraVector.position.project(camera);
-                    const sx = width / 2 * (+project.x + 1.0);
-                    const sy = height / 2 * (-project.y + 1.0);
+                    //const project = cameraVector.position.project(camera);
+                    //const sx = width / 2 * (+project.x + 1.0);
+                    //const sy = height / 2 * (-project.y + 1.0);
                     
-                    var pos = new THREE.Vector3(sx, sy, 1);
-                    pos.unproject(camera);
+                    //var pos = new THREE.Vector3(sx, sy, 1);
+                    //pos.unproject(camera);
 
-                    //charaShot[i].set(camera.position, forwardVec4, 100, 5);
-                    charaShot[i].set(camera.position, pos.sub(camera.position).normalize(), 100, 5);
+                    charaShot[i].set(camera.position, forwardVec4, 100, 5);
+                    //charaShot[i].set(camera.position, pos.sub(camera.position).normalize(), 100, 5);
                     charaShotMesh[i].position.set(charaShot[i].position.x, charaShot[i].position.y,charaShot[i].position.z);
                     
                     scene.add(charaShotMesh[i]);

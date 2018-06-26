@@ -182,11 +182,16 @@ function init() {
                     //camera.getWorldDirection(cameraVector);
                     //cameraVector.normalize();
                     
-                    cameraVector.applyQuaternion( camera.quaternion );
-                    cameraVector.normalize();
+                    //cameraVector.applyQuaternion( camera.quaternion );
+                    //cameraVector.normalize();
+                    
+                    cameraVector.x = width/2;
+                    cameraVector.y = height/2;
+                    cameraVector.z = -1;
+                    cameraVector.unproject(camera);
                     
                     //charaShot[i].set(camera.position, forwardVec4, 100, 5);
-                    charaShot[i].set(camera.position, cameraVector, 100, 5);
+                    charaShot[i].set(camera.position, cameraVector.sub(camera.position).normalize(), 100, 5);
                     charaShotMesh[i].position.set(charaShot[i].position.x, charaShot[i].position.y,charaShot[i].position.z);
                     
                     scene.add(charaShotMesh[i]);

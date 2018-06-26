@@ -153,7 +153,7 @@ function init() {
     var enemyMesh = new Array(ENEMY_MAX_COUNT);
     const enemySize = 20;
     for(i=0; i < ENEMY_MAX_COUNT; i++){
-        p.x = 40;
+        p.x = 80;
         p.y = 0;
         p.z = -100;
         enemy[i] = new Enemy();
@@ -212,7 +212,7 @@ function init() {
                     //var pos = new THREE.Vector3(sx, sy, 1);
                     //pos.unproject(camera);
 
-                    charaShot[i].set(camera.position, new THREE.Vector3(0, 1, 0).normalize(), 100, 5);
+                    charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 100, 5);
                     //charaShot[i].set(camera.position, pos.sub(camera.position).normalize(), 100, 5);
                     charaShotMesh[i].position.set(charaShot[i].position.x, charaShot[i].position.y,charaShot[i].position.z);
                     //charaShotMesh[i].position.set(0, 0,charaShot[i].position.z);

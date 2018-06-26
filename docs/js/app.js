@@ -218,10 +218,15 @@ function init() {
                     //charaShotMesh[i].position.set(0, 0,charaShot[i].position.z);
                     
                     scene.add(charaShotMesh[i]);
+                    break;
                 }
-                fire = false;
+                
             }
-            
+        }
+        
+        fire = false;
+        
+        for(i=0; i < CHARA_SHOT_MAX_COUNT; i++){
             if(charaShot[i].alive){
                 charaShot[i].move();
                 charaShotMesh[i].position.set(charaShot[i].position.x,charaShot[i].position.y,charaShot[i].position.z);

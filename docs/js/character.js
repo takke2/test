@@ -23,7 +23,7 @@ CharacterShot.prototype.set = function(p, vector, size, speed){
 CharacterShot.prototype.move = function(){
 	this.position.x += this.vector.x * this.speed;
 	this.position.y += this.vector.y * this.speed;
-	this.position.z -= this.vector.z * this.speed;
+	this.position.z += this.vector.z * this.speed;
 	
 	if(this.position.x > this.size || this.position.y > this.size || this.position.z > this.size ||
 	   this.position.x < -this.size || this.position.y < -this.size || this.position.z < -this.size){

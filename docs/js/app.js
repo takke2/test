@@ -225,7 +225,7 @@ function init() {
             if(charaShot[i].alive){
                 charaShot[i].move();
                 //charaShotMesh[i].position.set(charaShot[i].position.x,charaShot[i].position.y,charaShot[i].position.z);
-                charaShotMesh[i].position.set(0,0,charaShot[i].position.z);
+                charaShotMesh[i].position.set(charaShot[i].position.x,charaShot[i].position.y,charaShot[i].position.z);
             }
             
             if(!charaShot[i].alive){

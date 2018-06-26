@@ -39,7 +39,7 @@ var counter = 0;
 
 
 var CHARA_SHOT_COLOR = 'rgba(0, 0, 255, 0.75)';
-var CHARA_SHOT_MAX_COUNT = 3;
+var CHARA_SHOT_MAX_COUNT = 10;
 var ENEMY_COLOR = 'rgba(255, 0, 0, 0.75)';
 var ENEMY_MAX_COUNT = 10;
 

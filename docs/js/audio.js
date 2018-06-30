@@ -1,26 +1,26 @@
 window.AudioContext = window.AudioContext || window.webkitAudioContext;  
 var context = new AudioContext();
 
+var buffer;
+
 // Audio 用の buffer を読み込む
 var getAudioBuffer = function(url, fn) {  
-  var req = new XMLHttpRequest();
-  // array buffer を指定
-  req.responseType = 'arraybuffer';
+    // ここにbufferを格納したい
+    var buffer;
 
-  req.onreadystatechange = function() {
-    if (req.readyState === 4) {
-      if (req.status === 0 || req.status === 200) {
-        // array buffer を audio buffer に変換
-        context.decodeAudioData(req.response, function(buffer) {
-          // コールバックを実行
-          fn(buffer);
+    // ファイルを取得 (arraybufferとして)
+    var request = new XMLHttpRequest();
+    request.open('GET', 'https://github.com/takke2/test/blob/master/docs/resource/shot1.mp3', true);
+    request.responseType = 'arraybuffer';
+
+    request.send();
+    request.onload = function () {
+        // 読み込みが終わったら、decodeしてbufferにいれておく
+        var res = request.response;
+        context.decodeAudioData(res, function (buf) {
+            buffer = buf;
         });
-      }
-    }
-  };
-
-  req.open('GET', url, true);
-  req.send('');
+    };
 };
 
 // サウンドを再生
@@ -36,6 +36,7 @@ var playSound = function(buffer) {
 };
 
 getAudioBuffer("https://github.com/takke2/test/blob/master/docs/resource/shot1.mp3");
+
 var myfunc = function () {
     playSound(buffer);
 }

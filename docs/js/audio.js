@@ -35,15 +35,7 @@ var playSound = function(buffer) {
   source.start(0);
 };
 
-// main
-window.onload = function() {  
-  // サウンドを読み込む
-  getAudioBuffer("https://github.com/takke2/test/blob/master/docs/resource/shot1.mp3", function(buffer) {
-    // 読み込み完了後にボタンにクリックイベントを登録
-    var btn = document.getElementById('btn');
-    btn.onclick = function() {
-      // サウンドを再生
-      playSound(buffer);
-    };
-  });
-};
+getAudioBuffer("https://github.com/takke2/test/blob/master/docs/resource/shot1.mp3");
+var myfunc = function () {
+    playSound(buffer);
+}

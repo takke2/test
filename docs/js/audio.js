@@ -8,7 +8,7 @@ var getAudioBuffer = function(url, fn) {
 
     // ƒtƒ@ƒCƒ‹‚ðŽæ“¾ (arraybuffer‚Æ‚µ‚Ä)
     var request = new XMLHttpRequest();
-    request.open('GET', 'https://github.com/takke2/test/blob/master/docs/resource/shot1.mp3', true);
+    request.open('GET', '../resource/shot1.mp3', true);
     request.responseType = 'arraybuffer';
 
     request.send();

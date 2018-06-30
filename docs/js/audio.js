@@ -1,50 +1,49 @@
-var soundFile = null;
-var buffer = BUFFERS.buffer;
-
-// AudioContextの作成
-window.AudioContext = window.AudioContext || window.webkitAudioContext;
+window.AudioContext = window.AudioContext || window.webkitAudioContext;  
 var context = new AudioContext();
-context.createGain = context.createGain || context.createGainNode;
- 
-// Bufferへのデコード
-var getAudioBuffer = function(url,fn) {
-  let request = new XMLHttpRequest();
-  request.responseType = "arraybuffer";
-  request.onreadystatechange = function() {
-    // XMLHttpRequestの処理が完了しているか
-    if (request.readyState === 4) {
-      // レスポンスのステータスを確認
-      // 200はリクエストに成功
-      if (request.status === 0 || request.status === 200) {
-        context.decodeAudioData(request.response, function(buffer) {
+
+// Audio 用の buffer を読み込む
+var getAudioBuffer = function(url, fn) {  
+  var req = new XMLHttpRequest();
+  // array buffer を指定
+  req.responseType = 'arraybuffer';
+
+  req.onreadystatechange = function() {
+    if (req.readyState === 4) {
+      if (req.status === 0 || req.status === 200) {
+        // array buffer を audio buffer に変換
+        context.decodeAudioData(req.response, function(buffer) {
+          // コールバックを実行
           fn(buffer);
         });
       }
     }
   };
-  req.open("GET", url, true);
-  req.send("");
+
+  req.open('GET', url, true);
+  req.send('');
 };
 
-var sound = function(buffer) {
-  if (volumeControl == null) {
-    volumeControl = context.createGain();
-  }
-  let source = context.createBufferSource();
-  volumeControl.connect(context.destination);
+// サウンドを再生
+var playSound = function(buffer) {  
+  // source を作成
+  var source = context.createBufferSource();
+  // buffer をセット
   source.buffer = buffer;
-  source.connect(volumeControl);
-  // 外部の関数からはsoundFileで処理を行うことにする
-  soundFile = source;
-  playing = true;
-  //changeVolume();
-  // 音の再生
-  source.start();
-}
+  // context に connect
+  source.connect(context.destination);
+  // 再生
+  source.start(0);
+};
 
-var player_play = function() {
-  let bgm = "https://github.com/takke2/test/blob/master/docs/resource/shot1.mp3";
-  getAudioBuffer(bgm,function(buffer) {
-    sound(buffer);
+// main
+window.onload = function() {  
+  // サウンドを読み込む
+  getAudioBuffer("https://github.com/takke2/test/blob/master/docs/resource/shot1.mp3", function(buffer) {
+    // 読み込み完了後にボタンにクリックイベントを登録
+    var btn = document.getElementById('btn');
+    btn.onclick = function() {
+      // サウンドを再生
+      playSound(buffer);
+    };
   });
-}
+};

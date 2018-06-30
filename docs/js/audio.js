@@ -5,8 +5,6 @@ var buffer;
 
 // Audio 用の buffer を読み込む
 var getAudioBuffer = function(url, fn) {  
-    // ここにbufferを格納したい
-    var buffer;
 
     // ファイルを取得 (arraybufferとして)
     var request = new XMLHttpRequest();

@@ -287,3 +287,7 @@ function init() {
 
 //window.addEventListener("load", init);
 init();
+
+function dispButton(){
+    player_play();
+}

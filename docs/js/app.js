@@ -192,6 +192,7 @@ function init() {
         for(i=0; i < CHARA_SHOT_MAX_COUNT; i++){
             if(fire){
                 if(!charaShot[i].alive){
+                    myfunc();
                     //var vector = new THREE.Vector3();
                     //camera.getWorldDirection( vector );
                     //arrowHelper.setDirection(vector);

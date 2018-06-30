@@ -145,7 +145,7 @@ function init() {
     const charaShotSize = 5;
     for(i = 0; i < CHARA_SHOT_MAX_COUNT; i++){
         charaShot[i] = new CharacterShot();
-        charaShotMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(charaShotSize), new THREE.MeshBasicMaterial({color : 0xaaaaaa}));
+        charaShotMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(charaShotSize), new THREE.MeshPhongMaterial({color : 0xaaaaaa}));
         charaShotMesh[i].position.set(camera.position.x,camera.position.y,camera.position.z);
     }
     

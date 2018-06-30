@@ -142,10 +142,11 @@ function init() {
     
     var charaShot = new Array(CHARA_SHOT_MAX_COUNT);
     var charaShotMesh = new Array(CHARA_SHOT_MAX_COUNT);
-    const charaShotSize = 10;
+    const charaShotSize = 5;
     for(i = 0; i < CHARA_SHOT_MAX_COUNT; i++){
         charaShot[i] = new CharacterShot();
         charaShotMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(charaShotSize), new THREE.MeshNormalMaterial());
+        charaShotMesh[i].color.set(0xaaaaaa);
         charaShotMesh[i].position.set(camera.position.x,camera.position.y,camera.position.z);
     }
     

@@ -188,6 +188,9 @@ function init() {
     var arrowHelper = new THREE.ArrowHelper( arrowdir, arroworigin, arrowlength, arrowhex );
     scene.add( arrowHelper );
 
+    conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
+    conteText2D.fillText ( "enemy:"+enemy_count , 0 , 0 , 100 );
+        
     // アニメーションループ
     (function loop() {        
         counter++;
@@ -277,9 +280,6 @@ function init() {
         if (isSmartphone) {
             orientationControls.update();
         }
-        
-        conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
-        conteText2D.fillText ( "enemy:"+enemy_count , window.innerWidth-100 , 0 , 100 );
         
         effect.render(scene, camera);
         requestAnimationFrame(loop);

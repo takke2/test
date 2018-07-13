@@ -42,6 +42,7 @@ var CHARA_SHOT_COLOR = 'rgba(0, 0, 255, 0.75)';
 var CHARA_SHOT_MAX_COUNT = 10;
 var ENEMY_COLOR = 'rgba(255, 0, 0, 0.75)';
 var ENEMY_MAX_COUNT = 10;
+var enemy_count = ENEMY_MAX_COUNT;
 
 function init() {
     var i, j;
@@ -65,13 +66,11 @@ function init() {
 
     document.body.appendChild(renderer.domElement);
 
+
     var canvas2D = document.getElementById('canvas2d');
-    
     //canvas2D.appendChild(renderer.domElement);
     var conteText2D = canvas2D.getContext('2d');
     
-    conteText2D.clearRect(0, 0, 100, 100);
-    conteText2D.fillText ( "表示テスト" , 0 , 100 , 100 );
     
     
     // シーン
@@ -190,8 +189,7 @@ function init() {
     scene.add( arrowHelper );
 
     // アニメーションループ
-    (function loop() {
-        
+    (function loop() {        
         counter++;
         
         if(counter % 10 == 0){
@@ -264,6 +262,7 @@ function init() {
                         p = enemy[j].position.distance(charaShot[i].position);
                         if(p.length() < enemy[j].size){
                             enemy[j].alive = false;
+                            enemy_count = enemy_count-1;
                             scene.remove(enemyMesh[j]);
                             charaShot[i].alive = false;
                             break;
@@ -278,6 +277,10 @@ function init() {
         if (isSmartphone) {
             orientationControls.update();
         }
+        
+        conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
+        conteText2D.fillText ( "enemy:"+enemy_count , window.innerWidth-100 , 0 , 100 );
+        
         effect.render(scene, camera);
         requestAnimationFrame(loop);
     }());

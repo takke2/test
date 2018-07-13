@@ -67,12 +67,12 @@ function init() {
 
     var canvas2D = document.getElementById('canvas2d');
     
-    canvas2D.appendChild(renderer.domElement);
-    var conteText2D = canvas2D.getContext('canvas2D');
-    /*
+    //canvas2D.appendChild(renderer.domElement);
+    var conteText2D = canvas2D.getContext('2d');
+    
     conteText2D.clearRect(0, 0, 100, 100);
-    conteText2D.fillText ( "表示テスト" , 0 , 0 , 100 );
-    */
+    conteText2D.fillText ( "表示テスト" , 0 , 100 , 100 );
+    
     
     // シーン
     var scene = new THREE.Scene();

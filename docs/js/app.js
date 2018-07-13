@@ -66,9 +66,10 @@ function init() {
     document.body.appendChild(renderer.domElement);
 
     var canvas2D = document.getElementById('canvas2d');
-    /*
+    
     canvas2D.appendChild(renderer.domElement);
     var conteText2D = canvas2D.getContext('canvas2D');
+    /*
     conteText2D.clearRect(0, 0, 100, 100);
     conteText2D.fillText ( "表示テスト" , 0 , 0 , 100 );
     */

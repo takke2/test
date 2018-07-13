@@ -2,6 +2,9 @@ body {
   margin: 0;
   padding: 0;
 }
+div {
+    vertical-align: top;
+}
 canvas {
     vertical-align: top;
 }

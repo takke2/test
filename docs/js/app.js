@@ -65,6 +65,14 @@ function init() {
 
     document.body.appendChild(renderer.domElement);
 
+    var canvas3D = document.getElementById('canvas3d');
+    canvas3D.appendChild(renderer.domElement);
+
+    var conteText2D = canvas3D.getContext('conteText2D');
+    conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
+    
+    context.fillText ( "表示テスト" , 0 , 0 , 100 );
+    
     // シーン
     var scene = new THREE.Scene();
 

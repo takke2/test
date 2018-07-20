@@ -73,8 +73,8 @@ function init() {
     
     // effekseer‚Ì‰Šú‰»
     effekseer.init(renderer.context);
-    //effects["Laser01"] = effekseer.loadEffect("https://cdn.rawgit.com/effekseer/EffekseerForWebGL/7a1b035c/Release/Sample/Resource/Laser01.efk");
-    effects["Laser01"] = effekseer.loadEffect("https://github.com/takke2/test/blob/master/docs/resource/002_sword_effect/sword.efk");
+    effects["Laser01"] = effekseer.loadEffect("https://cdn.rawgit.com/effekseer/EffekseerForWebGL/7a1b035c/Release/Sample/Resource/Laser01.efk");
+    //effects["Laser01"] = effekseer.loadEffect("https://github.com/takke2/test/blob/master/docs/resource/002_sword_effect/sword.efk");
     // ƒV[ƒ“
     var scene = new THREE.Scene();
 

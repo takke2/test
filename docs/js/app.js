@@ -71,7 +71,9 @@ function init() {
     //canvas2D.appendChild(renderer.domElement);
     var conteText2D = canvas2D.getContext('2d');
     
-    
+    // effekseerの初期化
+    effekseer.init(renderer.context);
+    effects["Laser01"] = effekseer.loadEffect("https://cdn.rawgit.com/effekseer/EffekseerForWebGL/7a1b035c/Release/Sample/Resource/Laser01.efk");
     
     // シーン
     var scene = new THREE.Scene();
@@ -270,6 +272,7 @@ function init() {
                             conteText2D.fillText ( "enemy:"+enemy_count , 0 , 10 , 100 );
                             scene.remove(enemyMesh[j]);
                             charaShot[i].alive = false;
+                            effekseer.play(effects['Laser01'], charaShot[i].position.x,charaShot[i].position.y,charaShot[i].position.z);
                             break;
                         }
                     }
@@ -283,7 +286,18 @@ function init() {
             orientationControls.update();
         }
         
+        // Effekseerの更新
+        effekseer.update();
+
         effect.render(scene, camera);
+        
+        // EffekseerをThree.jsの3D空間に合わせる
+        effekseer.setProjectionMatrix(camera.projectionMatrix.elements);
+        effekseer.setCameraMatrix(camera.matrixWorldInverse.elements);
+        
+        // Effekseerのレンダリング
+        effekseer.draw();
+
         requestAnimationFrame(loop);
     }());
 

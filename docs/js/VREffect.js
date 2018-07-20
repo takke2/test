@@ -109,7 +109,7 @@ THREE.VREffect = function ( renderer, onError ) {
 	var cameraL = new THREE.PerspectiveCamera();
 	var cameraR = new THREE.PerspectiveCamera();
 
-	this.render = function ( scene, camera ) {
+	this.render = function ( scene, camera , onpostrender) {
 
 		// if ( vrHMD ) {
 
@@ -172,12 +172,14 @@ THREE.VREffect = function ( renderer, onError ) {
 			renderer.setViewport( 0, 0, size.width, size.height );
 			renderer.setScissor( 0, 0, size.width, size.height );
 			renderer.render( sceneL, cameraL );
-
+            onpostrender( cameraL );
+            
 			// render right eye
 			renderer.setViewport( size.width, 0, size.width, size.height );
 			renderer.setScissor( size.width, 0, size.width, size.height );
 			renderer.render( sceneR, cameraR );
-
+            onpostrender( cameraR );
+            
 			renderer.enableScissorTest( false );
 
 			return;

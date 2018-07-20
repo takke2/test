@@ -72,7 +72,7 @@ function init() {
     var conteText2D = canvas2D.getContext('2d');
     
     // effekseer‚Ì‰Šú‰»
-    //effekseer.init(renderer.context);
+    effekseer.init(renderer.context);
     //effects["Laser01"] = effekseer.loadEffect("https://cdn.rawgit.com/effekseer/EffekseerForWebGL/7a1b035c/Release/Sample/Resource/Laser01.efk");
     
     // ƒV[ƒ“

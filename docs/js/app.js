@@ -289,6 +289,13 @@ function init() {
         // Effekseerの更新
         effekseer.update();
 
+        effect.render( scene, camera, function( camera ) {
+            effekseer.setProjectionMatrix(camera.projectionMatrix.elements);
+            effekseer.setCameraMatrix(camera.matrixWorldInverse.elements);
+            effekseer.draw();
+        } );
+
+        /*
         effect.render(scene, camera);
         
         // EffekseerをThree.jsの3D空間に合わせる
@@ -297,7 +304,8 @@ function init() {
         
         // Effekseerのレンダリング
         effekseer.draw();
-
+        */
+        
         requestAnimationFrame(loop);
     }());
 

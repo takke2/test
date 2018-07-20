@@ -36,7 +36,7 @@ function onHeartRateChanged(event) {
 
 var fire = false;
 var counter = 0;
-
+var effects = {};
 
 var CHARA_SHOT_COLOR = 'rgba(0, 0, 255, 0.75)';
 var CHARA_SHOT_MAX_COUNT = 10;
@@ -74,7 +74,7 @@ function init() {
     // effekseerÇÃèâä˙âª
     effekseer.init(renderer.context);
     //effects["Laser01"] = effekseer.loadEffect("https://cdn.rawgit.com/effekseer/EffekseerForWebGL/7a1b035c/Release/Sample/Resource/Laser01.efk");
-    //effects["Laser01"] = effekseer.loadEffect("https://github.com/takke2/test/blob/master/docs/resource/002_sword_effect/sword.efk");
+    effects["Laser01"] = effekseer.loadEffect("https://github.com/takke2/test/blob/master/docs/resource/002_sword_effect/sword.efk");
     // ÉVÅ[Éì
     var scene = new THREE.Scene();
 

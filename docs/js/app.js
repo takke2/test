@@ -272,7 +272,7 @@ function init() {
                             conteText2D.fillText ( "enemy:"+enemy_count , 0 , 10 , 100 );
                             scene.remove(enemyMesh[j]);
                             charaShot[i].alive = false;
-                            //effekseer.play(effects['Laser01'], charaShot[i].position.x,charaShot[i].position.y,charaShot[i].position.z);
+                            effekseer.play(effects['Laser01'], charaShot[i].position.x,charaShot[i].position.y,charaShot[i].position.z);
                             break;
                         }
                     }
@@ -287,16 +287,16 @@ function init() {
         }
         
         // Effekseerの更新
-        //effekseer.update();
+        effekseer.update();
 
         effect.render(scene, camera);
         
         // EffekseerをThree.jsの3D空間に合わせる
-        //effekseer.setProjectionMatrix(camera.projectionMatrix.elements);
-        //effekseer.setCameraMatrix(camera.matrixWorldInverse.elements);
+        effekseer.setProjectionMatrix(camera.projectionMatrix.elements);
+        effekseer.setCameraMatrix(camera.matrixWorldInverse.elements);
         
         // Effekseerのレンダリング
-        //effekseer.draw();
+        effekseer.draw();
 
         requestAnimationFrame(loop);
     }());

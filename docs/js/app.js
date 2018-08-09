@@ -54,8 +54,9 @@ function connect(){
     alert("connectÇ™âüÇ≥ÇÍÇΩ");
     navigator.bluetooth.requestDevice({
         //filters: [{namePrefix: 'BBC micro:bit',}],
-        acceptAllDevices:true,
-        optionalServices: [uuid["UART_SERVICE"]]
+        //acceptAllDevices:true,
+        //optionalServices: [uuid["UART_SERVICE"]]
+        filters: [{ services: ['battery_service'] }]
     })
     .then(device => {
         alert("gatt.connecté¿çs");

@@ -51,6 +51,7 @@ uuid["UART_SERVICE"]                 ='6E400001-B5A3-F393-E0A9-E50E24DCCA9E';
 uuid["UART_SERVICE_CHARACTERISTICS"] ='6e400003-b5a3-f393-e0a9-e50e24dcca9e';
 
 function connect(){
+    alert(navigator.bluetooth);
     navigator.bluetooth.requestDevice({
         //filters: [{namePrefix: 'BBC micro:bit',}],
         acceptAllDevices:true,

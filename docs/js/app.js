@@ -44,6 +44,49 @@ var ENEMY_COLOR = 'rgba(255, 0, 0, 0.75)';
 var ENEMY_MAX_COUNT = 10;
 var enemy_count = ENEMY_MAX_COUNT;
 
+var uart_device;
+
+var uuid={};
+uuid["UART_SERVICE"]                 ='6E400001-B5A3-F393-E0A9-E50E24DCCA9E';
+uuid["UART_SERVICE_CHARACTERISTICS"] ='6e400003-b5a3-f393-e0a9-e50e24dcca9e';
+
+function connect(){
+    navigator.bluetooth.requestDevice({
+        //filters: [{namePrefix: 'BBC micro:bit',}],
+        acceptAllDevices:true,
+        optionalServices: [uuid["UART_SERVICE"]]
+    })
+    .then(device => {
+        uart_device=device;
+        return device.gatt.connect();
+    })
+    .then(server => {
+        return server.getPrimaryService(uuid["UART_SERVICE"]);
+    })
+    .then(service => {
+        return service.getCharacteristic(uuid["UART_SERVICE_CHARACTERISTICS"]);
+    })
+    .then(chara => {
+        alert("BLE connected");
+        characteristic=chara;
+        characteristic.startNotifications();
+        characteristic.addEventListener('characteristicvaluechanged',onCharacteristicValueChanged);
+    })
+    .catch(error => {
+        alert("BLE error");
+    });
+}
+
+function onCharacteristicValueChanged(e) {
+    var str_arr=[];
+    for(var i=0;i<this.value.byteLength;i++){
+        str_arr[i]=this.value.getUint8(i);
+    }
+    var str=String.fromCharCode.apply(null,str_arr);
+    alert("msg:"+str);
+}
+
+
 function init() {
     var i, j;
     var p = new Point();

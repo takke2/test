@@ -47,7 +47,7 @@ var enemy_count = ENEMY_MAX_COUNT;
 var uart_device;
 
 var uuid={};
-uuid["UART_SERVICE"]                 ='8A61d7f7-888e-4e72-93be-0df87152fc6d';
+uuid["UART_SERVICE"]                 ='8a61d7f7-888e-4e72-93be-0df87152fc6d';
 uuid["UART_SERVICE_CHARACTERISTICS"] ='6e400003-b5a3-f393-e0a9-e50e24dcca9e';
 
 function connect(){

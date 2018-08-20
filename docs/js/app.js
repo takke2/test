@@ -58,7 +58,7 @@ function connect(){
         filters: [
             {
                 services: [
-                    SERVICE_UUID
+                    uuid["UART_SERVICE"]
                 ]
             }
         ]

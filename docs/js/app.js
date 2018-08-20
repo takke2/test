@@ -53,10 +53,14 @@ uuid["UART_SERVICE_CHARACTERISTICS"] ='6e400003-b5a3-f393-e0a9-e50e24dcca9e';
 function connect(){
     alert("connectÇ™âüÇ≥ÇÍÇΩ");
     navigator.bluetooth.requestDevice({
-        //filters: [{namePrefix: 'BBC micro:bit',}],
-        acceptAllDevices:true,
-        //optionalServices: [uuid["UART_SERVICE"]]
-        //filters: [{ services: ['battery_service'] }]
+        //acceptAllDevices:true,
+        filters: [
+            {
+                services: [
+                    uuid["UART_SERVICE"]
+                ]
+            }
+        ]
     })
     .then(device => {
         alert("gatt.connecté¿çs");

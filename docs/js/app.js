@@ -84,7 +84,7 @@ function connect(){
         characteristic.addEventListener('characteristicvaluechanged',onCharacteristicValueChanged);
     })
     .catch(error => {
-        alert("BLE error" + error);
+        alert("BLE error2" + error);
     });
 }
 

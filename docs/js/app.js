@@ -49,7 +49,7 @@ var uart_device;
 var uuid={};
 uuid["UART_SERVICE"]                 ='6E400001-B5A3-F393-E0A9-E50E24DCCA9E';
 uuid["UART_SERVICE_CHARACTERISTICS"] ='6e400003-b5a3-f393-e0a9-e50e24dcca9e';
-const SERVICE_UUID = "8a61d7f7-888e-4e72-93be-0df87152fc6d";
+const SERVICE_UUID = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E";
 
 function connect(){
     alert("connect‚ª‰Ÿ‚³‚ê‚½");

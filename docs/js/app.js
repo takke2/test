@@ -54,14 +54,8 @@ function connect(){
     alert("connect ok");
     
     navigator.bluetooth.requestDevice({
-        //acceptAllDevices:true,
-        filters: [
-            {
-                services: [
-                    uuid["UART_SERVICE"]
-                ]
-            }
-        ]
+        acceptAllDevices:true,
+        optionalServices:[uuid["UART_SERVICE"]]
     })
     .then(device => {
         alert("gatt.connect実行");
@@ -244,7 +238,7 @@ function init() {
     scene.add( arrowHelper );
 
     conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
-    conteText2D.fillText ( "enemy:"+enemy_count , 0 , 10 , 100 );
+    conteText2D.fillText ( "8/23" , 0 , 10 , 100 );
         
     // アニメーションループ
     (function loop() {        

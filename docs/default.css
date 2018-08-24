@@ -16,10 +16,6 @@ canvas {
 }
 
 button{
- position: absolute;
- display: block;
  width:150px;
  height:150px;
- left: 50%;
- top: 50%;
 }

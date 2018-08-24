@@ -210,6 +210,8 @@ function init() {
     (function loop() {        
         counter++;
         
+        camera.position.set(counter, 0, 0);
+        
         if(counter % 10 == 0){
             fire = true;
         }

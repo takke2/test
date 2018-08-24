@@ -1,39 +1,3 @@
-/*
-function init() {
-  var button = document.getElementById('button'); //id‚ªubuttonv‚Ì—v‘f‚ðŽæ“¾
-  button.addEventListener("click",connect);
-}
-
-function connect() {
-	alert(navigator.bluetooth)
-	navigator.bluetooth.requestDevice({ filters: [{ services: ['battery_service'] }] })
-	.then(device => device.gatt.connect())
-	.then(server => {
-	  // Getting Battery Service...
-	  return server.getPrimaryService('battery_service');
-	})
-	.then(service => {
-	  // Getting Battery Level Characteristic...
-	  return service.getCharacteristic('battery_level');
-	})
-	.then(characteristic => {
-	  // Reading Battery Level...
-	  characteristic.addEventListener('characteristicvaluechanged', onHeartRateChanged);
-	  return characteristic.startNotifications();
-	})
-	.catch(error => {
-	  alert(error);
-	  console.log(error);
-	});
-}
-
-
-function onHeartRateChanged(event) {
-  let characteristic = event.target;
-  alert(characteristic.value.getUint8(0))
-}
-*/
-
 var fire = false;
 var counter = 0;
 var effects = {};
@@ -52,7 +16,7 @@ uuid["UART_SERVICE_CHARACTERISTICS"] ='6e400003-b5a3-f393-e0a9-e50e24dcca9e';
 
 function connect(){
     document.getElementById("startButton").style.display ="none";
-    
+    init();
     alert("connect ok");
     
     navigator.bluetooth.requestDevice({
@@ -372,7 +336,7 @@ function init() {
 }
 
 //window.addEventListener("load", init);
-init();
+//init();
 
 function dispButton(){
     player_play();

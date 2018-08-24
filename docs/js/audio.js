@@ -26,15 +26,15 @@ var getAudioBuffer = function(url, fn) {
 var getBGMBuffer = function(url, fn) {  
 
     // ファイルを取得 (arraybufferとして)
-    var request = new XMLHttpRequest();
-    request.open('GET', '/test/resource/tw012.mp3', true);
-    request.responseType = 'arraybuffer';
+    var request2 = new XMLHttpRequest();
+    request2.open('GET', '/test/resource/tw012.mp3', true);
+    request2.responseType = 'arraybuffer';
 
-    request.send();
-    request.onload = function () {
+    request2.send();
+    request2.onload = function () {
         // 読み込みが終わったら、decodeしてbufferにいれておく
-        var res = request.response;
-        context.decodeAudioData(res, function (buf) {
+        var res2 = request2.response;
+        context.decodeAudioData(res2, function (buf) {
             bgmbuffer = buf;
         });
     };

@@ -38,11 +38,17 @@ function connect(){
     })
     .then(service => {
         alert("getCharacteristic実行");
-        return service.getCharacteristic(uuid["UART_SERVICE_CHARACTERISTICS"]);
+        return Promise.all([
+            service.getCharacteristic(uuid["UART_SERVICE_CHARACTERISTICS_rx"]),
+            service.getCharacteristic(uuid["UART_SERVICE_CHARACTERISTICS"])
+        ]);
+      
+        //return service.getCharacteristic(uuid["UART_SERVICE_CHARACTERISTICS"]);
     })
     .then(chara => {
         alert("BLE connected");
-        characteristic=chara;
+        characteristic_rx=chara[0];
+        characteristic=chara[1];
         characteristic.startNotifications();
         characteristic.addEventListener('characteristicvaluechanged',onCharacteristicValueChanged);
     })
@@ -50,33 +56,6 @@ function connect(){
         alert("BLE error4" + error);
     });
     
-    alert("write start");
-    navigator.bluetooth.requestDevice({
-        acceptAllDevices:true,
-        optionalServices:[uuid["UART_SERVICE"]]
-    })
-    .then(device => {
-        alert("gatt.connect実行");
-        uart_device=device;
-        return device.gatt.connect();
-    })
-    .then(server => {
-        alert("getPrimaryService実行");
-        return server.getPrimaryService(uuid["UART_SERVICE"]);
-    })
-    .then(service => {
-        alert("getCharacteristic実行");
-        return service.getCharacteristic(uuid["UART_SERVICE_CHARACTERISTICS_RX"]);
-    })
-    .then(chara => {
-        alert("BLE connected");
-        characteristic_rx=chara;
-        //characteristic.startNotifications();
-        //characteristic.addEventListener('characteristicvaluechanged',onCharacteristicValueChanged);
-    })
-    .catch(error => {
-        alert("BLE error4" + error);
-    });
 }
 
 function onCharacteristicValueChanged(e) {

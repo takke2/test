@@ -39,7 +39,7 @@ function connect(){
     .then(service => {
         alert("getCharacteristicé¿çs");
         return Promise.all([
-            service.getCharacteristic(uuid["UART_SERVICE_CHARACTERISTICS_rx"]),
+            service.getCharacteristic(uuid["UART_SERVICE_CHARACTERISTICS_RX"]),
             service.getCharacteristic(uuid["UART_SERVICE_CHARACTERISTICS"])
         ]);
       

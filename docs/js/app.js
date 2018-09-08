@@ -258,6 +258,11 @@ function init() {
                     //charaShotMesh[i].position.set(0, 0,charaShot[i].position.z);
                     
                     scene.add(charaShotMesh[i]);
+                    
+                    var text = "0,1";
+                    var arrayBuffe = new TextEncoder().encode(text);
+                    characteristic_rx.writeValue(arrayBuffe);  
+  
                     break;
                 }
                 

@@ -260,7 +260,7 @@ function init() {
                     scene.add(charaShotMesh[i]);
                     
                     var text = "0,1";
-                    //var arrayBuffe = new TextEncoder().encode(text);
+                    var arrayBuffe = new TextEncoder("utf-8").encode(text);
                     //characteristic_rx.writeValue(arrayBuffe);  
   
                     break;

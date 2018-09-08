@@ -50,7 +50,7 @@ function connect(){
         alert("BLE error4" + error);
     });
     
-    
+    alert("write start");
     navigator.bluetooth.requestDevice({
         acceptAllDevices:true,
         optionalServices:[uuid["UART_SERVICE"]]

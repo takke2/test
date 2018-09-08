@@ -9,9 +9,12 @@ var ENEMY_MAX_COUNT = 10;
 var enemy_count = ENEMY_MAX_COUNT;
 
 var uart_device;
+var characteristic;
+var characteristic_rx;
 
 var uuid={};
 uuid["UART_SERVICE"]                 ='6e400001-b5a3-f393-e0a9-e50e24dcca9e';
+uuid["UART_SERVICE_CHARACTERISTICS_RX"] ='6e400002-b5a3-f393-e0a9-e50e24dcca9e';
 uuid["UART_SERVICE_CHARACTERISTICS"] ='6e400003-b5a3-f393-e0a9-e50e24dcca9e';
 
 function connect(){
@@ -42,6 +45,34 @@ function connect(){
         characteristic=chara;
         characteristic.startNotifications();
         characteristic.addEventListener('characteristicvaluechanged',onCharacteristicValueChanged);
+    })
+    .catch(error => {
+        alert("BLE error4" + error);
+    });
+    
+    
+    navigator.bluetooth.requestDevice({
+        acceptAllDevices:true,
+        optionalServices:[uuid["UART_SERVICE"]]
+    })
+    .then(device => {
+        alert("gatt.connectŽÀs");
+        uart_device=device;
+        return device.gatt.connect();
+    })
+    .then(server => {
+        alert("getPrimaryServiceŽÀs");
+        return server.getPrimaryService(uuid["UART_SERVICE"]);
+    })
+    .then(service => {
+        alert("getCharacteristicŽÀs");
+        return service.getCharacteristic(uuid["UART_SERVICE_CHARACTERISTICS_RX"]);
+    })
+    .then(chara => {
+        alert("BLE connected");
+        characteristic_rx=chara;
+        //characteristic.startNotifications();
+        //characteristic.addEventListener('characteristicvaluechanged',onCharacteristicValueChanged);
     })
     .catch(error => {
         alert("BLE error4" + error);

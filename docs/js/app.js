@@ -261,6 +261,7 @@ function init() {
                     
                     var text = "0,1";
                     var arrayBuffe = new TextEncoder("utf-8").encode(text);
+                    alert(arrayBuffe);
                     //characteristic_rx.writeValue(arrayBuffe);  
   
                     break;

@@ -20,7 +20,6 @@ uuid["UART_SERVICE_CHARACTERISTICS"] ='6e400003-b5a3-f393-e0a9-e50e24dcca9e';
 function connect(){
     alert(navigator.bluetooth);
     document.getElementById("startButton").style.display ="none";
-    init();
     alert("connect ok");
     
     navigator.bluetooth.requestDevice({
@@ -51,6 +50,8 @@ function connect(){
         characteristic=chara[1];
         characteristic.startNotifications();
         characteristic.addEventListener('characteristicvaluechanged',onCharacteristicValueChanged);
+        
+        init();
     })
     .catch(error => {
         alert("BLE error4" + error);

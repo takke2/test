@@ -46,14 +46,9 @@ var playSound = function(buffer,isLoop) {
   var source = context.createBufferSource();
   // buffer ÇÉZÉbÉg
   source.buffer = buffer;
-  
-  source.loop  = isLoop;
-  source.loopStart  = 0;
-  source.loopEnd  = audioBuffer.duration;
-
-
   // context Ç… connect
   source.connect(context.destination);
+  source.loop  = true;
   // çƒê∂
   source.start(0);
 };

@@ -22,7 +22,7 @@ var getAudioBuffer = function(url, fn) {
     };
 };
 
-/*
+
 // bgm 用の buffer を読み込む
 var getBGMBuffer = function(url, fn) {  
     // ファイルを取得 (arraybufferとして)
@@ -40,8 +40,8 @@ var getBGMBuffer = function(url, fn) {
         });
     };
 };
-*/
 
+/*
 // bgm 用の buffer を読み込む
 var getBGMBuffer = function(url, fn) {  
     context2 = new AudioContext();
@@ -69,7 +69,7 @@ var getBGMBuffer = function(url, fn) {
         });
     };
 };
-
+*/
 // サウンドを再生
 var playSound = function(buffer,isLoop) {  
   // source を作成
@@ -84,13 +84,13 @@ var playSound = function(buffer,isLoop) {
 };
 
 getAudioBuffer("https://github.com/takke2/test/blob/master/docs/resource/shot1.mp3");
-//getBGMBuffer("https://github.com/takke2/test/blob/master/docs/resource/tw012.mp3");
+getBGMBuffer("https://github.com/takke2/test/blob/master/docs/resource/tw012.mp3");
 
 var myfunc = function () {
     playSound(buffer,false);
 }
 
 var bgmplay = function () {
-    //playSound(bgmbuffer,true);
-    getBGMBuffer("https://github.com/takke2/test/blob/master/docs/resource/tw012.mp3");
+    playSound(bgmbuffer,true);
+    //getBGMBuffer("https://github.com/takke2/test/blob/master/docs/resource/tw012.mp3");
 }

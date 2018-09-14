@@ -3,7 +3,7 @@ var counter = 0;
 var effects = {};
 
 var CHARA_SHOT_COLOR = 'rgba(0, 0, 255, 0.75)';
-var CHARA_SHOT_MAX_COUNT = 10;
+var CHARA_SHOT_MAX_COUNT = 3;
 var ENEMY_COLOR = 'rgba(255, 0, 0, 0.75)';
 var ENEMY_MAX_COUNT = 10;
 var enemy_count = ENEMY_MAX_COUNT;
@@ -21,6 +21,7 @@ var lSpeed=0;
 var rSpeed=0;
 var fSpeed=0;
 var bSpeed=0;
+var isFire=0;
 
 function connect(){
     alert(navigator.bluetooth);
@@ -72,11 +73,39 @@ function onCharacteristicValueChanged(e) {
 	var str=String.fromCharCode.apply(null,str_arr);
 	alert("msg:"+str);
 	var result = str.split(',');
-	alert("msgs:"+Number(result[0]));
 	if (Number(result[0]) == 2){
-		alert("msg:"+result[0]);
-	}else{
-	
+		if(Number(result[1]) == 0 && Number(result[2]) == 0){
+			lSpeed=0;
+			rSpeed=0;
+			fSpeed=0;
+			bSpeed=0;
+		}else if(Number(result[1]) == -127 && Number(result[2]) == 0){
+			lSpeed=1;
+			rSpeed=0;
+			fSpeed=0;
+			bSpeed=0;
+		}else if(Number(result[1]) == 127 && Number(result[2]) == 0){
+			lSpeed=0;
+			rSpeed=1;
+			fSpeed=0;
+			bSpeed=0;
+		}else if(Number(result[1]) == 0 && Number(result[2]) == -127){
+			lSpeed=0;
+			rSpeed=0;
+			fSpeed=0;
+			bSpeed=1;
+		}else if(Number(result[1]) == 0 && Number(result[2]) == 127){
+			lSpeed=0;
+			rSpeed=0;
+			fSpeed=1;
+			bSpeed=0;
+		}
+	}else if(Number(result[0]) == 0){
+		if(Number(result[1]) == 0){
+			isFire = 0;
+		}else if(Number(result[1]) == 1){
+			isFire = 1;
+		}
 	}
 }
 
@@ -228,7 +257,7 @@ function init() {
     scene.add( arrowHelper );
 
     conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
-    conteText2D.fillText ( "9/9" , 0 , 10 , 100 );
+    conteText2D.fillText ( "9/15" , 0 , 10 , 100 );
     
     bgmplay();
     // アニメーションループ
@@ -237,8 +266,10 @@ function init() {
         
         camera.position.set(counter, 0, 0);
         
-        if(counter % 10 == 0){
-            fire = true;
+        if(isFire == 1){
+            if(counter % 10 == 0){
+                fire = true;
+            }
         }
         
         for(i=0; i < CHARA_SHOT_MAX_COUNT; i++){

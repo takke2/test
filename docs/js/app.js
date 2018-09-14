@@ -17,6 +17,9 @@ uuid["UART_SERVICE"]                 ='6e400001-b5a3-f393-e0a9-e50e24dcca9e';
 uuid["UART_SERVICE_CHARACTERISTICS_RX"] ='6e400002-b5a3-f393-e0a9-e50e24dcca9e';
 uuid["UART_SERVICE_CHARACTERISTICS"] ='6e400003-b5a3-f393-e0a9-e50e24dcca9e';
 
+var camerax=0;
+var cameray=0;
+
 var lSpeed=0;
 var rSpeed=0;
 var fSpeed=0;
@@ -263,11 +266,13 @@ function init() {
     // アニメーションループ
     (function loop() {        
         counter++;
+        camerax = camerax + lSpeed + rSpeed;
+        cameray = cameray + fSpeed + bSpeed;
         
-        camera.position.set(counter, 0, 0);
+        camera.position.set(camerax, cameray, 0);
         
         if(isFire == 1){
-            if(counter % 10 == 0){
+            if(counter % 30 == 0){
                 fire = true;
             }
         }
@@ -276,30 +281,11 @@ function init() {
             if(fire){
                 if(!charaShot[i].alive){
                     myfunc();
-                    //var vector = new THREE.Vector3();
-                    //camera.getWorldDirection( vector );
-                    //arrowHelper.setDirection(vector);
                     var forwardVec4 = forward.applyMatrix4(camera.matrix);
                     forwardVec4.normalize();
-                    
-                    //camera.getWorldDirection(cameraVector);
-                    //cameraVector.normalize();
-                    
-                    //cameraVector.applyQuaternion( camera.quaternion );
-                    //cameraVector.normalize();
-                    
-
-                    //const project = cameraVector.position.project(camera);
-                    //const sx = width / 2 * (+project.x + 1.0);
-                    //const sy = height / 2 * (-project.y + 1.0);
-                    
-                    //var pos = new THREE.Vector3(sx, sy, 1);
-                    //pos.unproject(camera);
 
                     charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 1000, 5);
-                    //charaShot[i].set(camera.position, pos.sub(camera.position).normalize(), 1000, 5);
                     charaShotMesh[i].position.set(charaShot[i].position.x, charaShot[i].position.y,charaShot[i].position.z);
-                    //charaShotMesh[i].position.set(0, 0,charaShot[i].position.z);
                     
                     scene.add(charaShotMesh[i]);
                     
@@ -321,7 +307,6 @@ function init() {
             if(charaShot[i].alive){
                 charaShot[i].move();
                 charaShotMesh[i].position.set(charaShot[i].position.x,charaShot[i].position.y,charaShot[i].position.z);
-                //charaShotMesh[i].position.set(0,0,charaShot[i].position.z);
             }
             
             if(!charaShot[i].alive){

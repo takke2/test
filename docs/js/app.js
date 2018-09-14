@@ -17,6 +17,11 @@ uuid["UART_SERVICE"]                 ='6e400001-b5a3-f393-e0a9-e50e24dcca9e';
 uuid["UART_SERVICE_CHARACTERISTICS_RX"] ='6e400002-b5a3-f393-e0a9-e50e24dcca9e';
 uuid["UART_SERVICE_CHARACTERISTICS"] ='6e400003-b5a3-f393-e0a9-e50e24dcca9e';
 
+var lSpeed=0;
+var rSpeed=0;
+var fSpeed=0;
+var bSpeed=0;
+
 function connect(){
     alert(navigator.bluetooth);
     document.getElementById("startButton").style.display ="none";
@@ -60,12 +65,18 @@ function connect(){
 }
 
 function onCharacteristicValueChanged(e) {
-    var str_arr=[];
-    for(var i=0;i<this.value.byteLength;i++){
-        str_arr[i]=this.value.getUint8(i);
-    }
-    var str=String.fromCharCode.apply(null,str_arr);
-    alert("msg:"+str);
+	var str_arr=[];
+	for(var i=0;i<this.value.byteLength;i++){
+	    str_arr[i]=this.value.getUint8(i);
+	}
+	var str=String.fromCharCode.apply(null,str_arr);
+	alert("msg:"+str);
+	var result = str.split(',');
+	if (result[0] == "2"){
+		alert("msg:"+result[0]);
+	}else{
+	
+	}
 }
 
 

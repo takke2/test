@@ -265,7 +265,8 @@ function init() {
     
     bgmplay();
     // アニメーションループ
-    (function loop() {        
+    (function loop() {
+        conteText2D.fillText ( counter , 0 , 50 , 100 );
         counter++;
         camerax = camerax + lSpeed + rSpeed;
         cameray = cameray + fSpeed + bSpeed;

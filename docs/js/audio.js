@@ -41,11 +41,17 @@ var getBGMBuffer = function(url, fn) {
 };
 
 // サウンドを再生
-var playSound = function(buffer) {  
+var playSound = function(buffer,isLoop) {  
   // source を作成
   var source = context.createBufferSource();
   // buffer をセット
   source.buffer = buffer;
+  
+  source.loop  = isLoop;
+  source.loopStart  = 0;
+  source.loopEnd  = audioBuffer.duration;
+
+
   // context に connect
   source.connect(context.destination);
   // 再生
@@ -56,9 +62,9 @@ getAudioBuffer("https://github.com/takke2/test/blob/master/docs/resource/shot1.m
 getBGMBuffer("https://github.com/takke2/test/blob/master/docs/resource/tw012.mp3");
 
 var myfunc = function () {
-    playSound(buffer);
+    playSound(buffer,false);
 }
 
 var bgmplay = function () {
-    playSound(bgmbuffer);
+    playSound(bgmbuffer,true);
 }

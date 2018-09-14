@@ -73,7 +73,7 @@ function onCharacteristicValueChanged(e) {
 	alert("msg:"+str);
 	var result = str.split(',');
 	alert("msg:"+result[0]);
-	if (result[0] == "2"){
+	if (String(result[0]) == "2"){
 		alert("msg:"+result[0]);
 	}else{
 	

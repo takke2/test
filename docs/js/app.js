@@ -27,8 +27,8 @@ var bSpeed=0;
 var isFire=1;
 
 function connect(){
-    init();
-    /*
+    //init();
+    
     alert(navigator.bluetooth);
     document.getElementById("startButton").style.display ="none";
     alert("connect ok");
@@ -67,7 +67,7 @@ function connect(){
     .catch(error => {
         alert("BLE error4" + error);
     });
-    */
+    
 }
 
 function onCharacteristicValueChanged(e) {

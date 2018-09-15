@@ -144,7 +144,7 @@ function init() {
     
     // effekseerの初期化
     effekseer.init(renderer.context);
-    effects["Laser01"] = effekseer.loadEffect("https://cdn.rawgit.com/effekseer/EffekseerForWebGL/7a1b035c/Release/Sample/Resource/Laser01.efk");
+    effects["Laser01"] = effekseer.loadEffect("https://cdn.rawgit.com/effekseer/EffekseerForWebGL/7a1b035c/Release/Sample/Resource/Laser02.efk");
     //effects["Laser01"] = effekseer.loadEffect("https://github.com/takke2/test/blob/master/docs/resource/Laser01.efk");
     //effects["Laser01"] = effekseer.loadEffect("https://github.com/takke2/test/blob/master/docs/resource/tktk01/fire.efk");
     // シーン
@@ -264,7 +264,7 @@ function init() {
 
     conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
     conteText2D.fillStyle = "blue";
-    conteText2D.fillText ( "9/15-6" , 0 , 10 , 100 );
+    conteText2D.fillText ( "9/15-7" , 0 , 10 , 100 );
     
     bgmplay();
     // アニメーションループ

@@ -5,7 +5,7 @@ var effects = {};
 var CHARA_SHOT_COLOR = 'rgba(0, 0, 255, 0.75)';
 var CHARA_SHOT_MAX_COUNT = 10;
 var ENEMY_COLOR = 'rgba(255, 0, 0, 0.75)';
-var ENEMY_MAX_COUNT = 30;
+var ENEMY_MAX_COUNT = 10;
 var enemy_count = ENEMY_MAX_COUNT;
 
 var uart_device;
@@ -323,6 +323,11 @@ function init() {
                 p.normalize();
                 enemy[i].move(p);
                 enemyMesh[i].position.set(enemy[i].position.x,enemy[i].position.y,enemy[i].position.z);
+                
+                ps = enemy[i].position.distance(camera.position);
+                if(ps.length() < enemy[i].size){
+                    alert("end");
+                }
             }
         }
         

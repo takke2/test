@@ -24,7 +24,7 @@ var lSpeed=0;
 var rSpeed=0;
 var fSpeed=0;
 var bSpeed=0;
-var isFire=0;
+var isFire=1;
 
 function connect(){
     alert(navigator.bluetooth);
@@ -142,8 +142,9 @@ function init() {
     
     // effekseerÇÃèâä˙âª
     effekseer.init(renderer.context);
-    effects["Laser01"] = effekseer.loadEffect("https://cdn.rawgit.com/effekseer/EffekseerForWebGL/7a1b035c/Release/Sample/Resource/Laser01.efk");
+    //effects["Laser01"] = effekseer.loadEffect("https://cdn.rawgit.com/effekseer/EffekseerForWebGL/7a1b035c/Release/Sample/Resource/Laser01.efk");
     //effects["Laser01"] = effekseer.loadEffect("https://github.com/takke2/test/blob/master/docs/resource/002_sword_effect/sword.efk");
+    effects["Laser01"] = effekseer.loadEffect("https://github.com/takke2/test/blob/master/docs/resource/tktk01/fire.efk");
     // ÉVÅ[Éì
     var scene = new THREE.Scene();
 

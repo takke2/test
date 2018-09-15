@@ -24,7 +24,7 @@ var getAudioBuffer = function(url, fn) {
 };
 
 // 爆発 用の buffer を読み込む
-var getAudioBuffer = function(url, fn) {  
+var getexBuffer = function(url, fn) {  
 
     // ファイルを取得 (arraybufferとして)
     var request = new XMLHttpRequest();

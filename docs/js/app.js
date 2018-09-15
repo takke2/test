@@ -3,9 +3,9 @@ var counter = 0;
 var effects = {};
 
 var CHARA_SHOT_COLOR = 'rgba(0, 0, 255, 0.75)';
-var CHARA_SHOT_MAX_COUNT = 3;
+var CHARA_SHOT_MAX_COUNT = 10;
 var ENEMY_COLOR = 'rgba(255, 0, 0, 0.75)';
-var ENEMY_MAX_COUNT = 10;
+var ENEMY_MAX_COUNT = 30;
 var enemy_count = ENEMY_MAX_COUNT;
 
 var uart_device;
@@ -235,11 +235,11 @@ function init() {
     var enemyMesh = new Array(ENEMY_MAX_COUNT);
     const enemySize = 20;
     for(i=0; i < ENEMY_MAX_COUNT; i++){
-        p.x = -200 + i*60;
-        p.y = -200 + i*60;
-        p.z = -500 + i*60;
+        p.x = Math.random()*1000 - 500;
+        p.y = Math.random()*1000 - 500;
+        p.z = Math.random()*1000 - 500;
         enemy[i] = new Enemy();
-        enemy[i].set(p, enemySize, 0.1);
+        enemy[i].set(p, enemySize, 0.3);
         enemyMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(enemySize), new THREE.MeshNormalMaterial());
         enemyMesh[i].position.set(enemy[i].position.x, enemy[i].position.y, enemy[i].position.z);
         scene.add(enemyMesh[i]);
@@ -277,7 +277,7 @@ function init() {
         camera.position.set(camerax, cameray, 0);
         
         if(isFire == 1){
-            if(counter % 30 == 0){
+            if(counter % 10 == 0){
                 fire = true;
             }
         }
@@ -289,7 +289,7 @@ function init() {
                     var forwardVec4 = forward.applyMatrix4(camera.matrix);
                     forwardVec4.normalize();
 
-                    charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 1000, 5);
+                    charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 5);
                     charaShotMesh[i].position.set(charaShot[i].position.x, charaShot[i].position.y,charaShot[i].position.z);
                     
                     scene.add(charaShotMesh[i]);
@@ -361,17 +361,6 @@ function init() {
             effekseer.setCameraMatrix(camera.matrixWorldInverse.elements);
             effekseer.draw();
         } );
-
-        /*
-        effect.render(scene, camera);
-        
-        // Effekseer‚ðThree.js‚Ì3D‹óŠÔ‚É‡‚í‚¹‚é
-        effekseer.setProjectionMatrix(camera.projectionMatrix.elements);
-        effekseer.setCameraMatrix(camera.matrixWorldInverse.elements);
-        
-        // Effekseer‚ÌƒŒƒ“ƒ_ƒŠƒ“ƒO
-        effekseer.draw();
-        */
         
         requestAnimationFrame(loop);
     }());

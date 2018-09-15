@@ -144,7 +144,6 @@ function init() {
     
     // effekseer‚Ì‰Šú‰»
     effekseer.init(renderer.context);
-    effekseer.setScale(5,5,5);
     effects["Laser01"] = effekseer.loadEffect("https://cdn.rawgit.com/effekseer/EffekseerForWebGL/7a1b035c/Release/Sample/Resource/Laser02.efk");
     //effects["Laser01"] = effekseer.loadEffect("https://github.com/takke2/test/blob/master/docs/resource/Laser01.efk");
     //effects["Laser01"] = effekseer.loadEffect("https://github.com/takke2/test/blob/master/docs/resource/tktk01/fire.efk");

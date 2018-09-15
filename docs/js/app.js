@@ -338,6 +338,7 @@ function init() {
                             conteText2D.fillText ( "enemy:"+enemy_count , 0 , 10 , 100 );
                             scene.remove(enemyMesh[j]);
                             charaShot[i].alive = false;
+                            explay();
                             effekseer.play(effects['Laser01'], charaShot[i].position.x,charaShot[i].position.y,charaShot[i].position.z);
                             break;
                         }

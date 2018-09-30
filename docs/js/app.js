@@ -301,7 +301,7 @@ function init() {
                     forwardVec4.normalize();
                     
                     if(i==CHARA_SHOT_MAX_COUNT-1){
-                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 3000, 1000);
+                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 3000, 100);
                     }else{
                         charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 5);
                     }

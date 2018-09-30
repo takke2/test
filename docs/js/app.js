@@ -355,7 +355,8 @@ function init() {
                             enemy[j].alive = false;
                             enemy_count = enemy_count-1;
                             conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
-                            conteText2D.fillText ( "enemy:"+enemy_count , 0 , 10 , 100 );
+                            //conteText2D.fillText ( "enemy:"+enemy_count , 0 , 10 , 100 );
+                            conteText2D.fillText ( "enemy:"+p.length() , 0 , 10 , 100 );
                             scene.remove(enemyMesh[j]);
                             charaShot[i].alive = false;
                             explay();

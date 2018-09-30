@@ -301,9 +301,9 @@ function init() {
                     forwardVec4.normalize();
                     
                     if(i==CHARA_SHOT_MAX_COUNT-1){
-                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 30000, 1000);
+                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), specialSize, 1000);
                     }else{
-                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 5);
+                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), charaShotSize, 5);
                     }
                     charaShotMesh[i].position.set(charaShot[i].position.x, charaShot[i].position.y,charaShot[i].position.z);
                     
@@ -351,7 +351,7 @@ function init() {
                 for(j=0; j< ENEMY_MAX_COUNT; j++){
                     if(enemy[j].alive){
                         p = enemy[j].position.distance(charaShot[i].position);
-                        if(p.length() < enemy[j].size){
+                        if(p.length() < enemy[j].size+charaShot[i].size){
                             enemy[j].alive = false;
                             enemy_count = enemy_count-1;
                             conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);

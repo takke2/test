@@ -228,7 +228,7 @@ function init() {
     var charaShot = new Array(CHARA_SHOT_MAX_COUNT);
     var charaShotMesh = new Array(CHARA_SHOT_MAX_COUNT);
     const charaShotSize = 5;
-    const specialSize = 30;
+    const specialSize = 300;
     for(i = 0; i < CHARA_SHOT_MAX_COUNT; i++){
         charaShot[i] = new CharacterShot();
         if(i == CHARA_SHOT_MAX_COUNT-1){

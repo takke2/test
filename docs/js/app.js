@@ -225,9 +225,14 @@ function init() {
     var charaShot = new Array(CHARA_SHOT_MAX_COUNT);
     var charaShotMesh = new Array(CHARA_SHOT_MAX_COUNT);
     const charaShotSize = 5;
+    const specialSize = 30;
     for(i = 0; i < CHARA_SHOT_MAX_COUNT; i++){
         charaShot[i] = new CharacterShot();
-        charaShotMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(charaShotSize), new THREE.MeshPhongMaterial({color : 0xaaaaaa,specular: 0x999999,shininess: 30}));
+        if(i == CHARA_SHOT_MAX_COUNT-1){
+            charaShotMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(charaShotSize), new THREE.MeshPhongMaterial({color : 0xaa0000,specular: 0x999999,shininess: 80}));
+        }else{
+            charaShotMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(charaShotSize), new THREE.MeshPhongMaterial({color : 0xaaaaaa,specular: 0x999999,shininess: 30}));
+        }
         charaShotMesh[i].position.set(camera.position.x,camera.position.y,camera.position.z);
     }
     
@@ -264,7 +269,7 @@ function init() {
 
     conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
     conteText2D.fillStyle = "blue";
-    conteText2D.fillText ( "9/15-10" , 0 , 10 , 100 );
+    conteText2D.fillText ( "9/30-1" , 0 , 10 , 100 );
     
     bgmplay();
     // アニメーションループ

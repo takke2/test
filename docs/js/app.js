@@ -12,6 +12,8 @@ var uart_device;
 var characteristic;
 var characteristic_rx;
 
+
+
 var uuid={};
 uuid["UART_SERVICE"]                 ='6e400001-b5a3-f393-e0a9-e50e24dcca9e';
 uuid["UART_SERVICE_CHARACTERISTICS_RX"] ='6e400002-b5a3-f393-e0a9-e50e24dcca9e';
@@ -25,10 +27,11 @@ var rSpeed=0;
 var fSpeed=0;
 var bSpeed=0;
 var isFire=1;
+var isSpecial = 1;
 
 function connect(){
-    //init();
-    
+    init();
+    /*
     alert(navigator.bluetooth);
     document.getElementById("startButton").style.display ="none";
     alert("connect ok");
@@ -67,7 +70,7 @@ function connect(){
     .catch(error => {
         alert("BLE error4" + error);
     });
-    
+    */
 }
 
 function onCharacteristicValueChanged(e) {
@@ -229,9 +232,9 @@ function init() {
     for(i = 0; i < CHARA_SHOT_MAX_COUNT; i++){
         charaShot[i] = new CharacterShot();
         if(i == CHARA_SHOT_MAX_COUNT-1){
-            charaShotMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(charaShotSize), new THREE.MeshPhongMaterial({color : 0xaa0000,specular: 0x999999,shininess: 80}));
+            charaShotMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(specialSize), new THREE.MeshPhongMaterial({color : 0xaa0000,specular: 0x999999,shininess: 80}));
         }else{
-            charaShotMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(charaShotSize), new THREE.MeshPhongMaterial({color : 0xaaaaaa,specular: 0x999999,shininess: 30}));
+            charaShotMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(charaShotSize), new THREE.MeshPhongMaterial({color : 0xaaaaaa,specular: 0xffffff,shininess: 30}));
         }
         charaShotMesh[i].position.set(camera.position.x,camera.position.y,camera.position.z);
     }
@@ -269,7 +272,7 @@ function init() {
 
     conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
     conteText2D.fillStyle = "blue";
-    conteText2D.fillText ( "9/30-1" , 0 , 10 , 100 );
+    conteText2D.fillText ( "9/30-2" , 0 , 10 , 100 );
     
     bgmplay();
     // アニメーションループ
@@ -288,13 +291,20 @@ function init() {
         }
         
         for(i=0; i < CHARA_SHOT_MAX_COUNT; i++){
+            if(isSpecial){
+                i = CHARA_SHOT_MAX_COUNT-1;
+            }
             if(fire){
                 if(!charaShot[i].alive){
                     myfunc();
                     var forwardVec4 = forward.applyMatrix4(camera.matrix);
                     forwardVec4.normalize();
-
-                    charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 5);
+                    
+                    if(i==CHARA_SHOT_MAX_COUNT-1){
+                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 3000, 10);
+                    }else{
+                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 5);
+                    }
                     charaShotMesh[i].position.set(charaShot[i].position.x, charaShot[i].position.y,charaShot[i].position.z);
                     
                     scene.add(charaShotMesh[i]);

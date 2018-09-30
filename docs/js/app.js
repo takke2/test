@@ -31,7 +31,7 @@ var isSpecial = 1;
 
 function connect(){
     init();
-    /*
+    
     alert(navigator.bluetooth);
     document.getElementById("startButton").style.display ="none";
     alert("connect ok");
@@ -70,7 +70,7 @@ function connect(){
     .catch(error => {
         alert("BLE error4" + error);
     });
-    */
+    
 }
 
 function onCharacteristicValueChanged(e) {
@@ -301,7 +301,7 @@ function init() {
                     forwardVec4.normalize();
                     
                     if(i==CHARA_SHOT_MAX_COUNT-1){
-                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 5);
+                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 10);
                     }else{
                         charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 5);
                     }

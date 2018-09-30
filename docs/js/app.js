@@ -228,7 +228,7 @@ function init() {
     var charaShot = new Array(CHARA_SHOT_MAX_COUNT);
     var charaShotMesh = new Array(CHARA_SHOT_MAX_COUNT);
     const charaShotSize = 5;
-    const specialSize = 30;
+    const specialSize = 50;
     for(i = 0; i < CHARA_SHOT_MAX_COUNT; i++){
         charaShot[i] = new CharacterShot();
         if(i == CHARA_SHOT_MAX_COUNT-1){
@@ -351,7 +351,12 @@ function init() {
                 for(j=0; j< ENEMY_MAX_COUNT; j++){
                     if(enemy[j].alive){
                         p = enemy[j].position.distance(charaShot[i].position);
-                        if(p.length() < enemy[j].size){
+                        sabun = charaShotSize;
+                        if(i==CHARA_SHOT_MAX_COUNT-1){
+                            sabun = specialSize;
+                        }
+                        
+                        if(p.length() < enemy[j].size+sabun){
                             enemy[j].alive = false;
                             enemy_count = enemy_count-1;
                             conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);

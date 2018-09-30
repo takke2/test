@@ -228,7 +228,7 @@ function init() {
     var charaShot = new Array(CHARA_SHOT_MAX_COUNT);
     var charaShotMesh = new Array(CHARA_SHOT_MAX_COUNT);
     const charaShotSize = 5;
-    const specialSize = 5;
+    const specialSize = 30;
     for(i = 0; i < CHARA_SHOT_MAX_COUNT; i++){
         charaShot[i] = new CharacterShot();
         if(i == CHARA_SHOT_MAX_COUNT-1){
@@ -272,7 +272,7 @@ function init() {
 
     conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
     conteText2D.fillStyle = "blue";
-    conteText2D.fillText ( "9/30-9" , 0 , 10 , 100 );
+    conteText2D.fillText ( "9/30-10" , 0 , 10 , 100 );
     
     bgmplay();
     // アニメーションループ

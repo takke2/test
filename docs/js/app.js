@@ -272,7 +272,7 @@ function init() {
 
     conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
     conteText2D.fillStyle = "blue";
-    conteText2D.fillText ( "9/30-4" , 0 , 10 , 100 );
+    conteText2D.fillText ( "9/30-5" , 0 , 10 , 100 );
     
     bgmplay();
     // アニメーションループ
@@ -291,9 +291,9 @@ function init() {
         }
         
         for(i=0; i < CHARA_SHOT_MAX_COUNT; i++){
-            if(isSpecial){
-                i = CHARA_SHOT_MAX_COUNT-1;
-            }
+            //if(isSpecial){
+            //    i = CHARA_SHOT_MAX_COUNT-1;
+            //}
             if(fire){
                 if(!charaShot[i].alive){
                     myfunc();
@@ -301,7 +301,7 @@ function init() {
                     forwardVec4.normalize();
                     
                     if(i==CHARA_SHOT_MAX_COUNT-1){
-                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 30000, 100);
+                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 30000, 1000);
                     }else{
                         charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 5);
                     }
@@ -351,7 +351,7 @@ function init() {
                 for(j=0; j< ENEMY_MAX_COUNT; j++){
                     if(enemy[j].alive){
                         p = enemy[j].position.distance(charaShot[i].position);
-                        if(p.length() < enemy[j].size){
+                        if(p.length() < charaShot[i].size){
                             enemy[j].alive = false;
                             enemy_count = enemy_count-1;
                             conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);

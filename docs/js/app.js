@@ -228,7 +228,7 @@ function init() {
     var charaShot = new Array(CHARA_SHOT_MAX_COUNT);
     var charaShotMesh = new Array(CHARA_SHOT_MAX_COUNT);
     const charaShotSize = 5;
-    const specialSize = 3000;
+    const specialSize = 5;
     for(i = 0; i < CHARA_SHOT_MAX_COUNT; i++){
         charaShot[i] = new CharacterShot();
         if(i == CHARA_SHOT_MAX_COUNT-1){
@@ -272,7 +272,7 @@ function init() {
 
     conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
     conteText2D.fillStyle = "blue";
-    conteText2D.fillText ( "9/30-8" , 0 , 10 , 100 );
+    conteText2D.fillText ( "9/30-9" , 0 , 10 , 100 );
     
     bgmplay();
     // アニメーションループ
@@ -301,7 +301,7 @@ function init() {
                     forwardVec4.normalize();
                     
                     if(i==CHARA_SHOT_MAX_COUNT-1){
-                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 3000, 10);
+                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 5);
                     }else{
                         charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 5);
                     }

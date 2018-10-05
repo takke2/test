@@ -394,12 +394,9 @@ function init() {
                     enemy_count = enemy_count-1;
                     scene.remove(enemyMesh[i]);
                     hp = hp - 1;
-                    //conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
-                    conteText2D.clearRect(conteText2D.canvas.width/2, 0, conteText2D.canvas.width, 110);
-                    conteText2D.textAlign = "right";
-                    conteText2D.textBaseline = "top";
+                    conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
                     conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2 , 10 , 100 );
-                            
+                    conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2 , 20 , 100 );
                     text = "0,4";
                     arrayBuffe = new TextEncoder("utf-8").encode(text);
                     characteristic_rx.writeValue(arrayBuffe);
@@ -425,11 +422,9 @@ function init() {
                         
                             enemy[j].alive = false;
                             enemy_count = enemy_count-1;
-                            //conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
-                            conteText2D.clearRect(0, 0, 10, 110);
-                            conteText2D.textAlign = "left";
-                            conteText2D.textBaseline = "top";
-                            conteText2D.fillText ( "e:"+enemy_count , 0 , 10 , 10 );
+                            conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
+                            conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2 , 10 , 100 );
+                            conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2 , 20 , 100 );
                             scene.remove(enemyMesh[j]);
                             charaShot[i].alive = false;
                             explay();

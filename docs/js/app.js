@@ -336,15 +336,22 @@ function init() {
         characteristic_rx.writeValue(arrayBuffe);
                         
         counter++;
-        camerax = camerax + lrSpeed;
-        cameray = cameray + fbSpeed;
+        //camerax = camerax + lrSpeed;
+        //cameray = cameray + fbSpeed;
         
-        camera.position.set(0, cameray, 0);
-        camera.rotation.x += camerax;
+        //camera.position.set(0, cameray, 0);
+        
+        //camera.position.y += fbSpeed;
+        //camera.rotation.x += lrSpeed;
         
         if(isFire == 1){
             if(counter % 10 == 0){
                 fire = true;
+                lrSpeed=5;
+                fbSpeed=1;
+                camera.position.y += fbSpeed;
+                camera.rotation.x += lrSpeed;
+                
             }
         }
         

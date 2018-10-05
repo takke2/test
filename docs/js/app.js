@@ -16,8 +16,6 @@ var characteristic_rx;
 var text = "0,0";
 var arrayBuffe;
 
-var isStart=0;
-
 var uuid={};
 uuid["UART_SERVICE"]                 ='6e400001-b5a3-f393-e0a9-e50e24dcca9e';
 uuid["UART_SERVICE_CHARACTERISTICS_RX"] ='6e400002-b5a3-f393-e0a9-e50e24dcca9e';
@@ -28,8 +26,12 @@ var cameray=0;
 
 var lrSpeed=0;
 var fbSpeed=0;
+
 var isFire=1;
 var isSpecial = 0;
+var isStart=0;
+var isGoo=0;
+var isKonami=0;
 
 function connect(){
     //init();
@@ -136,6 +138,7 @@ function onCharacteristicValueChanged(e) {
 		if(Number(result[1]) == 0){
 			isFire = 0;
 			isSpecial = 0;
+			isGoo=0;
 		}else if(Number(result[1]) == 1){
 			isFire = 1;
 		}else if(Number(result[1]) == 2){
@@ -145,6 +148,12 @@ function onCharacteristicValueChanged(e) {
 	}else if(Number(result[0]) == 3){
 		if(Number(result[1]) == 0){
 			isStart=1;
+		}else if(Number(result[1]) == 2){
+			isKonami = 1;
+		}
+	}else if(Number(result[0]) == 1){
+		if(Number(result[1]) == 1){
+			isGoo=1;
 		}
 	}
 }
@@ -316,9 +325,12 @@ function init() {
     conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2 , 10 , 100 );
     
     bgmplay();
+    var tStart=0;
+    var tEnd=0;
+    tStart = performance.now();
     // アニメーションループ
     (function loop() {
-    
+
         text = "0,0";
         arrayBuffe = new TextEncoder("utf-8").encode(text);
         characteristic_rx.writeValue(arrayBuffe);
@@ -327,7 +339,8 @@ function init() {
         camerax = camerax + lrSpeed;
         cameray = cameray + fbSpeed;
         
-        camera.position.set(camerax, cameray, 0);
+        camera.position.set(0, cameray, 0);
+        camera.rotation.x += camerax;
         
         if(isFire == 1){
             if(counter % 10 == 0){
@@ -393,7 +406,9 @@ function init() {
                     enemy[i].alive = false;
                     enemy_count = enemy_count-1;
                     scene.remove(enemyMesh[i]);
-                    hp = hp - 1;
+                    if(isGoo==0 && isKonami==0){
+                        hp = hp - 1;
+                    }
                     conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
                     conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2 , 10 , 100 );
                     conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2 , 20 , 100 );
@@ -451,7 +466,9 @@ function init() {
             effekseer.draw();
         } );
         
-        if(hp>0){
+        tEnd = performance.now();
+        
+        if(hp>0 && tEnd-tStart < 10000){
             requestAnimationFrame(loop);
         }else{
             alert("end");

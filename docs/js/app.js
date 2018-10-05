@@ -28,7 +28,7 @@ var cameray=0;
 
 var lrSpeed=0;
 var fbSpeed=0;
-var isFire=1;
+var isFire=0;
 var isSpecial = 0;
 
 function connect(){
@@ -313,6 +313,7 @@ function init() {
     conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
     conteText2D.fillStyle = "blue";
     conteText2D.fillText ( "10/6-2" , 0 , 10 , 100 );
+    conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2 , 10 , 100 );
     
     bgmplay();
     // アニメーションループ

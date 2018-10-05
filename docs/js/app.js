@@ -164,7 +164,6 @@ function init() {
         if(isStart==1){
             break;
         }
-        
     }
     */
     
@@ -321,7 +320,7 @@ function init() {
     
         text = "0,0";
         arrayBuffe = new TextEncoder("utf-8").encode(text);
-        //characteristic_rx.writeValue(arrayBuffe);
+        characteristic_rx.writeValue(arrayBuffe);
                         
         counter++;
         camerax = camerax + lrSpeed;
@@ -348,15 +347,15 @@ function init() {
                     
                     
                     if(i==CHARA_SHOT_MAX_COUNT-1){
-                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 20);
+                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 10);
                         text = "0,2";
                         arrayBuffe = new TextEncoder("utf-8").encode(text);
-                        //characteristic_rx.writeValue(arrayBuffe);
+                        characteristic_rx.writeValue(arrayBuffe);
                     }else{
-                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 10);
+                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 6);
                         text = "0,1";
                         arrayBuffe = new TextEncoder("utf-8").encode(text);
-                        //characteristic_rx.writeValue(arrayBuffe);
+                        characteristic_rx.writeValue(arrayBuffe);
                     }
                     charaShotMesh[i].position.set(charaShot[i].position.x, charaShot[i].position.y,charaShot[i].position.z);
                     
@@ -389,13 +388,14 @@ function init() {
                 enemyMesh[i].position.set(enemy[i].position.x,enemy[i].position.y,enemy[i].position.z);
                 
                 ps = enemy[i].position.distance(camera.position);
-                if(ps.length() < enemy[i].size){
+                if(ps.length() < enemy[i].size + 1){
                     enemy[i].alive = false;
                     enemy_count = enemy_count-1;
+                    scene.remove(enemyMesh[i]);
                     hp = hp - 1;
                     text = "0,4";
                     arrayBuffe = new TextEncoder("utf-8").encode(text);
-                    //characteristic_rx.writeValue(arrayBuffe);
+                    characteristic_rx.writeValue(arrayBuffe);
                 }
             }
         }
@@ -414,13 +414,12 @@ function init() {
                         
                             text = "0,3";
                             arrayBuffe = new TextEncoder("utf-8").encode(text);
-                            //characteristic_rx.writeValue(arrayBuffe);
+                            characteristic_rx.writeValue(arrayBuffe);
                         
                             enemy[j].alive = false;
                             enemy_count = enemy_count-1;
                             conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
-                            //conteText2D.fillText ( "enemy:"+enemy_count , 0 , 10 , 100 );
-                            conteText2D.fillText ( "enemy:"+p.length() , 0 , 10 , 100 );
+                            conteText2D.fillText ( "enemy:"+enemy_count , 0 , 10 , 100 );
                             scene.remove(enemyMesh[j]);
                             charaShot[i].alive = false;
                             explay();
@@ -450,9 +449,10 @@ function init() {
         if(hp>0){
             requestAnimationFrame(loop);
         }else{
+            alert("end");
             text = "0,5";
             arrayBuffe = new TextEncoder("utf-8").encode(text);
-            //characteristic_rx.writeValue(arrayBuffe);
+            characteristic_rx.writeValue(arrayBuffe);
         }
     }());
 

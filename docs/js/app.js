@@ -28,7 +28,7 @@ var cameray=0;
 
 var lrSpeed=0;
 var fbSpeed=0;
-var isFire=0;
+var isFire=1;
 var isSpecial = 0;
 
 function connect(){
@@ -425,7 +425,7 @@ function init() {
                             enemy_count = enemy_count-1;
                             //conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
                             conteText2D.clearRect(0, 0, conteText2D.canvas.width-1, 110);
-                            conteText2D.fillText ( "enemy:"+enemy_count , 0 , 10 , conteText2D.canvas.width-1 );
+                            conteText2D.fillText ( "e:"+enemy_count , 0 , 10 , 10 );
                             scene.remove(enemyMesh[j]);
                             charaShot[i].alive = false;
                             explay();

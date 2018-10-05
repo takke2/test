@@ -468,7 +468,7 @@ function init() {
         
         tEnd = performance.now();
         
-        if(hp>0 && tEnd-tStart < 10000){
+        if(hp>0 && tEnd-tStart < 90000){
             requestAnimationFrame(loop);
         }else{
             alert("end");

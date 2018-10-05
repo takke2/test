@@ -7,12 +7,16 @@ var CHARA_SHOT_MAX_COUNT = 10;
 var ENEMY_COLOR = 'rgba(255, 0, 0, 0.75)';
 var ENEMY_MAX_COUNT = 10;
 var enemy_count = ENEMY_MAX_COUNT;
+var hp = 3;
 
 var uart_device;
 var characteristic;
 var characteristic_rx;
 
+var text = "0,0";
+var arrayBuffe;
 
+var isStart=0;
 
 var uuid={};
 uuid["UART_SERVICE"]                 ='6e400001-b5a3-f393-e0a9-e50e24dcca9e';
@@ -22,12 +26,10 @@ uuid["UART_SERVICE_CHARACTERISTICS"] ='6e400003-b5a3-f393-e0a9-e50e24dcca9e';
 var camerax=0;
 var cameray=0;
 
-var lSpeed=0;
-var rSpeed=0;
-var fSpeed=0;
-var bSpeed=0;
+var lrSpeed=0;
+var fbSpeed=0;
 var isFire=1;
-var isSpecial = 1;
+var isSpecial = 0;
 
 function connect(){
     init();
@@ -79,40 +81,70 @@ function onCharacteristicValueChanged(e) {
 	    str_arr[i]=this.value.getUint8(i);
 	}
 	var str=String.fromCharCode.apply(null,str_arr);
-	alert("msg:"+str);
+	//alert("msg:"+str);
 	var result = str.split(',');
 	if (Number(result[0]) == 2){
-		if(Number(result[1]) == 0 && Number(result[2]) == 0){
-			lSpeed=0;
-			rSpeed=0;
-			fSpeed=0;
-			bSpeed=0;
-		}else if(Number(result[1]) == -127 && Number(result[2]) == 0){
-			lSpeed=1;
-			rSpeed=0;
-			fSpeed=0;
-			bSpeed=0;
-		}else if(Number(result[1]) == 127 && Number(result[2]) == 0){
-			lSpeed=0;
-			rSpeed=1;
-			fSpeed=0;
-			bSpeed=0;
-		}else if(Number(result[1]) == 0 && Number(result[2]) == -127){
-			lSpeed=0;
-			rSpeed=0;
-			fSpeed=0;
-			bSpeed=1;
-		}else if(Number(result[1]) == 0 && Number(result[2]) == 127){
-			lSpeed=0;
-			rSpeed=0;
-			fSpeed=1;
-			bSpeed=0;
+		if(Number(result[1]) == 0){
+			lrSpeed=0;
+		}else if(Number(result[1]) == 31){
+			lrSpeed=-1;
+		}else if(Number(result[1]) == 32){
+			lrSpeed=-2;
+		}else if(Number(result[1]) == 33){
+			lrSpeed=-3;
+		}else if(Number(result[1]) == 34){
+			lrSpeed=-4;
+		}else if(Number(result[1]) == 35){
+			lrSpeed=-5;
+		}else if(Number(result[1]) == 41){
+			lrSpeed=1;
+		}else if(Number(result[1]) == 42){
+			lrSpeed=2;
+		}else if(Number(result[1]) == 43){
+			lrSpeed=3;
+		}else if(Number(result[1]) == 44){
+			lrSpeed=4;
+		}else if(Number(result[1]) == 45){
+			lrSpeed=5;
 		}
+		
+		if(Number(result[2]) == 0){
+			fbSpeed=0;
+		}else if(Number(result[2]) == 11){
+			fbSpeed=1;
+		}else if(Number(result[2]) == 12){
+			fbSpeed=2;
+		}else if(Number(result[2]) == 13){
+			fbSpeed=3;
+		}else if(Number(result[2]) == 14){
+			fbSpeed=4;
+		}else if(Number(result[2]) == 15){
+			fbSpeed=5;
+		}else if(Number(result[2]) == 21){
+			fbSpeed=-1;
+		}else if(Number(result[2]) == 22){
+			fbSpeed=-2;
+		}else if(Number(result[2]) == 23){
+			fbSpeed=-3;
+		}else if(Number(result[2]) == 24){
+			fbSpeed=-4;
+		}else if(Number(result[2]) == 25){
+			fbSpeed=-5;
+		}
+		
 	}else if(Number(result[0]) == 0){
 		if(Number(result[1]) == 0){
 			isFire = 0;
+			isSpecial = 0;
 		}else if(Number(result[1]) == 1){
 			isFire = 1;
+		}else if(Number(result[1]) == 2){
+			isFire = 1;
+			isSpecial = 1;
+		}
+	}else if(Number(result[0]) == 3){
+		if(Number(result[1]) == 0){
+			isStart=1;
 		}
 	}
 }
@@ -126,7 +158,16 @@ function init() {
     
     var width  = window.innerWidth;
     var height = window.innerHeight;
-
+    
+    /*
+    while(1){
+        if(isStart==1){
+            break;
+        }
+        
+    }
+    */
+    
     // カメラ
     var camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100000);
     camera.position.set(0, 0, 0);
@@ -277,10 +318,14 @@ function init() {
     bgmplay();
     // アニメーションループ
     (function loop() {
-
+    
+        text = "0,0";
+        arrayBuffe = new TextEncoder("utf-8").encode(text);
+        //characteristic_rx.writeValue(arrayBuffe);
+                        
         counter++;
-        camerax = camerax + lSpeed + rSpeed;
-        cameray = cameray + fSpeed + bSpeed;
+        camerax = camerax + lrSpeed;
+        cameray = cameray + fbSpeed;
         
         camera.position.set(camerax, cameray, 0);
         
@@ -292,6 +337,7 @@ function init() {
         
         for(i=0; i < CHARA_SHOT_MAX_COUNT; i++){
             //if(isSpecial){
+                  isSpecial = 0;
             //    i = CHARA_SHOT_MAX_COUNT-1;
             //}
             if(fire){
@@ -300,19 +346,22 @@ function init() {
                     var forwardVec4 = forward.applyMatrix4(camera.matrix);
                     forwardVec4.normalize();
                     
+                    
                     if(i==CHARA_SHOT_MAX_COUNT-1){
-                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 10);
+                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 20);
+                        text = "0,2";
+                        arrayBuffe = new TextEncoder("utf-8").encode(text);
+                        //characteristic_rx.writeValue(arrayBuffe);
                     }else{
-                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 5);
+                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 10);
+                        text = "0,1";
+                        arrayBuffe = new TextEncoder("utf-8").encode(text);
+                        //characteristic_rx.writeValue(arrayBuffe);
                     }
                     charaShotMesh[i].position.set(charaShot[i].position.x, charaShot[i].position.y,charaShot[i].position.z);
                     
                     scene.add(charaShotMesh[i]);
-                    
-                    var text = "0,1";
-                    var arrayBuffe = new TextEncoder("utf-8").encode(text);
-                    //characteristic_rx.writeValue(arrayBuffe);  
-  
+
                     break;
                 }
                 
@@ -341,7 +390,12 @@ function init() {
                 
                 ps = enemy[i].position.distance(camera.position);
                 if(ps.length() < enemy[i].size){
-                    alert("end");
+                    enemy[i].alive = false;
+                    enemy_count = enemy_count-1;
+                    hp = hp - 1;
+                    text = "0,4";
+                    arrayBuffe = new TextEncoder("utf-8").encode(text);
+                    //characteristic_rx.writeValue(arrayBuffe);
                 }
             }
         }
@@ -357,6 +411,11 @@ function init() {
                         }
                         
                         if(p.length() < enemy[j].size+sabun){
+                        
+                            text = "0,3";
+                            arrayBuffe = new TextEncoder("utf-8").encode(text);
+                            //characteristic_rx.writeValue(arrayBuffe);
+                        
                             enemy[j].alive = false;
                             enemy_count = enemy_count-1;
                             conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
@@ -388,7 +447,13 @@ function init() {
             effekseer.draw();
         } );
         
-        requestAnimationFrame(loop);
+        if(hp>0){
+            requestAnimationFrame(loop);
+        }else{
+            text = "0,5";
+            arrayBuffe = new TextEncoder("utf-8").encode(text);
+            //characteristic_rx.writeValue(arrayBuffe);
+        }
     }());
 
     // リサイズ

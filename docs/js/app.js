@@ -32,7 +32,7 @@ var isFire=1;
 var isSpecial = 0;
 
 function connect(){
-    init();
+    //init();
     
     alert(navigator.bluetooth);
     document.getElementById("startButton").style.display ="none";
@@ -313,7 +313,7 @@ function init() {
 
     conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
     conteText2D.fillStyle = "blue";
-    conteText2D.fillText ( "9/30-10" , 0 , 10 , 100 );
+    conteText2D.fillText ( "10/6-1" , 0 , 10 , 100 );
     
     bgmplay();
     // アニメーションループ

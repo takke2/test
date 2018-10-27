@@ -339,7 +339,8 @@ function init() {
         //camerax = camerax + lrSpeed;
         //cameray = cameray + fbSpeed;
         
-        camera.position.y += 10;
+        //camera.position.y += 10;
+        camera.position.x += 2;
         
         //camera.position.y += fbSpeed;
         camera.rotation.y += 1;

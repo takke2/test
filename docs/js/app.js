@@ -321,7 +321,7 @@ function init() {
 
     conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
     conteText2D.fillStyle = "blue";
-    conteText2D.fillText ( "10/6-3" , 0 , 10 , 100 );
+    conteText2D.fillText ( "10/6-4" , 0 , 10 , 100 );
     conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2 , 10 , 100 );
     
     bgmplay();
@@ -406,8 +406,8 @@ function init() {
                 p = enemy[i].position.distance(camera.position);
                 
                 var radian = (counter%360) * Math.PI / 180;
-                enemy[i].position.x += (p.length() * Math.sin(radian));
-                enemy[i].position.z += (p.length() * Math.cos(radian));
+                enemy[i].position.x = (p.length() * Math.sin(radian));
+                enemy[i].position.z = (p.length() * Math.cos(radian));
                 
                 p.normalize();
                 //enemy[i].move(p);

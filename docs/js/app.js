@@ -406,8 +406,8 @@ function init() {
                 p = enemy[i].position.distance(camera.position);
                 
                 var radian = (counter%360) * Math.PI / 180;
-                enemy[i].position.x += (p.length()*10 * Math.sin(radian));
-                enemy[i].position.z += (p.length()*10 * Math.cos(radian));
+                enemy[i].position.x += (p.length()*2 * Math.sin(radian));
+                enemy[i].position.z += (p.length()*2 * Math.cos(radian));
                 
                 p.normalize();
                 //enemy[i].move(p);

@@ -335,14 +335,17 @@ function init() {
         arrayBuffe = new TextEncoder("utf-8").encode(text);
         characteristic_rx.writeValue(arrayBuffe);
                         
-        counter++;        
-        camera.position.y += fbSpeed;
-        camera.position.x += lrSpeed;
+        counter++;
         
         var radian = (counter/10) * Math.PI / 180;
         camera.position.x = 1000 * Math.sin(radian);
-        camera.position.z = 1000 * Math.cos(radian);
+        camera.position.y = 1000 * Math.cos(radian);
         camera.lookAt(new THREE.Vector3(0, 0, 0));
+        
+        camera.position.y += fbSpeed;
+        camera.position.x += lrSpeed;
+        
+
         
         if(isFire == 1){
             if(counter % 10 == 0){

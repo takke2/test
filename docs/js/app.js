@@ -343,7 +343,7 @@ function init() {
         //camera.position.z = 1000 * Math.cos(radian);
         
         
-        camera.position.y += 2;
+        camera.position.y += 10;
         camera.position.x += lrSpeed;
         
 

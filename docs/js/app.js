@@ -338,9 +338,10 @@ function init() {
         counter++;
         
         var radian = (counter/10) * Math.PI / 180;
+        camera.lookAt(new THREE.Vector3(camera.position.x, camera.position.y, camera.position.z));
         camera.position.x = 1000 * Math.sin(radian);
         camera.position.z = 1000 * Math.cos(radian);
-        camera.lookAt(new THREE.Vector3(camera.position.x, camera.position.y, camera.position.z));
+        
         
         camera.position.y += fbSpeed;
         camera.position.x += lrSpeed;

@@ -350,7 +350,7 @@ function init() {
         
         if(isFire == 1){
             if(counter % 10 == 0){
-                conteText2D.fillText ( camera.position.x+" "+camera.position.y+" "+camera.position.z , 0 , 10 , 100 );
+                conteText2D.fillText ( camera.rotation.x+" "+camera.rotation.y+" "+camera.rotation.z , 0 , 10 , 100 );
                 fire = true;
                 
             }

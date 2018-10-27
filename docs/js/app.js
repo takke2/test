@@ -408,8 +408,8 @@ function init() {
                 //enemy[i].move(p);
                 
                 var radian = (counter%360) * Math.PI / 180;
-                enemy[i].position.x = (p.length() * Math.sin(radian));
-                enemy[i].position.z = (p.length() * Math.cos(radian));
+                enemy[i].position.x += (p.length() * Math.sin(radian));
+                enemy[i].position.z += (p.length() * Math.cos(radian));
                 
                 enemyMesh[i].position.set(enemy[i].position.x,enemy[i].position.y,enemy[i].position.z);
                 

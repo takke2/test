@@ -339,7 +339,7 @@ function init() {
         camera.position.y += fbSpeed;
         camera.position.x += lrSpeed;
         
-        var radian = 1 * Math.PI / 180;
+        var radian = (counter/10) * Math.PI / 180;
         camera.position.x = 1000 * Math.sin(radian);
         camera.position.z = 1000 * Math.cos(radian);
         camera.lookAt(new THREE.Vector3(0, 0, 0));

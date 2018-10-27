@@ -350,7 +350,6 @@ function init() {
         
         if(isFire == 1){
             if(counter % 10 == 0){
-                conteText2D.fillText ( camera.rotation.x+" "+camera.rotation.y+" "+camera.rotation.z , 0 , 10 , 100 );
                 fire = true;
                 
             }
@@ -408,6 +407,7 @@ function init() {
                 p.normalize();
                 enemy[i].move(p);
                 enemyMesh[i].position.set(enemy[i].position.x,enemy[i].position.y,enemy[i].position.z);
+                enemyMesh[i].rotation.y = (counter/10) * Math.PI / 180;
                 
                 ps = enemy[i].position.distance(camera.position);
                 if(ps.length() < enemy[i].size + 1){
@@ -469,7 +469,6 @@ function init() {
         effekseer.update();
 
         effect.render( scene, camera, function( camera ) {
-            camera.rotation.x = camera.rotation.x + 10;
             effekseer.setProjectionMatrix(camera.projectionMatrix.elements);
             effekseer.setCameraMatrix(camera.matrixWorldInverse.elements);
             effekseer.draw();

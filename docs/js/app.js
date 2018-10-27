@@ -407,7 +407,7 @@ function init() {
                 p.normalize();
                 //enemy[i].move(p);
                 
-                var radian = counter * Math.PI / 180;
+                var radian = (counter%360) * Math.PI / 180;
                 enemy[i].position.x = (p.length() * Math.sin(radian));
                 enemy[i].position.z = (p.length() * Math.cos(radian));
                 

@@ -336,9 +336,12 @@ function init() {
         characteristic_rx.writeValue(arrayBuffe);
                         
         counter++;
-        camerax = camerax + lrSpeed;
-        cameray = cameray + fbSpeed;
+        //camerax = camerax + lrSpeed;
+        //cameray = cameray + fbSpeed;
         
+        camerax = camerax + 1;
+        cameray = cameray + fbSpeed;
+         
         camera.position.set(camerax, cameray, 0);
         
         //camera.position.y += fbSpeed;
@@ -406,7 +409,7 @@ function init() {
                 p = enemy[i].position.distance(camera.position);
                 p.normalize();
                 enemy[i].move(p);
-                //enemyMesh[i].position.set(enemy[i].position.x,enemy[i].position.y,enemy[i].position.z);
+                enemyMesh[i].position.set(enemy[i].position.x,enemy[i].position.y,enemy[i].position.z);
                 
                 ps = enemy[i].position.distance(camera.position);
                 if(ps.length() < enemy[i].size + 1){

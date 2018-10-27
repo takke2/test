@@ -343,13 +343,14 @@ function init() {
         //camera.position.z = 1000 * Math.cos(radian);
         
         
-        camera.position.y += 10;
+        camera.position.y += fbSpeed;
         camera.position.x += lrSpeed;
         
 
         
         if(isFire == 1){
             if(counter % 10 == 0){
+                conteText2D.fillText ( camera.position.x+" "+camera.position.y+" "+camera.position.z , 0 , 10 , 100 );
                 fire = true;
                 
             }

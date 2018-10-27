@@ -406,13 +406,14 @@ function init() {
                 p = enemy[i].position.distance(camera.position);
                 p.normalize();
                 enemy[i].move(p);
+                
+                var radian = counter * Math.PI / 180;
+                enemy[i].position.x += (1000 * Math.sin(radian));
+                enemy[i].position.z += (1000 * Math.cos(radian));
+                
                 enemyMesh[i].position.set(enemy[i].position.x,enemy[i].position.y,enemy[i].position.z);
                 
                 
-                var radian = counter * Math.PI / 180;
-                enemyMesh[i].position.x += (10 * Math.sin(radian));
-                enemyMesh[i].position.z += (10 * Math.cos(radian));
-  
                 
                 ps = enemy[i].position.distance(camera.position);
                 if(ps.length() < enemy[i].size + 1){

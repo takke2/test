@@ -335,23 +335,18 @@ function init() {
         arrayBuffe = new TextEncoder("utf-8").encode(text);
         characteristic_rx.writeValue(arrayBuffe);
                         
-        counter++;
-        //camerax = camerax + lrSpeed;
-        //cameray = cameray + fbSpeed;
+        counter++;        
+        camera.position.y += fbSpeed;
+        camera.position.x += lrSpeed;
         
-        //camera.position.y += 10;
-        camera.position.x += 2;
-        
-        //camera.position.y += fbSpeed;
-        camera.rotation.y += 1;
+        var radian = 1 * Math.PI / 180;
+        camera.position.x = 1000 * Math.sin(radian);
+        camera.position.z = 1000 * Math.cos(radian);
+        camera.lookAt(new THREE.Vector3(0, 0, 0));
         
         if(isFire == 1){
             if(counter % 10 == 0){
                 fire = true;
-                //lrSpeed=5;
-                //fbSpeed=1;
-                //camera.position.y += fbSpeed;
-                //camera.rotation.x += lrSpeed;
                 
             }
         }

@@ -469,6 +469,7 @@ function init() {
         effekseer.update();
 
         effect.render( scene, camera, function( camera ) {
+            camera.rotation.x = camera.rotation.x + 1;
             effekseer.setProjectionMatrix(camera.projectionMatrix.elements);
             effekseer.setCameraMatrix(camera.matrixWorldInverse.elements);
             effekseer.draw();

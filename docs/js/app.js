@@ -405,11 +405,11 @@ function init() {
             if(enemy[i].alive){
                 p = enemy[i].position.distance(camera.position);
                 p.normalize();
-                enemy[i].move(p);
+                //enemy[i].move(p);
                 
                 var radian = counter * Math.PI / 180;
-                enemy[i].position.x += (p.x * Math.sin(radian));
-                enemy[i].position.z += (p.z * Math.cos(radian));
+                enemy[i].position.x += (1000 * Math.sin(radian));
+                enemy[i].position.z += (1000 * Math.cos(radian));
                 
                 enemyMesh[i].position.set(enemy[i].position.x,enemy[i].position.y,enemy[i].position.z);
                 

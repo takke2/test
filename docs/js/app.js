@@ -15,6 +15,7 @@ var characteristic_rx;
 
 var text = "0,0";
 var arrayBuffe;
+vat test1=0;
 
 var uuid={};
 uuid["UART_SERVICE"]                 ='6e400001-b5a3-f393-e0a9-e50e24dcca9e';
@@ -85,6 +86,9 @@ function onCharacteristicValueChanged(e) {
 	var str=String.fromCharCode.apply(null,str_arr);
 	//alert("msg:"+str);
 	var result = str.split(',');
+	
+	test1 = 1;
+	
 	if (Number(result[0]) == 2){
 		if(Number(result[1]) == 0){
 			lrSpeed=0;
@@ -321,7 +325,7 @@ function init() {
 
     conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
     conteText2D.fillStyle = "blue";
-    conteText2D.fillText ( "10/27-2" , 0 , 10 , 100 );
+    conteText2D.fillText ( "10/27-3" , 0 , 10 , 100 );
     conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2 , 10 , 100 );
     
     bgmplay();
@@ -405,12 +409,14 @@ function init() {
             if(enemy[i].alive){
                 p = enemy[i].position.distance(camera.position);
                 
-                var radian = (counter%360) * Math.PI / 180;
-                //enemy[i].position.x = (p.length() * Math.sin(radian));
-                //enemy[i].position.z = (p.length() * Math.cos(radian));
-                
+                var radian = (10%360) * Math.PI / 180;
+                if(test1==1){
+                    enemy[i].position.x = (p.length() * Math.sin(radian));
+                    enemy[i].position.z = (p.length() * Math.cos(radian));
+                    test1=0;
+                }
                 p.normalize();
-                enemy[i].move(p);
+                //enemy[i].move(p);
                 
                 enemyMesh[i].position.set(enemy[i].position.x,enemy[i].position.y,enemy[i].position.z);
                 

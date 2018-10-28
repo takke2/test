@@ -15,7 +15,7 @@ var characteristic_rx;
 
 var text = "0,0";
 var arrayBuffe;
-vat test1=0;
+var test1=0;
 
 var uuid={};
 uuid["UART_SERVICE"]                 ='6e400001-b5a3-f393-e0a9-e50e24dcca9e';

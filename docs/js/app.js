@@ -5,7 +5,7 @@ var effects = {};
 var CHARA_SHOT_COLOR = 'rgba(0, 0, 255, 0.75)';
 var CHARA_SHOT_MAX_COUNT = 10;
 var ENEMY_COLOR = 'rgba(255, 0, 0, 0.75)';
-var ENEMY_MAX_COUNT = 10;
+var ENEMY_MAX_COUNT = 1;
 var enemy_count = ENEMY_MAX_COUNT;
 var hp = 3;
 
@@ -296,9 +296,12 @@ function init() {
     var enemyMesh = new Array(ENEMY_MAX_COUNT);
     const enemySize = 20;
     for(i=0; i < ENEMY_MAX_COUNT; i++){
-        p.x = Math.random()*1000 - 500;
-        p.y = Math.random()*1000 - 500;
-        p.z = Math.random()*1000 - 500;
+        //p.x = Math.random()*1000 - 500;
+        //p.y = Math.random()*1000 - 500;
+        //p.z = Math.random()*1000 - 500;
+        p.x = 0;
+        p.y = 0;
+        p.z = 100;
         enemy[i] = new Enemy();
         enemy[i].set(p, enemySize, 0.3);
         enemyMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(enemySize), new THREE.MeshNormalMaterial());

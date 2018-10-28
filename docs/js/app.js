@@ -84,7 +84,7 @@ function onCharacteristicValueChanged(e) {
 	    str_arr[i]=this.value.getUint8(i);
 	}
 	var str=String.fromCharCode.apply(null,str_arr);
-	alert("msg:"+str);
+	//alert("msg:"+str);
 	var result = str.split(',');
 	
 	test1 = 1;

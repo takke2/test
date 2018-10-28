@@ -411,18 +411,17 @@ function init() {
         for(i=0; i < ENEMY_MAX_COUNT; i++){
             if(enemy[i].alive){
                 p = enemy[i].position.distance(camera.position);
-                
+                /*
                 var radian = (counter%360) * Math.PI / 180;
                 if(test1==1){
                     //alert("msg:");
                     //enemy[i].position.x = (p.length() * Math.sin(radian));
                     //enemy[i].position.z = (p.length() * Math.cos(radian));
-                    enemy[i].position.z = (p.length() * Math.sin(radian));
-                    enemy[i].position.x = (p.length() * Math.cos(radian));
                     //test1=0;
                 }
+                */
                 p.normalize();
-                //enemy[i].move(p);
+                enemy[i].move(p);
                 
                 enemyMesh[i].position.set(enemy[i].position.x,enemy[i].position.y,enemy[i].position.z);
                 

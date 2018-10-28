@@ -411,6 +411,7 @@ function init() {
                 
                 var radian = (10%360) * Math.PI / 180;
                 if(test1==1){
+                    alert("msg:");
                     enemy[i].position.x = (p.length() * Math.sin(radian));
                     enemy[i].position.z = (p.length() * Math.cos(radian));
                     test1=0;

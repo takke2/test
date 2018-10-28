@@ -409,12 +409,12 @@ function init() {
             if(enemy[i].alive){
                 p = enemy[i].position.distance(camera.position);
                 
-                var radian = (10%360) * Math.PI / 180;
+                var radian = (counter%360) * Math.PI / 180;
                 if(test1==1){
                     alert("msg:");
                     enemy[i].position.x = (p.length() * Math.sin(radian));
                     enemy[i].position.z = (p.length() * Math.cos(radian));
-                    test1=0;
+                    //test1=0;
                 }
                 p.normalize();
                 //enemy[i].move(p);

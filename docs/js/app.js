@@ -341,13 +341,14 @@ function init() {
     var tStart=0;
     var tEnd=0;
     
-    window.scrollTo(0,1);
+    
     sleep(3000);
     
     tStart = performance.now();
     // アニメーションループ
     (function loop() {
-
+        window.scrollTo(0,1);
+        
         text = "0,0";
         arrayBuffe = new TextEncoder("utf-8").encode(text);
         characteristic_rx.writeValue(arrayBuffe);

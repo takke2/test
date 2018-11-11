@@ -311,7 +311,7 @@ function init() {
         //p.z = 100;
         enemy[i] = new Enemy();
         enemy[i].set(p, enemySize, 0.3);
-        enemyMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(enemySize), new THREE.MeshBasicMaterial({transparent: true,color: 0xffffff,blending: THREE.AdditiveBlending,map:THREE.ImageUtils.loadTexture("texture/earth.png")}));
+        enemyMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(enemySize), new THREE.MeshBasicMaterial({color: 0xffffff,blending: THREE.AdditiveBlending,map:THREE.ImageUtils.loadTexture("texture/earth.png")}));
         enemyMesh[i].position.set(enemy[i].position.x, enemy[i].position.y, enemy[i].position.z);
         scene.add(enemyMesh[i]);
     }

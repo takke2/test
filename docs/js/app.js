@@ -34,12 +34,6 @@ var isStart=0;
 var isGoo=0;
 var isKonami=0;
 
-window.onload = funtion(){
-  setTimeout(function(){
-    window.scrollTo(0,1);
-  }, 1);
-}
-
 function sleep(waitMsec) {
   var startMsec = new Date(); 
   while (new Date() - startMsec < waitMsec);
@@ -47,6 +41,7 @@ function sleep(waitMsec) {
 
 function connect(){
     //init();
+    window.scrollTo(0,1);
     
     //alert(navigator.bluetooth);
     document.getElementById("startButton").style.display ="none";

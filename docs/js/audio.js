@@ -7,6 +7,8 @@ var bgmbuffer;
 var clearbuffer;
 var endbuffer;
 
+var source2;
+
 // Audio 用の buffer を読み込む
 var getAudioBuffer = function(url, fn) {  
 
@@ -110,6 +112,19 @@ var playSound = function(buffer,isLoop) {
   source.start(0);
 };
 
+// サウンドを再生
+var playSound2 = function(buffer,isLoop) {  
+  // source を作成
+  source2 = context.createBufferSource();
+  // buffer をセット
+  source2.buffer = buffer;
+  // context に connect
+  source2.connect(context.destination);
+  source2.loop  = isLoop;
+  // 再生
+  source2.start(0);
+};
+
 getAudioBuffer("https://github.com/takke2/test/blob/master/docs/resource/shot1.mp3");
 getexBuffer("https://github.com/takke2/test/blob/master/docs/resource/explosion1.mp3");
 getBGMBuffer("https://github.com/takke2/test/blob/master/docs/resource/tw012.mp3");
@@ -133,6 +148,10 @@ var endplay = function () {
 }
 
 var bgmplay = function () {
-    playSound(bgmbuffer,true);
+    playSound2(bgmbuffer,true);
     //getBGMBuffer("https://github.com/takke2/test/blob/master/docs/resource/tw012.mp3");
+}
+
+var bgmstop = function () {
+    source2.stop();
 }

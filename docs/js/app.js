@@ -508,6 +508,7 @@ function init() {
         if(hp>0 && tEnd-tStart < 90000 && enemy_count>0){
             requestAnimationFrame(loop);
         }else{
+            bgmstop();
             if(hp<=0){
                 endplay();
                 text = "0,5";

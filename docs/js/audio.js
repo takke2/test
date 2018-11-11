@@ -148,6 +148,7 @@ var endplay = function () {
 }
 
 var bgmplay = function () {
+    alert("aaaaa");
     playSound2(bgmbuffer,true);
     //getBGMBuffer("https://github.com/takke2/test/blob/master/docs/resource/tw012.mp3");
 }

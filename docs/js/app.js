@@ -301,6 +301,7 @@ function init() {
     var enemy = new Array(ENEMY_MAX_COUNT);
     var enemyMesh = new Array(ENEMY_MAX_COUNT);
     const enemySize = 20;
+    var earthTexture = THREE.ImageUtils.loadTexture( "./texture/earth.png" );
     for(i=0; i < ENEMY_MAX_COUNT; i++){
         p.x = Math.random()*1000 - 500;
         p.y = Math.random()*1000 - 500;
@@ -368,7 +369,7 @@ function init() {
         
         if(isFire == 1){
             if(counter % 10 == 0){
-                //fire = true;
+                fire = true;
                 
             }
         }

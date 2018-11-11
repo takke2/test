@@ -133,8 +133,8 @@ alert("aaaaa1");
 getAudioBuffer("https://github.com/takke2/test/blob/master/docs/resource/shot1.mp3");
 getexBuffer("https://github.com/takke2/test/blob/master/docs/resource/explosion1.mp3");
 getBGMBuffer("https://github.com/takke2/test/blob/master/docs/resource/tw012.mp3");
-//getclearBuffer("https://github.com/takke2/test/blob/master/docs/resource/st026.mp3");
-//getendBuffer("https://github.com/takke2/test/blob/master/docs/resource/st010b.mp3");
+getclearBuffer("https://github.com/takke2/test/blob/master/docs/resource/st026.mp3");
+getendBuffer("https://github.com/takke2/test/blob/master/docs/resource/st010b.mp3");
 alert("aaaaa2");
 
 var myfunc = function () {

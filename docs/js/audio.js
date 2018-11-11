@@ -112,6 +112,7 @@ var playSound = function(buffer,isLoop) {
   source.start(0);
 };
 
+/*
 // ƒTƒEƒ“ƒh‚ğÄ¶
 var playSound2 = function(buffer,isLoop) {  
   // source ‚ğì¬
@@ -124,6 +125,7 @@ var playSound2 = function(buffer,isLoop) {
   // Ä¶
   source2.start(0);
 };
+*/
 
 getAudioBuffer("https://github.com/takke2/test/blob/master/docs/resource/shot1.mp3");
 getexBuffer("https://github.com/takke2/test/blob/master/docs/resource/explosion1.mp3");

@@ -34,28 +34,33 @@ var isStart=0;
 var isGoo=0;
 var isKonami=0;
 
+function sleep(waitMsec) {
+  var startMsec = new Date(); 
+  while (new Date() - startMsec < waitMsec);
+}
+
 function connect(){
     //init();
     
     alert(navigator.bluetooth);
     document.getElementById("startButton").style.display ="none";
-    alert("connect ok");
+    //alert("connect ok");
     
     navigator.bluetooth.requestDevice({
         acceptAllDevices:true,
         optionalServices:[uuid["UART_SERVICE"]]
     })
     .then(device => {
-        alert("gatt.connect実行");
+        //alert("gatt.connect実行");
         uart_device=device;
         return device.gatt.connect();
     })
     .then(server => {
-        alert("getPrimaryService実行");
+        //alert("getPrimaryService実行");
         return server.getPrimaryService(uuid["UART_SERVICE"]);
     })
     .then(service => {
-        alert("getCharacteristic実行");
+        //alert("getCharacteristic実行");
         return Promise.all([
             service.getCharacteristic(uuid["UART_SERVICE_CHARACTERISTICS_RX"]),
             service.getCharacteristic(uuid["UART_SERVICE_CHARACTERISTICS"])
@@ -64,7 +69,7 @@ function connect(){
         //return service.getCharacteristic(uuid["UART_SERVICE_CHARACTERISTICS"]);
     })
     .then(chara => {
-        alert("BLE connected");
+        //alert("BLE connected");
         characteristic_rx=chara[0];
         characteristic=chara[1];
         characteristic.startNotifications();
@@ -330,10 +335,23 @@ function init() {
     conteText2D.fillStyle = "blue";
     conteText2D.fillText ( "10/27-4" , 0 , 10 , 100 );
     conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2 , 10 , 100 );
+    conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2 , 20 , 100 );
     
     bgmplay();
     var tStart=0;
     var tEnd=0;
+    
+    
+    conteText2D.fillText ( "3" , conteText2D.canvas.width/4 , conteText2D.canvas.height/2 , 200 );
+    conteText2D.clearRect(conteText2D.canvas.width/4, conteText2D.canvas.height/2, 200, 200);
+    sleep(1000);
+    conteText2D.fillText ( "2" , conteText2D.canvas.width/4 , conteText2D.canvas.height/2 , 200 );
+    conteText2D.clearRect(conteText2D.canvas.width/4, conteText2D.canvas.height/2, 200, 200);
+    sleep(1000);
+    conteText2D.fillText ( "1" , conteText2D.canvas.width/4 , conteText2D.canvas.height/2 , 200 );
+    conteText2D.clearRect(conteText2D.canvas.width/4, conteText2D.canvas.height/2, 200, 200);
+    sleep(1000);
+    
     tStart = performance.now();
     // アニメーションループ
     (function loop() {

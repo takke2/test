@@ -3,7 +3,7 @@ var counter = 0;
 var effects = {};
 
 var CHARA_SHOT_COLOR = 'rgba(0, 0, 255, 0.75)';
-var CHARA_SHOT_MAX_COUNT = 10;
+var CHARA_SHOT_MAX_COUNT = 1;
 var ENEMY_COLOR = 'rgba(255, 0, 0, 0.75)';
 var ENEMY_MAX_COUNT = 10;
 var enemy_count = ENEMY_MAX_COUNT;
@@ -505,13 +505,20 @@ function init() {
         
         tEnd = performance.now();
         
-        if(hp>0 && tEnd-tStart < 90000){
+        if(hp>0 && tEnd-tStart < 90000 && enemy_count>0){
             requestAnimationFrame(loop);
         }else{
-            alert("end");
-            text = "0,5";
-            arrayBuffe = new TextEncoder("utf-8").encode(text);
-            characteristic_rx.writeValue(arrayBuffe);
+            if(hp<=0){
+                endplay();
+                text = "0,5";
+                arrayBuffe = new TextEncoder("utf-8").encode(text);
+                characteristic_rx.writeValue(arrayBuffe);
+                alert("game over!");
+            }
+            if(enemy_count<=0){
+                clearplay();
+                alert("clear!");
+            }
         }
     }());
 

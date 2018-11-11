@@ -4,6 +4,8 @@ var context = new AudioContext();
 var buffer;
 var exbuffer;
 var bgmbuffer;
+var clearbuffer;
+var endbuffer;
 
 // Audio 用の buffer を読み込む
 var getAudioBuffer = function(url, fn) {  
@@ -59,6 +61,42 @@ var getBGMBuffer = function(url, fn) {
     };
 };
 
+// クリア 用の buffer を読み込む
+var getBGMBuffer = function(url, fn) {  
+    // ファイルを取得 (arraybufferとして)
+    var request2 = new XMLHttpRequest();
+    request2.open('GET', '/test/resource/st026.mp3', true);
+    request2.responseType = 'arraybuffer';
+
+    request2.send();
+    request2.onload = function () {
+        source = context.createBufferSource();
+        // 読み込みが終わったら、decodeしてbufferにいれておく
+        var res2 = request2.response;
+        context.decodeAudioData(res2, function (buf) {
+            clearbuffer = buf;
+        });
+    };
+};
+
+// エンド 用の buffer を読み込む
+var getBGMBuffer = function(url, fn) {  
+    // ファイルを取得 (arraybufferとして)
+    var request2 = new XMLHttpRequest();
+    request2.open('GET', '/test/resource/st010b.mp3', true);
+    request2.responseType = 'arraybuffer';
+
+    request2.send();
+    request2.onload = function () {
+        source = context.createBufferSource();
+        // 読み込みが終わったら、decodeしてbufferにいれておく
+        var res2 = request2.response;
+        context.decodeAudioData(res2, function (buf) {
+            endbuffer = buf;
+        });
+    };
+};
+
 // サウンドを再生
 var playSound = function(buffer,isLoop) {  
   // source を作成
@@ -75,6 +113,8 @@ var playSound = function(buffer,isLoop) {
 getAudioBuffer("https://github.com/takke2/test/blob/master/docs/resource/shot1.mp3");
 getexBuffer("https://github.com/takke2/test/blob/master/docs/resource/explosion1.mp3");
 getBGMBuffer("https://github.com/takke2/test/blob/master/docs/resource/tw012.mp3");
+getclearBuffer("https://github.com/takke2/test/blob/master/docs/resource/st026.mp3");
+getendBuffer("https://github.com/takke2/test/blob/master/docs/resource/st010b.mp3");
 
 var myfunc = function () {
     playSound(buffer,false);
@@ -82,6 +122,14 @@ var myfunc = function () {
 
 var explay = function () {
     playSound(exbuffer,false);
+}
+
+var clearplay = function () {
+    playSound(clearbuffer,false);
+}
+
+var endplay = function () {
+    playSound(endbuffer,false);
 }
 
 var bgmplay = function () {

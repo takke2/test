@@ -65,7 +65,7 @@ var getBGMBuffer = function(url, fn) {
 
 
 // クリア 用の buffer を読み込む
-var getBGMBuffer = function(url, fn) {  
+var getclearBuffer= function(url, fn) {  
     // ファイルを取得 (arraybufferとして)
     var request2 = new XMLHttpRequest();
     request2.open('GET', '/test/resource/st026.mp3', true);
@@ -83,7 +83,7 @@ var getBGMBuffer = function(url, fn) {
 };
 
 // エンド 用の buffer を読み込む
-var getBGMBuffer = function(url, fn) {  
+var getendBuffer = function(url, fn) {  
     // ファイルを取得 (arraybufferとして)
     var request2 = new XMLHttpRequest();
     request2.open('GET', '/test/resource/st010b.mp3', true);
@@ -145,7 +145,7 @@ var explay = function () {
     playSound(exbuffer,false);
 }
 
-/*
+
 alert("aaaaa3");
 var clearplay = function () {
     playSound(clearbuffer,false);
@@ -156,7 +156,7 @@ var endplay = function () {
 }
 
 alert("aaaaa4");
-*/
+
 
 var bgmplay = function () {
     playSound(bgmbuffer,true);

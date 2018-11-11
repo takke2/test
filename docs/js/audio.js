@@ -63,7 +63,7 @@ var getBGMBuffer = function(url, fn) {
     };
 };
 
-/*
+
 // クリア 用の buffer を読み込む
 var getBGMBuffer = function(url, fn) {  
     // ファイルを取得 (arraybufferとして)
@@ -99,7 +99,7 @@ var getBGMBuffer = function(url, fn) {
         });
     };
 };
-*/
+
 
 // サウンドを再生
 var playSound = function(buffer,isLoop) {  

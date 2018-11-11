@@ -44,6 +44,7 @@ function connect(){
     
     //alert(navigator.bluetooth);
     document.getElementById("startButton").style.display ="none";
+    document.getElementById("tyosakuken").style.display ="none";
     //alert("connect ok");
     
     navigator.bluetooth.requestDevice({
@@ -347,7 +348,6 @@ function init() {
     tStart = performance.now();
     // アニメーションループ
     (function loop() {
-        window.scrollTo(0,1);
         
         text = "0,0";
         arrayBuffe = new TextEncoder("utf-8").encode(text);

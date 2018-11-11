@@ -7,7 +7,7 @@ var bgmbuffer;
 var clearbuffer;
 var endbuffer;
 
-var source2;
+//var source2;
 
 // Audio ópÇÃ buffer Çì«Ç›çûÇﬁ
 var getAudioBuffer = function(url, fn) {  
@@ -148,11 +148,11 @@ var endplay = function () {
 }
 
 var bgmplay = function () {
-    alert("aaaaa");
-    playSound2(bgmbuffer,true);
+    playSound(bgmbuffer,true);
     //getBGMBuffer("https://github.com/takke2/test/blob/master/docs/resource/tw012.mp3");
 }
-
+/*
 var bgmstop = function () {
     source2.stop();
 }
+*/

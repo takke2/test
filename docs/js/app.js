@@ -34,7 +34,11 @@ var isStart=0;
 var isGoo=0;
 var isKonami=0;
 
-window.scrollTo(0,1);
+window.onload = funtion(){
+  setTimeout(function(){
+    window.scrollTo(0,1);
+  }, 1);
+}
 
 function sleep(waitMsec) {
   var startMsec = new Date(); 
@@ -335,7 +339,7 @@ function init() {
 
     conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
     conteText2D.fillStyle = "blue";
-    conteText2D.fillText ( "11/8" , 0 , 10 , 100 );
+    conteText2D.fillText ( "11/8-1" , 0 , 10 , 100 );
     conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2 , 10 , 100 );
     conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2 , 20 , 100 );
     

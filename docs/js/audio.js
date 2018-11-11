@@ -127,11 +127,13 @@ var playSound2 = function(buffer,isLoop) {
 };
 
 
+alert("aaaaa1");
 getAudioBuffer("https://github.com/takke2/test/blob/master/docs/resource/shot1.mp3");
 getexBuffer("https://github.com/takke2/test/blob/master/docs/resource/explosion1.mp3");
 getBGMBuffer("https://github.com/takke2/test/blob/master/docs/resource/tw012.mp3");
 getclearBuffer("https://github.com/takke2/test/blob/master/docs/resource/st026.mp3");
 getendBuffer("https://github.com/takke2/test/blob/master/docs/resource/st010b.mp3");
+alert("aaaaa2");
 
 var myfunc = function () {
     playSound(buffer,false);
@@ -141,6 +143,7 @@ var explay = function () {
     playSound(exbuffer,false);
 }
 
+alert("aaaaa3");
 var clearplay = function () {
     playSound(clearbuffer,false);
 }
@@ -148,6 +151,8 @@ var clearplay = function () {
 var endplay = function () {
     playSound(endbuffer,false);
 }
+
+alert("aaaaa4");
 
 var bgmplay = function () {
     playSound2(bgmbuffer,true);

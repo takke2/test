@@ -41,7 +41,6 @@ function sleep(waitMsec) {
 
 function connect(){
     //init();
-    window.scrollTo(0,1);
     
     //alert(navigator.bluetooth);
     document.getElementById("startButton").style.display ="none";
@@ -342,6 +341,7 @@ function init() {
     var tStart=0;
     var tEnd=0;
     
+    window.scrollTo(0,1);
     sleep(3000);
     
     tStart = performance.now();

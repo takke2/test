@@ -301,7 +301,7 @@ function init() {
     var enemy = new Array(ENEMY_MAX_COUNT);
     var enemyMesh = new Array(ENEMY_MAX_COUNT);
     const enemySize = 20;
-    var earthTexture = THREE.ImageUtils.loadTexture( "./texture/earth.png" );
+    //var earthTexture = THREE.ImageUtils.loadTexture( "./texture/earth.png" );
     for(i=0; i < ENEMY_MAX_COUNT; i++){
         p.x = Math.random()*1000 - 500;
         p.y = Math.random()*1000 - 500;
@@ -311,7 +311,7 @@ function init() {
         //p.z = 100;
         enemy[i] = new Enemy();
         enemy[i].set(p, enemySize, 0.3);
-        enemyMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(enemySize), new THREE.MeshNormalMaterial());
+        enemyMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(enemySize), new THREE.MeshNormalMaterial({map:THREE.ImageUtils.loadTexture("./texture/earth.png")}));
         enemyMesh[i].position.set(enemy[i].position.x, enemy[i].position.y, enemy[i].position.z);
         scene.add(enemyMesh[i]);
     }

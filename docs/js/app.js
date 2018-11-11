@@ -34,6 +34,8 @@ var isStart=0;
 var isGoo=0;
 var isKonami=0;
 
+window.onload = function() { setTimeout(scrollTo, 100, 0, 1); }
+
 function sleep(waitMsec) {
   var startMsec = new Date(); 
   while (new Date() - startMsec < waitMsec);
@@ -42,7 +44,7 @@ function sleep(waitMsec) {
 function connect(){
     //init();
     
-    alert(navigator.bluetooth);
+    //alert(navigator.bluetooth);
     document.getElementById("startButton").style.display ="none";
     //alert("connect ok");
     
@@ -341,16 +343,7 @@ function init() {
     var tStart=0;
     var tEnd=0;
     
-    
-    conteText2D.fillText ( "3" , conteText2D.canvas.width/4 , conteText2D.canvas.height/2 , 200 );
-    conteText2D.clearRect(conteText2D.canvas.width/4, conteText2D.canvas.height/2, 200, 200);
-    sleep(1000);
-    conteText2D.fillText ( "2" , conteText2D.canvas.width/4 , conteText2D.canvas.height/2 , 200 );
-    conteText2D.clearRect(conteText2D.canvas.width/4, conteText2D.canvas.height/2, 200, 200);
-    sleep(1000);
-    conteText2D.fillText ( "1" , conteText2D.canvas.width/4 , conteText2D.canvas.height/2 , 200 );
-    conteText2D.clearRect(conteText2D.canvas.width/4, conteText2D.canvas.height/2, 200, 200);
-    sleep(1000);
+    sleep(3000);
     
     tStart = performance.now();
     // アニメーションループ

@@ -16,6 +16,7 @@ var characteristic_rx;
 var text = "0,0";
 var arrayBuffe;
 var test1=0;
+var result = "";
 
 var uuid={};
 uuid["UART_SERVICE"]                 ='6e400001-b5a3-f393-e0a9-e50e24dcca9e';
@@ -91,7 +92,7 @@ function onCharacteristicValueChanged(e) {
 	}
 	var str=String.fromCharCode.apply(null,str_arr);
 	//alert("msg:"+str);
-	var result = str.split(',');
+	result = str.split(',');
 	
 	test1 = 1;
 	
@@ -335,7 +336,7 @@ function init() {
 
     conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
     conteText2D.fillStyle = "blue";
-    conteText2D.fillText ( "11/8-2" , 0 , 10 , 100 );
+    conteText2D.fillText ( "11/27" , 0 , 10 , 100 );
     conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2 , 10 , 100 );
     conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2 , 20 , 100 );
     
@@ -366,12 +367,19 @@ function init() {
         camera.position.x += lrSpeed;
         
 
+        conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
+        conteText2D.fillText ( "result:"+result[0] , conteText2D.canvas.width/2 , 30 , 100 );
+        conteText2D.fillText ( "result:"+result[1] , conteText2D.canvas.width/2 , 40 , 100 );
+        conteText2D.fillText ( "result:"+result[2] , conteText2D.canvas.width/2 , 50 , 100 );
+        conteText2D.fillText ( "fbSpeed:"+fbSpeed , conteText2D.canvas.width/2 , 60 , 100 );
+        conteText2D.fillText ( "lrSpeed:"+lrSpeed , conteText2D.canvas.width/2 , 70 , 100 );
         
         if(isFire == 1){
-            if(counter % 10 == 0){
-                fire = true;
-                
-            }
+            //if(counter % 10 == 0){
+            //    fire = true;
+            //    
+            //}
+            fire = true;
         }
         
         for(i=0; i < CHARA_SHOT_MAX_COUNT; i++){

@@ -29,7 +29,7 @@ var cameray=0;
 var lrSpeed=0;
 var fbSpeed=0;
 
-var isFire=1;
+var isFire=0;
 var isSpecial = 0;
 var isStart=0;
 var isGoo=0;
@@ -368,11 +368,11 @@ function init() {
         
 
         conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
-        conteText2D.fillText ( "result:"+result[0] , conteText2D.canvas.width/2 , 30 , 100 );
-        conteText2D.fillText ( "result:"+result[1] , conteText2D.canvas.width/2 , 40 , 100 );
-        conteText2D.fillText ( "result:"+result[2] , conteText2D.canvas.width/2 , 50 , 100 );
-        conteText2D.fillText ( "fbSpeed:"+fbSpeed , conteText2D.canvas.width/2 , 60 , 100 );
-        conteText2D.fillText ( "lrSpeed:"+lrSpeed , conteText2D.canvas.width/2 , 70 , 100 );
+        conteText2D.fillText ( "r:"+result[0] , conteText2D.canvas.width/2-100 , 30 , 150 );
+        conteText2D.fillText ( "r:"+result[1] , conteText2D.canvas.width/2-100 , 40 , 150 );
+        conteText2D.fillText ( "r:"+result[2] , conteText2D.canvas.width/2-100 , 50 , 150 );
+        conteText2D.fillText ( "f:"+fbSpeed , conteText2D.canvas.width/2-100 , 60 , 150 );
+        conteText2D.fillText ( "l:"+lrSpeed , conteText2D.canvas.width/2-100 , 70 , 150 );
         
         if(isFire == 1){
             //if(counter % 10 == 0){

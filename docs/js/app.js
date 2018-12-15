@@ -269,7 +269,7 @@ function init() {
     );
 
     var zimengeometory = new THREE.BoxGeometry(10000, 10, 10000);
-    var zimenmesh = new THREE.Mesh(geometory, material);
+    var zimenmesh = new THREE.Mesh(zimengeometory, zimen);
     zimenmesh.position.set(0, 0, -30);
     
     scene.add(zimenmesh);

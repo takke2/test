@@ -316,10 +316,9 @@ function init() {
     for(i=0; i < ENEMY_MAX_COUNT; i++){
         p.x = Math.random()*1000 - 500;
         p.y = Math.random()*1000 - 500;
-        p.z = Math.random()*1000 - 500;
-        //p.x = 0;
-        //p.y = 0;
-        //p.z = 100;
+        //p.z = Math.random()*1000 - 500;
+        p.z = Math.random()*500;
+        
         enemy[i] = new Enemy();
         enemy[i].set(p, enemySize, 0.3);
         enemyMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(enemySize), new THREE.MeshBasicMaterial({color: 0xffffff,blending: THREE.AdditiveBlending,map:THREE.ImageUtils.loadTexture("texture/earth.png")}));

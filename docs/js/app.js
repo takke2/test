@@ -315,7 +315,7 @@ function init() {
     //var earthTexture = THREE.ImageUtils.loadTexture( "./texture/earth.png" );
     for(i=0; i < ENEMY_MAX_COUNT; i++){
         p.x = Math.random()*1000 - 500;
-        p.y = Math.random()*300 + 50;
+        p.y = Math.random()*300 + 20;
         p.z = Math.random()*1000 - 500;
         //p.z = Math.random()*200+100;
         
@@ -527,7 +527,7 @@ function init() {
             requestAnimationFrame(loop);
         }else{
             bgmstop();
-            if(hp<=0){
+            if(hp<=0 || tEnd-tStart > 90000){
                 endplay();
                 text = "0,5";
                 arrayBuffe = new TextEncoder("utf-8").encode(text);

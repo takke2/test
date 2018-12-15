@@ -317,7 +317,7 @@ function init() {
         p.x = Math.random()*1000 - 500;
         p.y = Math.random()*1000 - 500;
         //p.z = Math.random()*1000 - 500;
-        p.z = Math.random()*500;
+        p.z = Math.random()*200+100;
         
         enemy[i] = new Enemy();
         enemy[i].set(p, enemySize, 0.3);

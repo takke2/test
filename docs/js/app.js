@@ -315,8 +315,7 @@ function init() {
     //var earthTexture = THREE.ImageUtils.loadTexture( "./texture/earth.png" );
     for(i=0; i < ENEMY_MAX_COUNT; i++){
         p.x = Math.random()*1000 - 500;
-        //p.y = Math.random()*1000 - 500;
-        p.y = 100;
+        p.y = Math.random()*300 + 50;
         p.z = Math.random()*1000 - 500;
         //p.z = Math.random()*200+100;
         

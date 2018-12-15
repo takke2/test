@@ -224,6 +224,11 @@ function init() {
     cubeMap.format = THREE.RGBFormat;
     cubeMap.flipY = false;
 
+    // ÉLÉÖÅ[Éu
+    var zimen = new THREE.MeshLambertMaterial({
+        color: 0x555555
+    });
+    
     var loader = new THREE.ImageLoader();
     loader.load('texture/skyboxsun25degtest.png', function (image) {
         var getSide = function (x, y) {
@@ -263,6 +268,11 @@ function init() {
         skyboxMaterial
     );
 
+    var zimengeometory = new THREE.BoxGeometry(10000, 10, 10000);
+    var zimenmesh = new THREE.Mesh(geometory, material);
+    zimenmesh.position.set(0, 0, -30);
+    
+    scene.add(zimenmesh);
     scene.add(skybox);
 
     var ua = navigator.userAgent.toLowerCase();

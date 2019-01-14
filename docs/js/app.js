@@ -29,7 +29,7 @@ var cameray=0;
 var lrSpeed=0;
 var fbSpeed=0;
 
-var isFire=1;
+var isFire=0;
 var isSpecial = 0;
 var isStart=0;
 var isGoo=0;
@@ -394,10 +394,10 @@ function init() {
         }
         
         for(i=0; i < CHARA_SHOT_MAX_COUNT; i++){
-            //if(isSpecial){
+            if(isSpecial){
                   isSpecial = 0;
-            //    i = CHARA_SHOT_MAX_COUNT-1;
-            //}
+                i = CHARA_SHOT_MAX_COUNT-1;
+            }
             if(fire){
                 if(!charaShot[i].alive){
                     myfunc();
@@ -557,7 +557,7 @@ function init() {
 }
 
 //window.addEventListener("load", init);
-//init();
+init();
 
 function dispButton(){
     player_play();

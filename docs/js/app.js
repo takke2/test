@@ -348,13 +348,13 @@ function init() {
     var tStart=0;
     var tEnd=0;
     
-    /*
+    
     while(1){
         if(isStart==1){
             break;
         }
     }
-    */
+    
     
     sleep(3000);
     
@@ -557,7 +557,7 @@ function init() {
 }
 
 //window.addEventListener("load", init);
-connect();
+//connect();
 
 function dispButton(){
     player_play();

@@ -29,7 +29,7 @@ var cameray=0;
 var lrSpeed=0;
 var fbSpeed=0;
 
-var isFire=0;
+var isFire=1;
 var isSpecial = 0;
 var isStart=0;
 var isGoo=0;
@@ -179,13 +179,6 @@ function init() {
     var width  = window.innerWidth;
     var height = window.innerHeight;
     
-    /*
-    while(1){
-        if(isStart==1){
-            break;
-        }
-    }
-    */
     
     // ÉJÉÅÉâ
     var camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100000);
@@ -302,7 +295,7 @@ function init() {
     for(i = 0; i < CHARA_SHOT_MAX_COUNT; i++){
         charaShot[i] = new CharacterShot();
         if(i == CHARA_SHOT_MAX_COUNT-1){
-            charaShotMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(specialSize), new THREE.MeshPhongMaterial({color : 0xaa0000,specular: 0x999999,shininess: 80}));
+            charaShotMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(specialSize), new THREE.MeshPhongMaterial({map : "texture/alpha.png" , color : 0xaa0000,specular: 0x999999,shininess: 80}));
         }else{
             charaShotMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(charaShotSize), new THREE.MeshPhongMaterial({color : 0xaaaaaa,specular: 0xffffff,shininess: 30}));
         }
@@ -345,7 +338,7 @@ function init() {
 
     conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
     conteText2D.fillStyle = "blue";
-    conteText2D.fillText ( "11/27" , 0 , 10 , 100 );
+    conteText2D.fillText ( "1/14" , 0 , 10 , 100 );
     conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2 , 10 , 100 );
     conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2 , 20 , 100 );
     
@@ -353,6 +346,13 @@ function init() {
     var tStart=0;
     var tEnd=0;
     
+    /*
+    while(1){
+        if(isStart==1){
+            break;
+        }
+    }
+    */
     
     sleep(3000);
     

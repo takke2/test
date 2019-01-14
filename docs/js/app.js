@@ -557,7 +557,7 @@ function init() {
 }
 
 //window.addEventListener("load", init);
-init();
+connect();
 
 function dispButton(){
     player_play();

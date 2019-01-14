@@ -295,7 +295,8 @@ function init() {
     for(i = 0; i < CHARA_SHOT_MAX_COUNT; i++){
         charaShot[i] = new CharacterShot();
         if(i == CHARA_SHOT_MAX_COUNT-1){
-            charaShotMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(specialSize), new THREE.MeshPhongMaterial({map : "texture/alpha.png" , color : 0xaa0000,specular: 0x999999,shininess: 80}));
+            //charaShotMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(specialSize), new THREE.MeshPhongMaterial({map : "texture/alpha.png" , color : 0xaa0000,specular: 0x999999,shininess: 80}));
+            charaShotMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(specialSize), new THREE.MeshPhongMaterial({color : 0xaa0000,specular: 0x999999,shininess: 80}));
         }else{
             charaShotMesh[i] = new THREE.Mesh(new THREE.SphereGeometry(charaShotSize), new THREE.MeshPhongMaterial({color : 0xaaaaaa,specular: 0xffffff,shininess: 30}));
         }

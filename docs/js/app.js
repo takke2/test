@@ -348,17 +348,9 @@ function init() {
     var tStart=0;
     var tEnd=0;
     
-    
-    while(1){
-        if(isStart==1){
-            break;
-        }
-    }
-    
-    
     sleep(3000);
     
-    tStart = performance.now();
+    
     // アニメーションループ
     (function loop() {
         
@@ -366,146 +358,130 @@ function init() {
         arrayBuffe = new TextEncoder("utf-8").encode(text);
         characteristic_rx.writeValue(arrayBuffe);
                         
-        counter++;
-        
-        var radian = (counter/10) * Math.PI / 180;
-        //camera.lookAt(new THREE.Vector3(camera.position.x, camera.position.y, camera.position.z));
-        //camera.position.x = 1000 * Math.sin(radian);
-        //camera.position.z = 1000 * Math.cos(radian);
-        
-        
-        camera.position.y += fbSpeed;
-        camera.position.x += lrSpeed;
-        
+        if(isStart==1){
 
-        conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
-        conteText2D.fillText ( "r:"+result[0] , conteText2D.canvas.width/2-100 , 30 , 150 );
-        conteText2D.fillText ( "r:"+result[1] , conteText2D.canvas.width/2-100 , 40 , 150 );
-        conteText2D.fillText ( "r:"+result[2] , conteText2D.canvas.width/2-100 , 50 , 150 );
-        conteText2D.fillText ( "f:"+fbSpeed , conteText2D.canvas.width/2-100 , 60 , 150 );
-        conteText2D.fillText ( "l:"+lrSpeed , conteText2D.canvas.width/2-100 , 70 , 150 );
-        
-        if(isFire == 1){
-            //if(counter % 10 == 0){
-            //    fire = true;
-            //    
-            //}
-            fire = true;
-        }
-        
-        for(i=0; i < CHARA_SHOT_MAX_COUNT; i++){
-            if(isSpecial){
-                  isSpecial = 0;
-                i = CHARA_SHOT_MAX_COUNT-1;
-            }
-            if(fire){
-                if(!charaShot[i].alive){
-                    myfunc();
-                    var forwardVec4 = forward.applyMatrix4(camera.matrix);
-                    forwardVec4.normalize();
-                    
-                    
-                    if(i==CHARA_SHOT_MAX_COUNT-1){
-                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 10);
-                        text = "0,2";
-                        arrayBuffe = new TextEncoder("utf-8").encode(text);
-                        characteristic_rx.writeValue(arrayBuffe);
-                    }else{
-                        charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 5);
-                        text = "0,1";
-                        arrayBuffe = new TextEncoder("utf-8").encode(text);
-                        characteristic_rx.writeValue(arrayBuffe);
-                    }
-                    charaShotMesh[i].position.set(charaShot[i].position.x, charaShot[i].position.y,charaShot[i].position.z);
-                    
-                    scene.add(charaShotMesh[i]);
+            camera.position.y += fbSpeed;
+            camera.position.x += lrSpeed;
+            
 
-                    break;
-                }
-                
-            }
-        }
-        
-        fire = false;
-        
-        for(i=0; i < CHARA_SHOT_MAX_COUNT; i++){
-            if(charaShot[i].alive){
-                charaShot[i].move();
-                charaShotMesh[i].position.set(charaShot[i].position.x,charaShot[i].position.y,charaShot[i].position.z);
+            conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
+            conteText2D.fillText ( "r:"+result[0] , conteText2D.canvas.width/2-100 , 30 , 150 );
+            conteText2D.fillText ( "r:"+result[1] , conteText2D.canvas.width/2-100 , 40 , 150 );
+            conteText2D.fillText ( "r:"+result[2] , conteText2D.canvas.width/2-100 , 50 , 150 );
+            conteText2D.fillText ( "f:"+fbSpeed , conteText2D.canvas.width/2-100 , 60 , 150 );
+            conteText2D.fillText ( "l:"+lrSpeed , conteText2D.canvas.width/2-100 , 70 , 150 );
+            
+            if(isFire == 1){
+                fire = true;
             }
             
-            if(!charaShot[i].alive){
-                scene.remove(charaShotMesh[i]);
-            }
-        }
-        
-        for(i=0; i < ENEMY_MAX_COUNT; i++){
-            if(enemy[i].alive){
-                p = enemy[i].position.distance(camera.position);
-                /*
-                var radian = (counter%360) * Math.PI / 180;
-                if(test1==1){
-                    //alert("msg:");
-                    //enemy[i].position.x = (p.length() * Math.sin(radian));
-                    //enemy[i].position.z = (p.length() * Math.cos(radian));
-                    //test1=0;
+            for(i=0; i < CHARA_SHOT_MAX_COUNT; i++){
+                if(isSpecial){
+                      isSpecial = 0;
+                    i = CHARA_SHOT_MAX_COUNT-1;
                 }
-                */
-                p.normalize();
-                enemy[i].move(p);
-                
-                enemyMesh[i].position.set(enemy[i].position.x,enemy[i].position.y,enemy[i].position.z);
-                
-                
-                
-                ps = enemy[i].position.distance(camera.position);
-                if(ps.length() < enemy[i].size + 1){
-                    enemy[i].alive = false;
-                    enemy_count = enemy_count-1;
-                    scene.remove(enemyMesh[i]);
-                    if(isGoo==0 && isKonami==0){
-                        hp = hp - 1;
-                    }
-                    conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
-                    conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2 , 10 , 100 );
-                    conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2 , 20 , 100 );
-                    text = "0,4";
-                    arrayBuffe = new TextEncoder("utf-8").encode(text);
-                    characteristic_rx.writeValue(arrayBuffe);
-                }
-            }
-        }
-        
-        for(i=0;i < CHARA_SHOT_MAX_COUNT; i++){
-            if(charaShot[i].alive){
-                for(j=0; j< ENEMY_MAX_COUNT; j++){
-                    if(enemy[j].alive){
-                        p = enemy[j].position.distance(charaShot[i].position);
-                        sabun = charaShotSize;
+                if(fire){
+                    if(!charaShot[i].alive){
+                        myfunc();
+                        var forwardVec4 = forward.applyMatrix4(camera.matrix);
+                        forwardVec4.normalize();
+                        
+                        
                         if(i==CHARA_SHOT_MAX_COUNT-1){
-                            sabun = specialSize;
-                        }
-                        
-                        if(p.length() < enemy[j].size+sabun){
-                        
-                            text = "0,3";
+                            charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 10);
+                            text = "0,2";
                             arrayBuffe = new TextEncoder("utf-8").encode(text);
                             characteristic_rx.writeValue(arrayBuffe);
+                        }else{
+                            charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 5);
+                            text = "0,1";
+                            arrayBuffe = new TextEncoder("utf-8").encode(text);
+                            characteristic_rx.writeValue(arrayBuffe);
+                        }
+                        charaShotMesh[i].position.set(charaShot[i].position.x, charaShot[i].position.y,charaShot[i].position.z);
                         
-                            enemy[j].alive = false;
-                            enemy_count = enemy_count-1;
-                            conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
-                            conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2 , 10 , 100 );
-                            conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2 , 20 , 100 );
-                            scene.remove(enemyMesh[j]);
-                            charaShot[i].alive = false;
-                            explay();
-                            effekseer.play(effects['Laser01'], charaShot[i].position.x,charaShot[i].position.y,charaShot[i].position.z);
-                            break;
+                        scene.add(charaShotMesh[i]);
+
+                        break;
+                    }
+                    
+                }
+            }
+            
+            fire = false;
+            
+            for(i=0; i < CHARA_SHOT_MAX_COUNT; i++){
+                if(charaShot[i].alive){
+                    charaShot[i].move();
+                    charaShotMesh[i].position.set(charaShot[i].position.x,charaShot[i].position.y,charaShot[i].position.z);
+                }
+                
+                if(!charaShot[i].alive){
+                    scene.remove(charaShotMesh[i]);
+                }
+            }
+            
+            for(i=0; i < ENEMY_MAX_COUNT; i++){
+                if(enemy[i].alive){
+                    p = enemy[i].position.distance(camera.position);
+                    p.normalize();
+                    enemy[i].move(p);
+                    
+                    enemyMesh[i].position.set(enemy[i].position.x,enemy[i].position.y,enemy[i].position.z);
+                    
+                    
+                    
+                    ps = enemy[i].position.distance(camera.position);
+                    if(ps.length() < enemy[i].size + 1){
+                        enemy[i].alive = false;
+                        enemy_count = enemy_count-1;
+                        scene.remove(enemyMesh[i]);
+                        if(isGoo==0 && isKonami==0){
+                            hp = hp - 1;
+                        }
+                        conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
+                        conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2 , 10 , 100 );
+                        conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2 , 20 , 100 );
+                        text = "0,4";
+                        arrayBuffe = new TextEncoder("utf-8").encode(text);
+                        characteristic_rx.writeValue(arrayBuffe);
+                    }
+                }
+            }
+            
+            for(i=0;i < CHARA_SHOT_MAX_COUNT; i++){
+                if(charaShot[i].alive){
+                    for(j=0; j< ENEMY_MAX_COUNT; j++){
+                        if(enemy[j].alive){
+                            p = enemy[j].position.distance(charaShot[i].position);
+                            sabun = charaShotSize;
+                            if(i==CHARA_SHOT_MAX_COUNT-1){
+                                sabun = specialSize;
+                            }
+                            
+                            if(p.length() < enemy[j].size+sabun){
+                            
+                                text = "0,3";
+                                arrayBuffe = new TextEncoder("utf-8").encode(text);
+                                characteristic_rx.writeValue(arrayBuffe);
+                            
+                                enemy[j].alive = false;
+                                enemy_count = enemy_count-1;
+                                conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
+                                conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2 , 10 , 100 );
+                                conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2 , 20 , 100 );
+                                scene.remove(enemyMesh[j]);
+                                charaShot[i].alive = false;
+                                explay();
+                                effekseer.play(effects['Laser01'], charaShot[i].position.x,charaShot[i].position.y,charaShot[i].position.z);
+                                break;
+                            }
                         }
                     }
                 }
             }
+        }else{
+            tStart = performance.now();
         }
         
         vrControls.update();

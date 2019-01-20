@@ -355,8 +355,8 @@ function init() {
     (function loop() {
         
         text = "0,0";
-        arrayBuffe = new TextEncoder("utf-8").encode(text);
-        characteristic_rx.writeValue(arrayBuffe);
+        //arrayBuffe = new TextEncoder("utf-8").encode(text);
+        //characteristic_rx.writeValue(arrayBuffe);
                         
         if(isStart==1){
 

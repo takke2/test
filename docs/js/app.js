@@ -360,7 +360,7 @@ function init() {
                   
                   
         isStart = 1;
-        lrSpeed = 2;
+        fbSpeed = 2;
         
         if(isStart==1){
 

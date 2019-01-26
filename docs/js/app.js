@@ -377,17 +377,18 @@ function init() {
             conteText2D.fillText ( "r:"+result[2] , conteText2D.canvas.width/2-100 , 50 , 150 );
             conteText2D.fillText ( "f:"+fbSpeed , conteText2D.canvas.width/2-100 , 60 , 150 );
             conteText2D.fillText ( "l:"+lrSpeed , conteText2D.canvas.width/2-100 , 70 , 150 );
+            conteText2D.fillText ( "counter:"+counter , conteText2D.canvas.width/2-100 , 80 , 150 );
             
-            if(isFire == 1){
-                fire = true;
-            }
+            //if(isFire == 1){
+            //    fire = true;
+            //}
             
             for(i=0; i < CHARA_SHOT_MAX_COUNT; i++){
                 if(isSpecial){
                       isSpecial = 0;
                     i = CHARA_SHOT_MAX_COUNT-1;
                 }
-                if(fire){
+                if(isFire==1){
                     if(!charaShot[i].alive){
                         myfunc();
                         var forwardVec4 = forward.applyMatrix4(camera.matrix);
@@ -415,7 +416,7 @@ function init() {
                 }
             }
             
-            fire = false;
+            isFire = 0;
             
             for(i=0; i < CHARA_SHOT_MAX_COUNT; i++){
                 if(charaShot[i].alive){

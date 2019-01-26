@@ -358,6 +358,7 @@ function init() {
         //arrayBuffe = new TextEncoder("utf-8").encode(text);
         //characteristic_rx.writeValue(arrayBuffe);
         
+        isStart = 1;
         counter+=1;
         
         if(counter % 10 == 0){

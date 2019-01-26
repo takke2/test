@@ -364,7 +364,7 @@ function init() {
         
         if(isStart==1){
 
-            camera.position.z += fbSpeed;
+            camera.position.z -= fbSpeed;
             camera.position.x += lrSpeed;
             
 

@@ -357,10 +357,12 @@ function init() {
         text = "0,0";
         //arrayBuffe = new TextEncoder("utf-8").encode(text);
         //characteristic_rx.writeValue(arrayBuffe);
-                  
-                  
-        isStart = 1;
-        fbSpeed = 2;
+        
+        counter+=1;
+        
+        if(counter % 10 == 0){
+            isFire = 1;
+        }
         
         if(isStart==1){
 

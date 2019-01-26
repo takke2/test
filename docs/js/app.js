@@ -357,7 +357,11 @@ function init() {
         text = "0,0";
         //arrayBuffe = new TextEncoder("utf-8").encode(text);
         //characteristic_rx.writeValue(arrayBuffe);
-                        
+                  
+                  
+        isStart = 1;
+        lrSpeed = 2;
+        
         if(isStart==1){
 
             camera.position.x += fbSpeed;

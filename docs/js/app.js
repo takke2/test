@@ -364,8 +364,8 @@ function init() {
         
         if(isStart==1){
 
-            camera.position.x += fbSpeed;
-            camera.position.z += lrSpeed;
+            camera.position.z += fbSpeed;
+            camera.position.x += lrSpeed;
             
 
             conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);

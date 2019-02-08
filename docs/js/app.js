@@ -350,6 +350,8 @@ function init() {
     
     sleep(3000);
     
+    var forward = new THREE.Vector4(0, 0, -1, 0);
+    var turn = new THREE.Vector4(1, 0, 0, 0);
     
     // アニメーションループ
     (function loop() {
@@ -369,8 +371,16 @@ function init() {
         
         if(isStart==1){
 
-            camera.position.z -= fbSpeed;
-            camera.position.x += lrSpeed;
+            forward.applyMatrix4(camera.matrix).normalize();
+            forward.multiplyScalar(fbSpeed);
+            camera.position.add(forward);
+            
+            turn.applyMatrix4(camera.matrix).normalize();
+            turn.multiplyScalar(lrSpeed);
+            camera.position.add(turn);
+            
+            //camera.position.z -= fbSpeed;
+            //camera.position.x += lrSpeed;
             
 
             conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);

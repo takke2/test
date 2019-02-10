@@ -350,8 +350,9 @@ function init() {
     
     sleep(3000);
     
-    var forward = new THREE.Vector4(0, 0, -1, 0);
-    var turn = new THREE.Vector4(1, 0, 0, 0);
+    var forward = new THREE.Vector4(0, 0, -1,0);
+    var turn = new THREE.Vector4(1, 0, 0,0);
+    var dir = new THREE.Vector3(); 
     
     // アニメーションループ
     (function loop() {
@@ -371,13 +372,21 @@ function init() {
         
         if(isStart==1){
 
-            forward.applyMatrix4(camera.matrix).normalize();
+            
+            forward.applyMatrix4(camera.matrixWorld).normalize();
             forward.multiplyScalar(fbSpeed);
             camera.position.add(forward);
             
-            turn.applyMatrix4(camera.matrix).normalize();
+            turn.applyMatrix4(camera.matrixWorld).normalize();
             turn.multiplyScalar(lrSpeed);
             camera.position.add(turn);
+            
+            //forward = new THREE.Vector3(0, 0, -1);
+            //turn = new THREE.Vector3(1, 0, 0);
+            //dir.copy(forward).transformDirection(camera.matrixWorld).normalize().multiplyScalar(fbSpeed); 
+            //camera.position.add(dir);
+            //dir.copy(turn).transformDirection(camera.matrixWorld).normalize().multiplyScalar(lrSpeed); 
+            //camera.position.add(dir);
             
             //camera.position.z -= fbSpeed;
             //camera.position.x += lrSpeed;

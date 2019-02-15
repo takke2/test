@@ -1,6 +1,7 @@
 var fire = false;
 var counter = 0;
 var effects = {};
+var auto = 0;
 
 var CHARA_SHOT_COLOR = 'rgba(0, 0, 255, 0.75)';
 var CHARA_SHOT_MAX_COUNT = 10;
@@ -40,12 +41,21 @@ function sleep(waitMsec) {
   while (new Date() - startMsec < waitMsec);
 }
 
+function connect2(){
+    auto = 1;
+    document.getElementById("startButton").style.display ="none";
+    document.getElementById("tyosakuken").style.display ="none";
+    document.getElementById("startButtonAuto").style.display ="none";
+    init();
+}
+
 function connect(){
     //init();
     
     //alert(navigator.bluetooth);
     document.getElementById("startButton").style.display ="none";
     document.getElementById("tyosakuken").style.display ="none";
+    document.getElementById("startButtonAuto").style.display ="none";
     //alert("connect ok");
     
     navigator.bluetooth.requestDevice({
@@ -361,14 +371,14 @@ function init() {
         //arrayBuffe = new TextEncoder("utf-8").encode(text);
         //characteristic_rx.writeValue(arrayBuffe);
         
-        /*
-        isStart = 1;
-        counter+=1;
+        if(auto==1){
+            isStart = 1;
+            counter+=1;
         
-        if(counter % 10 == 0){
-            isFire = 1;
+            if(counter % 10 == 0){
+                isFire = 1;
+            }
         }
-        */
         
         if(isStart==1){
 
@@ -420,12 +430,16 @@ function init() {
                             charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 10);
                             text = "0,2";
                             arrayBuffe = new TextEncoder("utf-8").encode(text);
-                            characteristic_rx.writeValue(arrayBuffe);
+                            if(auto==1){
+                                characteristic_rx.writeValue(arrayBuffe);
+                            }
                         }else{
                             charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 5);
                             text = "0,1";
                             arrayBuffe = new TextEncoder("utf-8").encode(text);
-                            characteristic_rx.writeValue(arrayBuffe);
+                            if(auto==1){
+                                characteristic_rx.writeValue(arrayBuffe);
+                            }
                         }
                         charaShotMesh[i].position.set(charaShot[i].position.x, charaShot[i].position.y,charaShot[i].position.z);
                         
@@ -473,7 +487,9 @@ function init() {
                         conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2 , 20 , 100 );
                         text = "0,4";
                         arrayBuffe = new TextEncoder("utf-8").encode(text);
-                        characteristic_rx.writeValue(arrayBuffe);
+                        if(auto==1){
+                            characteristic_rx.writeValue(arrayBuffe);
+                        }
                     }
                 }
             }
@@ -492,7 +508,9 @@ function init() {
                             
                                 text = "0,3";
                                 arrayBuffe = new TextEncoder("utf-8").encode(text);
-                                characteristic_rx.writeValue(arrayBuffe);
+                                if(auto==1){
+                                    characteristic_rx.writeValue(arrayBuffe);
+                                }
                             
                                 enemy[j].alive = false;
                                 enemy_count = enemy_count-1;
@@ -538,7 +556,9 @@ function init() {
                 endplay();
                 text = "0,5";
                 arrayBuffe = new TextEncoder("utf-8").encode(text);
-                characteristic_rx.writeValue(arrayBuffe);
+                if(auto==1){
+                    characteristic_rx.writeValue(arrayBuffe);
+                }
                 alert("game over!");
             }
             if(enemy_count<=0){

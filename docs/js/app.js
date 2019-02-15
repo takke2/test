@@ -430,14 +430,14 @@ function init() {
                             charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 10);
                             text = "0,2";
                             arrayBuffe = new TextEncoder("utf-8").encode(text);
-                            if(auto==1){
+                            if(auto==0){
                                 characteristic_rx.writeValue(arrayBuffe);
                             }
                         }else{
                             charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 5);
                             text = "0,1";
                             arrayBuffe = new TextEncoder("utf-8").encode(text);
-                            if(auto==1){
+                            if(auto==0){
                                 characteristic_rx.writeValue(arrayBuffe);
                             }
                         }
@@ -487,7 +487,7 @@ function init() {
                         conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2 , 20 , 100 );
                         text = "0,4";
                         arrayBuffe = new TextEncoder("utf-8").encode(text);
-                        if(auto==1){
+                        if(auto==0){
                             characteristic_rx.writeValue(arrayBuffe);
                         }
                     }
@@ -508,7 +508,7 @@ function init() {
                             
                                 text = "0,3";
                                 arrayBuffe = new TextEncoder("utf-8").encode(text);
-                                if(auto==1){
+                                if(auto==0){
                                     characteristic_rx.writeValue(arrayBuffe);
                                 }
                             
@@ -556,7 +556,7 @@ function init() {
                 endplay();
                 text = "0,5";
                 arrayBuffe = new TextEncoder("utf-8").encode(text);
-                if(auto==1){
+                if(auto==0){
                     characteristic_rx.writeValue(arrayBuffe);
                 }
                 alert("game over!");

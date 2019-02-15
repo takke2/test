@@ -350,7 +350,7 @@ function init() {
 
     conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
     conteText2D.fillStyle = "blue";
-    conteText2D.fillText ( "1/14" , 0 , 10 , 100 );
+    //conteText2D.fillText ( "1/14" , 0 , 10 , 100 );
     conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2 , 10 , 100 );
     conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2 , 20 , 100 );
     
@@ -381,18 +381,7 @@ function init() {
         }
         
         if(isStart==1){
-
-            
-            //forward.applyMatrix4(camera.matrixWorld).normalize();
-            //forward.multiplyScalar(fbSpeed);
-            //camera.position.add(forward);
-            
-            //turn.applyMatrix4(camera.matrixWorld).normalize();
-            //turn.multiplyScalar(lrSpeed);
-            //camera.position.add(turn);
-            
-            //forward = new THREE.Vector3(0, 0, -1);
-            //turn = new THREE.Vector3(1, 0, 0);
+        
             dir.copy(forward).transformDirection(camera.matrixWorld).normalize().multiplyScalar(fbSpeed); 
             camera.position.add(dir);
             dir.copy(turn).transformDirection(camera.matrixWorld).normalize().multiplyScalar(lrSpeed); 
@@ -401,7 +390,7 @@ function init() {
             //camera.position.z -= fbSpeed;
             //camera.position.x += lrSpeed;
             
-
+            /*
             conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
             conteText2D.fillText ( "r:"+result[0] , conteText2D.canvas.width/2-100 , 30 , 150 );
             conteText2D.fillText ( "r:"+result[1] , conteText2D.canvas.width/2-100 , 40 , 150 );
@@ -409,6 +398,7 @@ function init() {
             conteText2D.fillText ( "f:"+fbSpeed , conteText2D.canvas.width/2-100 , 60 , 150 );
             conteText2D.fillText ( "l:"+lrSpeed , conteText2D.canvas.width/2-100 , 70 , 150 );
             conteText2D.fillText ( "counter:"+counter , conteText2D.canvas.width/2-100 , 80 , 150 );
+            */
             
             //if(isFire == 1){
             //    fire = true;
@@ -483,8 +473,8 @@ function init() {
                             hp = hp - 1;
                         }
                         conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
-                        conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2 , 10 , 100 );
-                        conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2 , 20 , 100 );
+                        conteText2D.fillText ( "hp:"+ hp , conteText2D.canvas.width/2 , 10 , 100 );
+                        conteText2D.fillText ( "e:"+ enemy_count , conteText2D.canvas.width/2 , 20 , 100 );
                         text = "0,4";
                         arrayBuffe = new TextEncoder("utf-8").encode(text);
                         if(auto==0){

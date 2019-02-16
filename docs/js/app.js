@@ -18,7 +18,6 @@ var text = "0,0";
 var arrayBuffe;
 var test1=0;
 var result = "";
-var lasttime = 90000;
 
 var uuid={};
 uuid["UART_SERVICE"]                 ='6e400001-b5a3-f393-e0a9-e50e24dcca9e';
@@ -229,7 +228,7 @@ function init() {
     cubeMap.flipY = false;
 
     // ÉLÉÖÅ[Éu
-    var zimen = new THREE.MeshLambertMaterial({
+    var zimen = new THREE.MeshLambertMaterial({color : 0x0000aa,transparent : true,blending:THREE.NormalBlending,opacity:0.5,
         map:THREE.ImageUtils.loadTexture("texture/sand2.jpg")
     });
     
@@ -272,7 +271,7 @@ function init() {
         skyboxMaterial
     );
 
-    var zimengeometory = new THREE.BoxGeometry(10000, 10, 10000);
+    var zimengeometory = new THREE.BoxGeometry(10000, 10000, 10000);
     var zimenmesh = new THREE.Mesh(zimengeometory, zimen);
     zimenmesh.position.set(0, -30, -30);
     
@@ -354,7 +353,7 @@ function init() {
     //conteText2D.fillText ( "1/14" , 0 , 10 , 100 );
     conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2-10 , 10 , 100 );
     conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2-10 , 20 , 100 );
-    conteText2D.fillText ( "time:"+(lasttime/1000) , conteText2D.canvas.width/2-10 , 30 , 100 );
+    conteText2D.fillText ( "time:"+(90) , conteText2D.canvas.width/2-10 , 30 , 100 );
     
     bgmplay();
     var tStart=0;

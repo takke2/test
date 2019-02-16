@@ -233,6 +233,7 @@ function init() {
         color : 0x0000aa,
         transparent:true,
         side: THREE.DoubleSide,
+        blending:THREE.NormalBlending,
     });
     //zimen.side = THREE.DoubleSide;
     

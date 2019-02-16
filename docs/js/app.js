@@ -229,7 +229,7 @@ function init() {
 
     // ÉLÉÖÅ[Éu
     var zimen = new THREE.MeshLambertMaterial({
-        map:THREE.ImageUtils.loadTexture("texture/sand2.jpg")
+        map:THREE.ImageUtils.loadTexture("texture/sand2.jpg"),
         //color : 0x0000aa,
         transparent:true,
         side: THREE.DoubleSide,

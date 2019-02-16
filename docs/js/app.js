@@ -555,13 +555,13 @@ function init() {
             effekseer.draw();
         } );
         
-        tEnd = performance.now();
+        tEnd = performance.now() - tStart;
         
-        if(hp>0 && tEnd-tStart < 90000 && enemy_count>0){
+        if(hp>0 && tEnd< 90000 && enemy_count>0){
             requestAnimationFrame(loop);
         }else{
             bgmstop();
-            if(hp<=0 || tEnd-tStart > 90000){
+            if(hp<=0 || tEnd> 90000){
                 endplay();
                 text = "0,5";
                 arrayBuffe = new TextEncoder("utf-8").encode(text);

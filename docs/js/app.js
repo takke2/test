@@ -228,7 +228,7 @@ function init() {
     cubeMap.flipY = false;
 
     // ÉLÉÖÅ[Éu
-    var zimen = new THREE.MeshLambertMaterial({color : 0x0000aa,transparent : false,blending:THREE.NormalBlending,opacity:0.5,
+    var zimen = new THREE.MeshLambertMaterial({
         map:THREE.ImageUtils.loadTexture("texture/sand2.jpg")
     });
     

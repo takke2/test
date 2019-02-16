@@ -224,11 +224,11 @@ function init() {
 
     // Skybox
     var cubeMap = new THREE.CubeTexture([]);
-    cubeMap.format = THREE.RGBFormat;
+    cubeMap.format = THREE.RGBFormat;	
     cubeMap.flipY = false;
 
     // ÉLÉÖÅ[Éu
-    var zimen = new THREE.MeshLambertMaterial({color : 0x0000aa,transparent : true,blending:THREE.NormalBlending,opacity:0.5,
+    var zimen = new THREE.MeshLambertMaterial({color : 0x0000aa,transparent : false,blending:THREE.NormalBlending,opacity:0.5,
         map:THREE.ImageUtils.loadTexture("texture/sand2.jpg")
     });
     

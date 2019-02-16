@@ -280,7 +280,7 @@ function init() {
     zimenmesh.position.set(0, -30, -30);
     
     scene.add(zimenmesh);
-    scene.add(skybox);
+    //scene.add(skybox);
 
     var ua = navigator.userAgent.toLowerCase();
     var isSmartphone = !!(~ua.indexOf('iphone') ||

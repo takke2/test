@@ -271,9 +271,9 @@ function init() {
         skyboxMaterial
     );
 
-    var zimengeometory = new THREE.BoxGeometry(10000, 10, 10000);
+    var zimengeometory = new THREE.BoxGeometry(10000, 100, 10000);
     var zimenmesh = new THREE.Mesh(zimengeometory, zimen);
-    zimenmesh.position.set(0, -12030, -30);
+    zimenmesh.position.set(0, -30, -30);
     
     scene.add(zimenmesh);
     scene.add(skybox);

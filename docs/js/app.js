@@ -229,13 +229,13 @@ function init() {
 
     // ÉLÉÖÅ[Éu
     var zimen = new THREE.MeshLambertMaterial({
-        //map:THREE.ImageUtils.loadTexture("texture/sand2.jpg")
-        color : 0x0000aa,
+        map:THREE.ImageUtils.loadTexture("texture/sand2.jpg")
+        //color : 0x0000aa,
         transparent:true,
         side: THREE.DoubleSide,
         blending:THREE.NormalBlending,
     });
-    //zimen.side = THREE.DoubleSide;
+    
     
     var loader = new THREE.ImageLoader();
     loader.load('texture/skyboxsun25degtest.png', function (image) {
@@ -281,7 +281,7 @@ function init() {
     zimenmesh.position.set(0, -30, -30);
     
     scene.add(zimenmesh);
-    //scene.add(skybox);
+    scene.add(skybox);
 
     var ua = navigator.userAgent.toLowerCase();
     var isSmartphone = !!(~ua.indexOf('iphone') ||

@@ -398,13 +398,12 @@ function init() {
             keika = Math.floor(tEnd/1000);
             if(lastkeika<keika){
                 lastkeika = keika;
-                /*
+                
                 conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
                 conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2-10 , 10 , 100 );
                 conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2-10 , 20 , 100 );
-                conteText2D.fillText ( "time:"+90-Math.floor(tEnd/1000) , conteText2D.canvas.width/2-10 , 30 , 100 );
-                */
-                conteText2D.fillText ( "r:"+lastkeika , conteText2D.canvas.width/2-100 , 40 , 150 );
+                conteText2D.fillText ( "time:"+lastkeika , conteText2D.canvas.width/2-10 , 30 , 100 );
+                
             }
             
             /*

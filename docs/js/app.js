@@ -189,6 +189,7 @@ function init() {
     var width  = window.innerWidth;
     var height = window.innerHeight;
     
+    var lasttime = 90;
     
     // ÉJÉÅÉâ
     var camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 100000);
@@ -351,12 +352,13 @@ function init() {
     conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
     conteText2D.fillStyle = "blue";
     //conteText2D.fillText ( "1/14" , 0 , 10 , 100 );
-    conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2 -30, 10 , 100 );
-    conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2-30 , 20 , 100 );
+    conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2 -15, 10 , 100 );
+    conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2-15 , 20 , 100 );
+    conteText2D.fillText ( "time:"+ lasttime , conteText2D.canvas.width/2-15 , 30 , 100 );
     
     bgmplay();
-    var tStart=0;
-    var tEnd=0;
+    var tStart=1;
+    var tEnd=1;
     
     sleep(3000);
     
@@ -390,6 +392,11 @@ function init() {
             //camera.position.z -= fbSpeed;
             //camera.position.x += lrSpeed;
             
+            if(tEnd-tStart%1000=0){
+                conteText2D.clearRect(0, 30, conteText2D.canvas.width, conteText2D.canvas.height);
+                conteText2D.fillText ( "time:"+ lasttime-(tEnd-tStart/1000) , conteText2D.canvas.width/2-15 , 30 , 100 );
+            }
+            
             /*
             conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
             conteText2D.fillText ( "r:"+result[0] , conteText2D.canvas.width/2-100 , 30 , 150 );
@@ -399,10 +406,7 @@ function init() {
             conteText2D.fillText ( "l:"+lrSpeed , conteText2D.canvas.width/2-100 , 70 , 150 );
             conteText2D.fillText ( "counter:"+counter , conteText2D.canvas.width/2-100 , 80 , 150 );
             */
-            
-            //if(isFire == 1){
-            //    fire = true;
-            //}
+
             
             for(i=0; i < CHARA_SHOT_MAX_COUNT; i++){
                 if(isSpecial){
@@ -473,8 +477,8 @@ function init() {
                             hp = hp - 1;
                         }
                         conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
-                        conteText2D.fillText ( "hp:"+ hp , conteText2D.canvas.width/2 -30 , 10 , 100 );
-                        conteText2D.fillText ( "e:"+ enemy_count , conteText2D.canvas.width/2 -30, 20 , 100 );
+                        conteText2D.fillText ( "hp:"+ hp , conteText2D.canvas.width/2 -15 , 10 , 100 );
+                        conteText2D.fillText ( "e:"+ enemy_count , conteText2D.canvas.width/2 -15, 20 , 100 );
                         text = "0,4";
                         arrayBuffe = new TextEncoder("utf-8").encode(text);
                         if(auto==0){
@@ -505,8 +509,8 @@ function init() {
                                 enemy[j].alive = false;
                                 enemy_count = enemy_count-1;
                                 conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
-                                conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2-30 , 10 , 100 );
-                                conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2-30 , 20 , 100 );
+                                conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2-15 , 10 , 100 );
+                                conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2-15 , 20 , 100 );
                                 scene.remove(enemyMesh[j]);
                                 charaShot[i].alive = false;
                                 explay();

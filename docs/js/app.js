@@ -360,6 +360,7 @@ function init() {
     var tStart=0;
     var tEnd=1;
     var keika = 0;
+    var lastkeika = 0;
     
     sleep(3000);
     
@@ -393,9 +394,13 @@ function init() {
             //camera.position.z -= fbSpeed;
             //camera.position.x += lrSpeed;
             
-            if(tEnd-tStart%1000==0){
-                keika = tEnd-tStart%1000;
-                conteText2D.fillText ( "time:"+(lasttime/1000)-keika , conteText2D.canvas.width/2-10 , 30 , 100 );
+            keika = tEnd/1000;
+            if(lastkeika<keika){
+                lastkeika = keika;
+                conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
+                conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2-10 , 10 , 100 );
+                conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2-10 , 20 , 100 );
+                conteText2D.fillText ( "time:"+90-keika , conteText2D.canvas.width/2-10 , 30 , 100 );
             }
             
             

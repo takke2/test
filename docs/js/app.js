@@ -398,10 +398,11 @@ function init() {
                 conteText2D.fillText ( "time:"+(lasttime/1000)-keika , conteText2D.canvas.width/2-10 , 30 , 100 );
             }
             
-            /*
+            
             conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
-            conteText2D.fillText ( "r:"+result[0] , conteText2D.canvas.width/2-100 , 30 , 150 );
-            conteText2D.fillText ( "r:"+result[1] , conteText2D.canvas.width/2-100 , 40 , 150 );
+            conteText2D.fillText ( "r:"+tStart , conteText2D.canvas.width/2-100 , 40 , 150 );
+            conteText2D.fillText ( "r:"+tEnd , conteText2D.canvas.width/2-100 , 50 , 150 );
+            /*
             conteText2D.fillText ( "r:"+result[2] , conteText2D.canvas.width/2-100 , 50 , 150 );
             conteText2D.fillText ( "f:"+fbSpeed , conteText2D.canvas.width/2-100 , 60 , 150 );
             conteText2D.fillText ( "l:"+lrSpeed , conteText2D.canvas.width/2-100 , 70 , 150 );

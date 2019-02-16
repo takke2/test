@@ -229,7 +229,8 @@ function init() {
 
     // キューブ
     var zimen = new THREE.MeshLambertMaterial({
-        map:THREE.ImageUtils.loadTexture("texture/sand2.jpg")
+        //map:THREE.ImageUtils.loadTexture("texture/sand2.jpg")
+        color : 0x0000aa,
     });
     
     var loader = new THREE.ImageLoader();
@@ -271,7 +272,7 @@ function init() {
         skyboxMaterial
     );
 
-    var zimengeometory = new THREE.BoxGeometry(10000, 100, 10000);
+    var zimengeometory = new THREE.BoxGeometry(10000, 10, 10000);
     var zimenmesh = new THREE.Mesh(zimengeometory, zimen);
     zimenmesh.position.set(0, -30, -30);
     
@@ -370,6 +371,7 @@ function init() {
     
     if(auto==1){
         tStart = performance.now();
+        fbSpeed=1;
     }
     
     // アニメーションループ

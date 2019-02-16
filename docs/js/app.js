@@ -375,7 +375,7 @@ function init() {
     
     if(auto==1){
         tStart = performance.now();
-        fbSpeed=1;
+        fbSpeed=-11;
     }
     
     // アニメーションループ

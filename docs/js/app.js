@@ -359,6 +359,7 @@ function init() {
     bgmplay();
     var tStart=0;
     var tEnd=1;
+    var keika = 0;
     
     sleep(3000);
     
@@ -393,7 +394,8 @@ function init() {
             //camera.position.x += lrSpeed;
             
             if(tEnd-tStart%1000==0){
-                conteText2D.fillText ( "time:"+(lasttime/1000)-(tEnd-tStart) , conteText2D.canvas.width/2-10 , 30 , 100 );
+                keika = tEnd-tStart%1000;
+                conteText2D.fillText ( "time:"+(lasttime/1000)-keika , conteText2D.canvas.width/2-10 , 30 , 100 );
             }
             
             /*

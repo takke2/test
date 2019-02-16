@@ -231,7 +231,10 @@ function init() {
     var zimen = new THREE.MeshLambertMaterial({
         //map:THREE.ImageUtils.loadTexture("texture/sand2.jpg")
         color : 0x0000aa,
+        transparent:true,
+        side: THREE.DoubleSide,
     });
+    //zimen.side = THREE.DoubleSide;
     
     var loader = new THREE.ImageLoader();
     loader.load('texture/skyboxsun25degtest.png', function (image) {

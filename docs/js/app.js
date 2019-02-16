@@ -367,6 +367,11 @@ function init() {
     var turn = new THREE.Vector3(1, 0, 0);
     var dir = new THREE.Vector3(); 
     
+    
+    if(auto==1){
+        tStart = performance.now();
+    }
+    
     // アニメーションループ
     (function loop() {
         
@@ -375,7 +380,7 @@ function init() {
         //characteristic_rx.writeValue(arrayBuffe);
         
         if(auto==1){
-            tStart = performance.now();
+            
             isStart = 1;
             counter+=1;
         

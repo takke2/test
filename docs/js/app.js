@@ -394,20 +394,20 @@ function init() {
             //camera.position.z -= fbSpeed;
             //camera.position.x += lrSpeed;
             
-            /*
-            keika = Math.floor(tEnd)/1000;
-            if(lastkeika<keika){
-                lastkeika = keika;
+            
+            //keika = Math.floor(tEnd)/1000;
+            if(Math.floor(tEnd/1000)%1000==0){
+                //lastkeika = keika;
                 conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
                 conteText2D.fillText ( "hp:"+hp , conteText2D.canvas.width/2-10 , 10 , 100 );
                 conteText2D.fillText ( "e:"+enemy_count , conteText2D.canvas.width/2-10 , 20 , 100 );
-                conteText2D.fillText ( "time:"+90-keika , conteText2D.canvas.width/2-10 , 30 , 100 );
+                conteText2D.fillText ( "time:"+90-Math.floor(tEnd/1000) , conteText2D.canvas.width/2-10 , 30 , 100 );
             }
-            */
             
+            /*
             conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
             conteText2D.fillText ( "r:"+Math.floor(tEnd) , conteText2D.canvas.width/2-100 , 40 , 150 );
-            /*
+            
             conteText2D.fillText ( "r:"+tEnd , conteText2D.canvas.width/2-100 , 50 , 150 );
             
             conteText2D.fillText ( "r:"+result[2] , conteText2D.canvas.width/2-100 , 50 , 150 );

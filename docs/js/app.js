@@ -273,7 +273,7 @@ function init() {
 
     var zimengeometory = new THREE.BoxGeometry(10000, 10+9990, 10000);
     var zimenmesh = new THREE.Mesh(zimengeometory, zimen);
-    zimenmesh.position.set(0, -1000, -30);
+    zimenmesh.position.set(0, -5030, -30);
     
     scene.add(zimenmesh);
     scene.add(skybox);
@@ -375,6 +375,7 @@ function init() {
         //characteristic_rx.writeValue(arrayBuffe);
         
         if(auto==1){
+            tStart = performance.now();
             isStart = 1;
             counter+=1;
         

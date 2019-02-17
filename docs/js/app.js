@@ -278,7 +278,7 @@ function init() {
 
     var zimengeometory = new THREE.BoxGeometry(10000, 10, 10000);
     var zimenmesh = new THREE.Mesh(zimengeometory, zimen);
-    zimenmesh.position.set(0, -30, -30);
+    zimenmesh.position.set(0, -50, -30);
     
     scene.add(zimenmesh);
     scene.add(skybox);
@@ -402,9 +402,9 @@ function init() {
             dir.copy(turn).transformDirection(camera.matrixWorld).normalize().multiplyScalar(lrSpeed); 
             camera.position.add(dir);
             
-            if(camera.position.y <= -31)
+            if(camera.position.y <= -45)
             {
-                camera.position.y = -32;
+                camera.position.y = -46;
             }
             //camera.position.z -= fbSpeed;
             //camera.position.x += lrSpeed;

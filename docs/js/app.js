@@ -402,9 +402,9 @@ function init() {
             dir.copy(turn).transformDirection(camera.matrixWorld).normalize().multiplyScalar(lrSpeed); 
             camera.position.add(dir);
             
-            if(camera.position.y <= -30)
+            if(camera.position.y <= -31)
             {
-                camera.position.y = -31;
+                camera.position.y = -32;
             }
             //camera.position.z -= fbSpeed;
             //camera.position.x += lrSpeed;

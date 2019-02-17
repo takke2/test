@@ -374,6 +374,7 @@ function init() {
     
     
     if(auto==1){
+        sleep(5000);
         tStart = performance.now();
         fbSpeed=1;
     }

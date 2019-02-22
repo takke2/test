@@ -1,4 +1,5 @@
 function CharacterShot(){
+	this.campos = new Point();
 	this.position = new Point();
 	this.size = 0;
 	this.speed = 0;
@@ -7,6 +8,9 @@ function CharacterShot(){
 }
 
 CharacterShot.prototype.set = function(p, vector, size, speed){
+	this.campos.x = p.x;
+	this.campos.y = p.y;
+	this.campos.z = p.z;
 	this.position.x = p.x;
 	this.position.y = p.y;
 	this.position.z = p.z;
@@ -25,8 +29,8 @@ CharacterShot.prototype.move = function(){
 	this.position.y += this.vector.y * this.speed;
 	this.position.z += this.vector.z * this.speed;
 	
-	if(this.position.x > this.size || this.position.y > this.size || this.position.z > this.size ||
-	   this.position.x < -this.size || this.position.y < -this.size || this.position.z < -this.size){
+	if(this.position.x > this.size+this.campos.x || this.position.y > this.size+this.campos.y || this.position.z > this.size+this.campos.z ||
+	   this.position.x < -this.size-this.campos.x || this.position.y < -this.size-this.campos.y || this.position.z < -this.size-this.campos.y){
 		this.alive = false;
 	}
 };

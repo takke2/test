@@ -429,10 +429,10 @@ function init() {
                 
             }
             
-            /*
-            conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
-            conteText2D.fillText ( "r:"+Math.floor(tEnd) , conteText2D.canvas.width/2-100 , 40 , 150 );
             
+            conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
+            conteText2D.fillText ( "r:"+charaShot[i].position.x) , conteText2D.canvas.width/2-100 , 40 , 150 );
+            /*
             conteText2D.fillText ( "r:"+tEnd , conteText2D.canvas.width/2-100 , 50 , 150 );
             
             conteText2D.fillText ( "r:"+result[2] , conteText2D.canvas.width/2-100 , 50 , 150 );

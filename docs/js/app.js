@@ -429,10 +429,10 @@ function init() {
                 
             }
             
-            
+            /*
             conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
             conteText2D.fillText ( "r:"+charaShot[i].position.x) , conteText2D.canvas.width/2-100 , 40 , 150 );
-            /*
+            
             conteText2D.fillText ( "r:"+tEnd , conteText2D.canvas.width/2-100 , 50 , 150 );
             
             conteText2D.fillText ( "r:"+result[2] , conteText2D.canvas.width/2-100 , 50 , 150 );
@@ -472,6 +472,12 @@ function init() {
                                 characteristic_rx.writeValue(arrayBuffe);
                             }
                         }
+                        
+                        if(i==0){
+                            conteText2D.clearRect(0, 0, conteText2D.canvas.width, conteText2D.canvas.height);
+                            conteText2D.fillText ( "r:"+charaShot[0].position.x) , conteText2D.canvas.width/2-100 , 40 , 150 );
+                        }
+                        
                         charaShotMesh[i].position.set(charaShot[i].position.x, charaShot[i].position.y,charaShot[i].position.z);
                         
                         scene.add(charaShotMesh[i]);

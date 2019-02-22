@@ -402,9 +402,9 @@ function init() {
             dir = new THREE.Vector3(); 
             dir.copy(forward).transformDirection(camera.matrixWorld).normalize().multiplyScalar(fbSpeed); 
             camera.position.add(dir);
-            dir = new THREE.Vector3(); 
-            dir.copy(turn).transformDirection(camera.matrixWorld).normalize().multiplyScalar(lrSpeed); 
-            camera.position.add(dir);
+            //dir = new THREE.Vector3(); 
+            //dir.copy(turn).transformDirection(camera.matrixWorld).normalize().multiplyScalar(lrSpeed); 
+            //camera.position.add(dir);
             
             if(camera.position.y <= -45)
             {

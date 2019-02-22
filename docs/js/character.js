@@ -30,7 +30,7 @@ CharacterShot.prototype.move = function(){
 	this.position.z += this.vector.z * this.speed;
 	
 	if(this.position.x > this.size+this.campos.x || this.position.y > this.size+this.campos.y || this.position.z > this.size+this.campos.z ||
-	   this.position.x < (this.size+this.campos.x)*-1 || this.position.y < (this.size+this.campos.y)*-1 || this.position.z < (this.size+this.campos.z)*-1){
+	   this.position.x < (this.size*-1)+this.campos.x || this.position.y < (this.size*-1)+this.campos.y || this.position.z < (this.size*-1)+this.campos.z){
 		this.alive = false;
 	}
 };

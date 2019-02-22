@@ -398,6 +398,7 @@ function init() {
         
         if(isStart==1){
         
+            camera.updateMatrixWorld();
             dir = new THREE.Vector3(); 
             dir.copy(forward).transformDirection(camera.matrixWorld).normalize().multiplyScalar(fbSpeed); 
             camera.position.add(dir);

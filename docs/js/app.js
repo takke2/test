@@ -465,7 +465,7 @@ function init() {
                                 characteristic_rx.writeValue(arrayBuffe);
                             }
                         }else{
-                            charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 5);
+                            charaShot[i].set(camera.position, camera.getWorldDirection().normalize(), 500, 10);
                             text = "0,1";
                             arrayBuffe = new TextEncoder("utf-8").encode(text);
                             if(auto==0){
